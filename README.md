@@ -25,6 +25,9 @@
 > [!CAUTION]
 > **Kenali risikonya sebelum menggunakan recovery.** Kesalahan saat flashing, wipe, atau restore dapat menyebabkan kehilangan data hingga perangkat tidak dapat digunakan. Simpan cadangan data penting di luar perangkat dan pelajari [cara kembali ke stok](docs/kembali-ke-stok.md). Keputusan menjalankan setiap tindakan di TWRP ada di tanganmu; maintainer/developer tidak menanggung kerusakan atau kehilangan data yang timbul.
 
+> [!TIP]
+> Sudah tersedia kernel patch yang terintegrasi dengan **SUSFS** dan beberapa fitur lainnya. [Cek di sini](https://github.com/cogan17/Cogan-Kernel).
+
 ---
 
 ### 📖 Panduan Pengguna
