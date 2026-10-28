@@ -22,6 +22,9 @@
   <a href="https://t.me/coganTWRP"><b>💬 Telegram Community</b></a>
 </p>
 
+> [!CAUTION]
+> **Understand the risks before using recovery.** Mistakes during flashing, wiping, or restoring can cause data loss or leave the device unusable. Keep important backups outside the device and read [how to return to stock](docs/kembali-ke-stok.en.md). You decide which actions to perform in TWRP; the maintainer/developer accepts no responsibility for resulting damage or data loss.
+
 ---
 
 ### 📖 User Guide
