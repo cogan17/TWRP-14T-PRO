@@ -75,7 +75,9 @@ jobs:
           { echo '<?xml version="1.0" encoding="UTF-8"?>'; echo '<manifest>'
             sed 's|.*|  <remove-project name="&" optional="true" />|' "$GITHUB_WORKSPACE/device-tree/.github/ofox-remove-projects.txt"
             echo '</manifest>'; } > .repo/local_manifests/rothko-trim.xml
-          repo sync -c -j"$(nproc --all)" --no-clone-bundle --no-tags --optimized-fetch --prune
+          # upstream manifest changes can break the sync (29 Oct 2026: private libvpx/libwebm repos)
+          repo sync -c -j"$(nproc --all)" --no-clone-bundle --no-tags --optimized-fetch --prune 2>&1 | tee /tmp/sync.log ||
+            { echo "::error title=repo sync::$(grep -iE 'error|fatal|failed' /tmp/sync.log | sort -u | tail -15 | tr '\n' ';')"; exit 1; }
           echo "::notice title=OrangeFox sources::recovery $(git -C bootable/recovery log -1 --format='%h %cd' --date=short); vendor/recovery $(git -C vendor/recovery log -1 --format='%h %cd' --date=short)"
           # reference ABI dumps only feed optional ABI checks (skipped when missing); frees space for swap
           rm -rf prebuilts/abi-dumps

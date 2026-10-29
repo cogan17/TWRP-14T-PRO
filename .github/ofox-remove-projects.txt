@@ -83,3 +83,5 @@ platform/packages/apps/PrivateSpace
 platform/system/cros-codecs
 trusty/device/desktop
 trusty/user/desktop
+external/libvpx
+external/libwebm
