@@ -25,6 +25,18 @@ colok kabel → pilih **Transfer File (MTP)** → salin folder ke PC.
 
 > ✅ Salin hasil backup ke PC/flashdisk juga, biar aman kalau HP bermasalah.
 
+## Restore Data
+
+> ⚠️ **TWRP v1.4 ke bawah:** di Android 16, restore **Data** bisa gagal dengan `extractTarFork() ... 255` di folder `/data/user/0/…`. Ini bug TWRP yang diperbaiki di v1.5. Penyimpanan internal dan file backup tetap aman.
+
+Kalau kamu mengalaminya, **jangan reboot, jangan Format Data**. Dengan HP tetap di TWRP, jalankan di PC:
+
+```
+adb shell umount /data/user/0
+```
+
+Lalu ulangi **Pulihkan → Data** tanpa reboot. Kalau berhasil sampai 100%, baru Reboot → System.
+
 ## Kapan ini berguna
 
 - Sebelum update HyperOS, root, atau ganti ROM.

@@ -25,6 +25,18 @@ plug in the cable → choose **File Transfer (MTP)** → copy the folders to you
 
 > ✅ Copy the backup to a PC / flash drive too, in case the phone has problems.
 
+## Restoring Data
+
+> ⚠️ **TWRP v1.4 and older:** on Android 16, restoring **Data** can fail with `extractTarFork() ... 255` in a `/data/user/0/…` folder. This is a TWRP bug, fixed in v1.5. Internal storage and the backup files stay safe.
+
+If it happens, **don't reboot and don't Format Data**. With the phone still in TWRP, run on the PC:
+
+```
+adb shell umount /data/user/0
+```
+
+Then run **Restore → Data** again without rebooting. Once it reaches 100%, Reboot → System.
+
 ## When this helps
 
 - Before a HyperOS update, rooting, or changing ROM.
