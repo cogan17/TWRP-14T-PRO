@@ -33,13 +33,22 @@ Lanjut: [cara masuk TWRP →](masuk-twrp.md)
 
 **Lewat PC:** [masuk TWRP](masuk-twrp.md), colok kabel, lalu klik dua kali **`5-UPDATE-LEWAT-TWRP.bat`** dari paket (ekstrak ke folder `platform-tools` seperti biasa). Skrip mengecek file & HP, menulis TWRP, lalu memeriksa ulang hasil tulisannya.
 
-**Tanpa PC:**
+**Tanpa PC — cara termudah (zip, sejak v1.4):**
 
-1. Di HP, buka **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → unduh **`TWRP-rothko-<versi>.img`** saja (tidak perlu zip). Versinya harus **sama** dengan HyperOS-mu (*Setelan → Tentang ponsel*).
+1. Di HP, buka **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → unduh **`PAKET-TWRP-rothko-<versi>.zip`**. Versinya harus **sama** dengan HyperOS-mu (*Setelan → Tentang ponsel*).
 2. [Masuk TWRP](masuk-twrp.md) → buka kunci dengan [pola](enkripsi-dan-pola.md).
-3. **Install** → tombol **Install Image** → buka folder `Download` → pilih `TWRP-rothko-<versi>.img`.
-4. Pilih **vendor_boot** → geser untuk flash.
-5. **Reboot → Recovery.** Build terbaru punya file `/BUILD-INFO.txt` (lihat lewat *Advanced → File Manager*) berisi tanggal build-nya.
+3. **Install** → buka folder `Download` → pilih zip itu → geser. **Tidak perlu diekstrak**, tidak perlu memilih partisi.
+4. Zip mengecek HP & file, menulis TWRP ke `vendor_boot`, lalu memeriksa ulang. Kalau ada yang tidak cocok, **tidak ada yang ditulis**.
+5. **Reboot → Recovery.**
+
+> ⚠️ Unduh hanya dari **Releases**, jangan dari tab *Actions* (file *artifact* di sana bukan untuk dipasang). Zip **v1.3 ke bawah** belum bisa di-flash di TWRP (muncul *Invalid zip file format*) — pakai cara Install Image di bawah.
+
+**Tanpa PC — cara Install Image:**
+
+1. Unduh **`TWRP-rothko-<versi>.img`** dari [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
+2. Di TWRP: **Install** → tombol **Install Image** → buka folder `Download` → pilih `TWRP-rothko-<versi>.img` (**bukan** `STOK-…`).
+3. Pilih **vendor_boot** → geser untuk flash.
+4. **Reboot → Recovery.** Build terbaru punya file `/BUILD-INFO.txt` (lihat lewat *Advanced → File Manager*) berisi tanggal build-nya.
 
 > ⚠️ Wajib pilih **vendor_boot** — **jangan** boot / init_boot. Salah partisi = bootloop.
 
@@ -50,9 +59,8 @@ Lanjut: [cara masuk TWRP →](masuk-twrp.md)
 ## Cara unduh paket
 
 1. Buka halaman **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)**.
-2. Pilih rilis terbaru (mis. `OS3.0.301.0.WNNIDXM`).
-3. Di bagian **Assets**, klik **`PAKET-TWRP-rothko-...zip`** (~88 MB) — untuk pasang lewat PC.
-   Update dari dalam TWRP? Cukup unduh **`TWRP-rothko-...img`**.
+2. Pilih rilis terbaru (mis. `v1.4 · OS3.0.301.0.WNNIDXM`).
+3. Di bagian **Assets**, klik **`PAKET-TWRP-rothko-...zip`** (~88 MB) — untuk pasang lewat PC, atau di-flash langsung di TWRP (v1.4+).
 
 > Tidak perlu login — file rilis bisa langsung diunduh siapa saja.
 

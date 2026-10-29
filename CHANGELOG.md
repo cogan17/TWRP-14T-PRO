@@ -4,6 +4,14 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.4 — 29 Okt 2026
+
+### ✨ Baru
+- **Zip paket bisa langsung di-flash di TWRP** (Install → zip → geser). Tak perlu ekstrak dan tak perlu memilih partisi. Zip mengecek HP & file, menulis TWRP ke `vendor_boot`, lalu memeriksa ulang. Kalau tidak cocok, tidak ada yang ditulis.
+
+### 🔧 Perbaikan
+- Tidak ada lagi *Invalid zip file format* saat zip paket dipasang di TWRP (sebelumnya zip harus diekstrak, dan file `TWRP-` mudah tertukar dengan `STOK-`).
+
 ## v1.3 — 29 Okt 2026
 
 ### 🔧 Perbaikan
