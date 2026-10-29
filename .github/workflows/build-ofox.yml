@@ -74,6 +74,10 @@ jobs:
           mkdir -p .repo/local_manifests
           { echo '<?xml version="1.0" encoding="UTF-8"?>'; echo '<manifest>'
             sed 's|.*|  <remove-project name="&" optional="true" />|' "$GITHUB_WORKSPACE/device-tree/.github/ofox-remove-projects.txt"
+            # foxcli follows "master", which on 29 Oct needs libfox_protocol_types that the pinned
+            # fox_16.0 recovery (1 Oct) does not define yet; pin foxcli to the last commit before that
+            echo '  <remove-project name="external/foxcli" />'
+            echo '  <project name="external/foxcli" path="external/foxcli" remote="OrangeFox" revision="288f5579550ebd0d5e6325c1844a65bd3fb42d8c" />'
             echo '</manifest>'; } > .repo/local_manifests/rothko-trim.xml
           # upstream manifest changes can break the sync (29 Oct 2026: private libvpx/libwebm repos)
           repo sync -c -j"$(nproc --all)" --no-clone-bundle --no-tags --optimized-fetch --prune 2>&1 | tee /tmp/sync.log ||
