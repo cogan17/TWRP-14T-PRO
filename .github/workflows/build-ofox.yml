@@ -104,6 +104,8 @@ jobs:
           # only the zstd ramdisk patch: the others fix TWRP 14.1 sources, which OrangeFox replaces
           # patch(1): the git metadata is gone (see sync)
           for p in device/xiaomi/rothko/patches/build_make/*.patch; do patch -d build/make -p1 --forward < "$p"; done
+          # OrangeFox's own vold: Weaver fail-fast + Gatekeeper fallback (ported from patches/system_vold)
+          for p in device/xiaomi/rothko/patches-ofox/system_vold/*.patch; do patch -d system/vold -p1 --forward < "$p"; done
           {
             export ALLOW_MISSING_DEPENDENCIES=true FOX_BUILD_DEVICE=rothko
             source build/envsetup.sh

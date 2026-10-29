@@ -1,0 +1,99 @@
+Fail fast on Weaver and fall back to the Gatekeeper protector (rothko)
+
+OrangeFox's vold waited forever for the AIDL Weaver service ("Trying
+Decryption" never ended): on rothko Weaver runs on the NXP eSE through
+OMAPI, which recovery cannot start. Check for the service instead of
+waiting, and when the active protector fails, try every protector that
+has Gatekeeper data, as TWRP does (patches/system_vold on the TWRP branch).
+OrangeFox already speaks the AIDL Gatekeeper, so only the fallback and the
+keystore alias fix are ported.
+
+diff --git a/Decrypt.cpp b/Decrypt.cpp
+index a02bad8..43cb7fc 100755
+--- a/Decrypt.cpp
++++ b/Decrypt.cpp
+@@ -552,8 +552,9 @@ namespace keystore {
+ 			// printf("iv: "); output_hex((const unsigned char*)iv, 12); printf("\n");
+ 
+ 			KeystoreInfo keystore_info;
+-			std::string handle = keystore_info.getHandle(user_id);
+-			std::string keystore_alias = keystore_info.getAlias(handle);
++			// Decrypt the protector we are actually trying (handle_str), not the active sp-handle: a
++			// Weaver protector can be active while we fall back to this Gatekeeper one (Decrypt_User_Other_Protectors)
++			std::string keystore_alias = keystore_info.getAlias(handle_str);
+ 			int32_t error_code;
+ 			unsigned char* cipher_text = (unsigned char*)byteptr + 12; // The cipher text comes immediately after the IV
+ 			std::string cipher_text_str(byteptr, byteptr + spblob_data.size() - 14);
+@@ -714,7 +715,7 @@ bool Decrypt_CE_storage(const userid_t user_id, const std::string& secret) {
+ 
+ // /* Decrypt_User_Synth_Pass is the TWRP C++ equivalent to spBasedDoVerifyCredential
+ //  * https://android.googlesource.com/platform/frameworks/base/+/android-8.0.0_r23/services/core/java/com/android/server/locksettings/LockSettingsService.java#1998 */
+-bool Decrypt_User_Synth_Pass(const userid_t user_id, const std::string& Password) {
++bool Decrypt_User_Synth_Pass(const userid_t user_id, const std::string& Password, std::string handle_str = "") {
+ 	printf("Attempting to decrypt user's synthetic password\n");
+ 	bool retval = false;
+ 	void* weaver_key = NULL;
+@@ -733,7 +734,8 @@ bool Decrypt_User_Synth_Pass(const userid_t user_id, const std::string& Password
+ 	long handle = 0;
+ 	// Get the handle: https://android.googlesource.com/platform/frameworks/base/+/android-8.0.0_r23/services/core/java/com/android/server/locksettings/LockSettingsService.java#2017
+ 	KeystoreInfo keystore_info;
+-	std::string handle_str = keystore_info.getHandle(user_id);
++	if (handle_str.empty())
++		handle_str = keystore_info.getHandle(user_id);
+ 	// Now we begin driving unwrapPasswordBasedSyntheticPassword from: https://android.googlesource.com/platform/frameworks/base/+/android-8.0.0_r23/services/core/java/com/android/server/locksettings/SyntheticPasswordManager.java#758
+ 	// First we read the password data which contains scrypt parameters
+ 	// printf("pwd N %i R %i P %i salt ", pwd.scryptN, pwd.scryptR, pwd.scryptP); output_hex((char*)pwd.salt, pwd.salt_len); printf("\n");
+@@ -962,6 +964,29 @@ bool Decrypt_User_Synth_Pass(const userid_t user_id, const std::string& Password
+ 	return Free_Return(retval, weaver_key, &pwd);
+ }
+ 
++// HyperOS keeps the LSKF in a Weaver protector backed by the NXP eSE, reached through OMAPI,
++// which recovery cannot run. It also keeps a Gatekeeper protector for the same synthetic password,
++// so try every protector that has Gatekeeper data (.secdis) when the active one fails.
++static bool Decrypt_User_Other_Protectors(const userid_t user_id, const std::string& Password) {
++	const std::string dir = "/data/system_de/" + std::to_string(user_id) + "/spblob/";
++	std::unique_ptr<DIR, int (*)(DIR*)> d(opendir(dir.c_str()), closedir);
++	if (!d)
++		return false;
++	const std::string suffix = ".secdis";
++	while (dirent* de = readdir(d.get())) {
++		std::string id = de->d_name;
++		if (id.size() <= suffix.size() || id.compare(id.size() - suffix.size(), suffix.size(), suffix) != 0)
++			continue;
++		id.resize(id.size() - suffix.size());
++		// file names are %016x, keystore aliases use %x
++		id.erase(0, std::min(id.find_first_not_of('0'), id.size() - 1));
++		printf("Trying protector '%s'\n", id.c_str());
++		if (Decrypt_User_Synth_Pass(user_id, Password, id))
++			return true;
++	}
++	return false;
++}
++
+ extern "C" int Get_Password_Type(const userid_t user_id, std::string& filename) {
+ 	struct stat st;
+ 	char spblob_path_char[PATH_MAX];
+@@ -1042,7 +1067,7 @@ extern "C" bool Decrypt_User(const userid_t user_id, const std::string& Password
+ 	}
+ 	if (stat("/data/system_de/0/spblob", &st) == 0) {
+ 		printf("Using synthetic password method\n");
+-		return Decrypt_User_Synth_Pass(user_id, Password);
++		return Decrypt_User_Synth_Pass(user_id, Password) || Decrypt_User_Other_Protectors(user_id, Password);
+ 	}
+ 	// printf("password filename is '%s'\n", filename.c_str());
+ 	if (stat(filename.c_str(), &st) != 0) {
+diff --git a/Weaver1.cpp b/Weaver1.cpp
+index a2eeaaa..d0b2f84 100644
+--- a/Weaver1.cpp
++++ b/Weaver1.cpp
+@@ -52,7 +52,9 @@ namespace vold {
+ 
+ Weaver::Weaver() {
+     const std::string instance = std::string(::aidl::android::hardware::weaver::IWeaver::descriptor) + "/default";
+-    AIBinder* binder = AServiceManager_waitForService(instance.c_str());
++    // rothko: Weaver is declared but runs on the NXP eSE through OMAPI, which recovery cannot start,
++    // so waiting for it hung "Trying Decryption" forever. Fail fast; Decrypt_User falls back to Gatekeeper.
++    AIBinder* binder = AServiceManager_checkService(instance.c_str());
+     mAidlDevice = ::aidl::android::hardware::weaver::IWeaver::fromBinder(ndk::SpAIBinder(binder));
+ 	if (mAidlDevice == nullptr) {
+ 		mDevice = ::android::hardware::weaver::V1_0::IWeaver::getService();
