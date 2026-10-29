@@ -4,6 +4,12 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.3 — 29 Oct 2026
+
+### 🔧 What's fixed
+- Removed menus that wrote to the wrong partition: **Install Recovery Ramdisk** (the 6th choice in Install Image), **Flash Current TWRP**, and **auto-reflash TWRP after flashing a ROM**. On this phone TWRP lives in `vendor_boot`, but those menus write to `boot` — a bootloop risk.
+- Install Image now really offers only 5 choices: `boot`, `init_boot`, `vendor_boot`, `dtbo`, `vbmeta`.
+
 ## v1.2 — 21 Oct 2026
 
 ### ✨ What's new

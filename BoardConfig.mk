@@ -194,7 +194,8 @@ TWRP_EVENT_LOGGING := true
 
 # Tools
 TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_REPACKTOOLS := true
+# off: TWRP repacks into /boot, but on rothko recovery lives in vendor_boot (Install Recovery Ramdisk would break boot)
+TW_INCLUDE_REPACKTOOLS := false
 TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_LPDUMP := true
 TW_INCLUDE_LPTOOLS := true

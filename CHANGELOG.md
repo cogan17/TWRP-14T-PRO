@@ -4,6 +4,12 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.3 — 29 Okt 2026
+
+### 🔧 Perbaikan
+- Menu yang salah sasaran dihapus: **Install Recovery Ramdisk** (pilihan ke-6 di Install Image), **Flash Current TWRP**, dan **reflash TWRP otomatis setelah flash ROM**. Di HP ini TWRP tinggal di `vendor_boot`, tapi menu-menu itu menulis ke `boot` — berisiko bootloop.
+- Install Image kini benar-benar hanya 5 pilihan: `boot`, `init_boot`, `vendor_boot`, `dtbo`, `vbmeta`.
+
 ## v1.2 — 21 Okt 2026
 
 ### ✨ Baru
