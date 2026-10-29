@@ -86,7 +86,15 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Unpack both images
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # the overlay below adds and replaces files but keeps the build's modes and never
+          # removes one, so a file deleted or chmod-ed since the build needs a full rebuild
+          b=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$TWRP_RUN" --jq .head_sha)
+          git -C repo fetch -q --depth=1 origin "$b"
+          c=$(git -C repo diff --no-renames --summary "$b" HEAD -- recovery/root | grep -E '^ (delete mode|mode change)' || true)
+          [ -z "$c" ] || { echo "::error title=Full build needed::recovery/root changed since build ${b:0:7} in a way the overlay cannot apply:$(echo "$c" | tr '\n' ';')"; exit 1; }
           sudo apt-get -o Acquire::Retries=3 install -y lz4 zstd cpio >/dev/null
           git clone -q --depth 1 https://android.googlesource.com/platform/system/tools/mkbootimg ~/mkbootimg
           git clone -q --depth 1 https://android.googlesource.com/platform/external/avb ~/avb
@@ -219,6 +227,7 @@ jobs:
           check "dtb identical to stock" 'cmp -s u-twrp/dtb u-stock/dtb'
           check "TWRP UI in recovery fragment (twres/, system/bin/recovery)" '[ -d frag-twrp-vendor_ramdisk01/twres ] && [ -e frag-twrp-vendor_ramdisk01/system/bin/recovery ]'
           check "twrp.flags present" '[ -f r-twrp/system/etc/twrp.flags ]'
+          check "dependency checker self-test" 'python3 -I repo/.github/scripts/recovery_deps_test.py'
           check "every program in TWRP finds its libraries and linker" 'o=$(python3 repo/.github/scripts/recovery_deps.py r-twrp) && [ -z "$o" ]'
           # Android's normal boot reads these from the platform fragment, so they must equal stock
           check "first-stage fstab matches stock" 'cmp -s frag-twrp-vendor_ramdisk00/first_stage_ramdisk/fstab.mt6989 frag-stock-vendor_ramdisk00/first_stage_ramdisk/fstab.mt6989'
@@ -263,6 +272,13 @@ jobs:
           (cd dist && zip -qr "../PAKET-TWRP-rothko-$VERSION.zip" .)
           echo "::notice title=Paket siap::$t sha256 $ts; $s sha256 $ss"
 
+      # kept before publishing, so a failed publish (or replace) never loses the package
+      - uses: actions/upload-artifact@v4
+        if: env.VARIANT == 'twrp'
+        with:
+          name: PAKET-TWRP-rothko-${{ env.VERSION }}
+          path: dist/
+
       # signed before publishing: if this fails, the existing pre-release stays untouched
       - uses: actions/attest@v4
         if: env.VARIANT == 'twrp'
@@ -281,8 +297,6 @@ jobs:
           zip="PAKET-TWRP-rothko-$VERSION.zip"
           ts=$(sha256sum "dist/TWRP-rothko-$VERSION.img" | cut -d' ' -f1)
           (cd repo && .github/scripts/release_notes.sh "$BUILD_VER" "$VERSION" "$ts" "$GH_REPO") > /tmp/notes.md
-          # until v1.2 there was one release per firmware, tagged with the firmware name
-          gh release delete "$VERSION" --yes --cleanup-tag 2>/dev/null || true
           # every version keeps its own release: never overwrite one by accident
           if gh release view "$BUILD_VER" >/dev/null 2>&1; then
             if [ "$REPLACE" != true ]; then
@@ -299,8 +313,3 @@ jobs:
           (cd repo && .github/scripts/annotate_tag.sh "$BUILD_VER" "$VERSION" "$GH_REPO")
           echo "::notice title=Pre-release::$BUILD_VER · $VERSION -> $zip"
 
-      - uses: actions/upload-artifact@v4
-        if: env.VARIANT == 'twrp'
-        with:
-          name: PAKET-TWRP-rothko-${{ env.VERSION }}
-          path: dist/

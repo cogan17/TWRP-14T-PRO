@@ -65,17 +65,22 @@ static int create_dm(const char* device, const char* name, std::string* path, in
   return 0;
 }
 
-static void create_pl_link(std::string link, std::string devpath) {
+// true when link points at devpath afterwards (already correct counts as success)
+static bool create_pl_link(std::string link, std::string devpath) {
   std::string link_path;
 
-  if (android::base::Readlink(link, &link_path) && link_path != devpath) {
+  if (android::base::Readlink(link, &link_path)) {
+    if (link_path == devpath) return true;
     ALOGE("Remove symlink %s links to: %s", link.c_str(), link_path.c_str());
     if (!android::base::RemoveFileIfExists(link))
       ALOGE("Cannot remove symlink %s", strerror(errno));
   }
 
-  if (symlink(devpath.c_str(), link.c_str()))
+  if (symlink(devpath.c_str(), link.c_str())) {
     ALOGE("Failed to symlink %s to %s (%s)", devpath.c_str(), link.c_str(), strerror(errno));
+    return false;
+  }
+  return true;
 }
 
 int create_pl_path(void) {
@@ -135,15 +140,16 @@ int create_pl_path(void) {
     return 1;
   }
   if (create_dm(UFS_PL_B, NAME_PL_B, &path_b, start_blk, blk_cnt) != 0) {
-    if (dm.DeleteDevice(UFS_PL_A))
+    // DeleteDevice takes the mapping name and returns true on success
+    if (!dm.DeleteDevice(NAME_PL_A))
       ALOGE("Cannot delete device %s (%s)", NAME_PL_A, strerror(errno));
     return 1;
   }
   
 
-  create_pl_link(LINK_PL_A, path_a);
-  create_pl_link(LINK_PL_B, path_b);
-  return 0;
+  bool ok_a = create_pl_link(LINK_PL_A, path_a);
+  bool ok_b = create_pl_link(LINK_PL_B, path_b);
+  return ok_a && ok_b ? 0 : 1;
 }
 
 int main(void) {
