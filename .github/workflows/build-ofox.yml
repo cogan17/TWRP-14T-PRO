@@ -79,12 +79,15 @@ jobs:
           echo "::notice title=OrangeFox sources::recovery $(git -C bootable/recovery log -1 --format='%h %cd' --date=short); vendor/recovery $(git -C vendor/recovery log -1 --format='%h %cd' --date=short)"
           # reference ABI dumps only feed optional ABI checks (skipped when missing); frees space for swap
           rm -rf prebuilts/abi-dumps
-          # leave ~30 GB for out/, the rest (16-40 GB) becomes swap for soong_build
+          # Android 16 soong_build needs >32 GB (RAM + swap) even for this minimal tree, so the
+          # 19 GB of git history becomes swap. Only cosmetic version strings read git later.
+          rm -rf .repo
+          # leave ~28 GB for out/, the rest (16-56 GB) becomes swap for soong_build
           f=$(df -BG --output=avail "$(dirname "$SWAP")" | tail -1 | tr -dc 0-9)
-          n=$(( f - 30 )); [ $n -gt 40 ] && n=40; [ $n -lt 16 ] && n=16
+          n=$(( f - 28 )); [ $n -gt 56 ] && n=56; [ $n -lt 16 ] && n=16
           sudo fallocate -l ${n}G "$SWAP" && sudo chmod 600 "$SWAP" && sudo mkswap "$SWAP" >/dev/null && sudo swapon "$SWAP"
           echo "::notice title=Swap::${n}G (${f}G was free after sync)"
-          echo "::notice title=Disk after sync::$(df -h --output=avail / | tail -1) free; biggest: $(du -sh .repo prebuilts/* external/* 2>/dev/null | sort -h | tail -6 | tr '\t\n' ' ;')"
+          echo "::notice title=Disk after sync::$(df -h --output=avail / | tail -1) free; biggest: $(du -sh prebuilts/* external/* 2>/dev/null | sort -h | tail -6 | tr '\t\n' ' ;')"
 
       - name: Build vendor_boot.img
         run: |
@@ -93,7 +96,8 @@ jobs:
           cp -a device-tree "$SRC/device/xiaomi/rothko"
           cd "$SRC"
           # only the zstd ramdisk patch: the others fix TWRP 14.1 sources, which OrangeFox replaces
-          for p in device/xiaomi/rothko/patches/build_make/*.patch; do git -C build/make apply "$SRC/$p"; done
+          # patch(1): the git metadata is gone (see sync)
+          for p in device/xiaomi/rothko/patches/build_make/*.patch; do patch -d build/make -p1 --forward < "$p"; done
           {
             export ALLOW_MISSING_DEPENDENCIES=true FOX_BUILD_DEVICE=rothko
             source build/envsetup.sh
@@ -131,6 +135,7 @@ jobs:
           [ -z "$u" ] || echo "::error title=Undefined symbols::$u"
           e=$(sed 's/\x1b\[[0-9;]*m//g' "$f" | grep -E ': (fatal )?error: ' | sort -u | head -40 | sed -e 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g' || true)
           [ -z "$e" ] || echo "::error title=All compile errors::$e"
+          echo "::notice title=Memory at failure::peak $(( $(cat /sys/fs/cgroup/build/memory.peak 2>/dev/null || echo 0) >> 30 ))G RAM, $(( $(cat /sys/fs/cgroup/build/memory.swap.peak 2>/dev/null || echo 0) >> 30 ))G swap; $(tr '\n' ' ' < /sys/fs/cgroup/build/memory.events)"
           echo "::notice title=Disk at failure::$(df -h --output=target,avail / /mnt | tail -n +2 | tr -s ' ' | tr '\n' ' ')"
 
       - uses: actions/upload-artifact@v4
