@@ -171,7 +171,8 @@ TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_USE_NEW_MINADBD := true
 TW_EXCLUDE_APEX := true
 TW_EXTRA_LANGUAGES := true
-TW_DEFAULT_LANGUAGE := id
+# OrangeFox names it id_ID (TWRP: id)
+TW_DEFAULT_LANGUAGE := id_ID
 TW_HAS_NO_DISPLAY_CUTOUT := false
 # TW_STATUS_BAR_HEIGHT := 90
 # TW_Y_OFFSET := 90
@@ -217,3 +218,10 @@ TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone53/temp"
 TW_BATTERY_SYSFS_WAIT_SECONDS := 6
 # read capacity straight from sysfs: recovery has no registered health HAL, so the default path shows a fake 100%
 TW_USE_LEGACY_BATTERY_SERVICES := true
+
+# OrangeFox UI: height scaled to a 1080-wide screen (2712 * 1080 / 1220), centred punch hole
+OF_SCREEN_H := 2400
+OF_STATUS_H := 96
+OF_STATUS_INDENT_LEFT := 48
+OF_STATUS_INDENT_RIGHT := 48
+OF_CLOCK_POS := 1
