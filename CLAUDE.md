@@ -16,7 +16,7 @@ Recovery untuk Xiaomi 14T Pro (`rothko`, HyperOS, Android 16) di `cogan17/TWRP-1
 ## Isi repo
 
 - **`twrp-14.1_a16`** (default): TWRP 14.1, device tree, dokumen, paket rilis (`release/`), workflow. Firmware acuan ada di `.github/firmware.env`.
-- **`orangefox`**: varian OrangeFox `fox_16.0` (eksperimen), memakai device tree yang sama ditambah `vendorsetup.sh` dan pengaturan `OF_*`. Setiap push ke branch ini memicu *Build OrangeFox* (±1,5 jam); perubahan yang bukan untuk build diberi `[skip ci]`. Hasilnya hanya artifact `OFOX-UJI-…`, belum dirilis.
+- **`orangefox`**: varian OrangeFox `fox_16.0` (eksperimen), memakai device tree yang sama ditambah `vendorsetup.sh` dan pengaturan `OF_*`. Setiap push ke branch ini memicu *Build OrangeFox* (±1,5 jam); perubahan yang bukan untuk build diberi `[skip ci]`. Hasilnya hanya artifact `PAKET-OFOX-UJI-…` (image, `.bat` pasang, kembali ke TWRP dan ke stok; zip-nya bisa di-flash di TWRP), belum dirilis.
 - **Alur build**: *Build TWRP* (±80 menit, hanya lewat tombol atau saat `build-twrp.yml` berubah) → *Verify* (otomatis, ±3 menit) memecah image jadi dua fragmen seperti stok, menjalankan gate, lalu merilis. Perubahan yang hanya menyentuh `recovery/root` cukup lewat *Verify* manual (jalur cepat) dengan run build terakhir.
 - **Dokumen dua bahasa**: semua yang terjangkau dari README punya versi Indonesia (utama) dan English (`*.en.md`), termasuk `arsip/`. Isi paket rilis (`.bat`, `BACA-SAYA.txt`, `PANDUAN-TWRP.html`) boleh hanya Indonesia.
 - **Isi tiap bahasa harus sesuai bahasanya**: bagian English tidak boleh menyalin teks Indonesia, dan sebaliknya.
