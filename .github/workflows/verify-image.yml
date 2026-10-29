@@ -236,17 +236,71 @@ jobs:
           [ -z "$d" ] || echo "::warning title=modules diff::$(echo "$d" | head -20 | tr '\n' ';')"
           exit $bad
 
-      - name: OrangeFox test image
+      - name: OrangeFox test package
         if: env.VARIANT == 'ofox'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir ofox && cp twrp/vendor_boot.img "ofox/OFOX-UJI-rothko-$VERSION.img"
-          (cd ofox && sha256sum *.img > SHA256.txt)
-          echo "::notice title=OrangeFox UJI::$(cat ofox/SHA256.txt)"
+          o=OFOX-UJI-rothko-$VERSION.img; t=TWRP-rothko-$VERSION.img; s=STOK-vendor_boot-$VERSION.img
+          mkdir ofox && cp twrp/vendor_boot.img ofox/$o && cp stock/vendor_boot.img ofox/$s
+          # the way back to TWRP: image of the newest TWRP release (tags vX.Y)
+          rel=$(gh api "repos/$GITHUB_REPOSITORY/releases" --jq '[.[] | select(.tag_name | test("^v[0-9]"))][0].tag_name')
+          gh release download "$rel" -R "$GITHUB_REPOSITORY" -p "$t" -D ofox
+          sum() { sha256sum "ofox/$1" | cut -d' ' -f1; }
+          os=$(sum $o); ts=$(sum $t); ss=$(sum $s)
+          # the TWRP package files, filled in for one image; "TWRP" in their text becomes OrangeFox
+          fill() { sed -e "s/@VERSION@/$VERSION/g" -e "s/@TWRP_IMG@/$1/g" -e "s/@TWRP_SHA256@/$2/g" \
+                       -e "s/@STOCK_IMG@/$s/g" -e "s/@STOCK_SHA256@/$ss/g" "${@:3}"; }
+          fox='s/TWRP/OrangeFox/g'; crlf='s/$/\r/'
+          fill $o $os -e "$fox" -e "$crlf" repo/release/1-PASANG-TWRP.bat > ofox/1-PASANG-ORANGEFOX.bat
+          fill $o $os -e "$fox" -e "$crlf" repo/release/2-KEMBALIKAN-STOK.bat > ofox/2-KEMBALIKAN-STOK.bat
+          fill $t $ts -e "$crlf" repo/release/1-PASANG-TWRP.bat > ofox/3-KEMBALI-KE-TWRP.bat
+          # the artifact zip itself flashes OrangeFox in TWRP (Install), with the same checks as the TWRP zip
+          a=META-INF/com/google/android; mkdir -p ofox/$a
+          fill $o $os -e "$fox" repo/release/$a/update-binary > ofox/$a/update-binary
+          fill $o $os repo/release/$a/updater-script > ofox/$a/updater-script
+          fill $o $os repo/release/twrp-update.sh > ofox/twrp-update.sh
+          ! grep -rl '@[A-Z0-9_]*@' ofox --include='*.bat' --include='*.sh' --include='update*'
+          cat > ofox/BACA-SAYA.txt <<EOF
+          OrangeFox UJI untuk Xiaomi 14T Pro (rothko) - firmware $VERSION
+          EKSPERIMEN tahap 1: hanya untuk mengecek OrangeFox menyala dan layar sentuh.
+          Data kemungkinan belum bisa dibuka dengan pola. Data di HP tidak dihapus.
+
+          ISI
+            1-PASANG-ORANGEFOX.bat : pasang OrangeFox lewat PC (FASTBOOT)
+            2-KEMBALIKAN-STOK.bat  : kembalikan vendor_boot stok (tanpa recovery kustom)
+            3-KEMBALI-KE-TWRP.bat  : pasang lagi TWRP $rel lewat PC (FASTBOOT)
+            $o
+            $t
+            $s
+            META-INF, twrp-update.sh : supaya zip ini bisa di-flash di TWRP
+
+          CARA PASANG
+            Lewat TWRP : salin zip ini ke HP (tidak perlu diekstrak),
+                         lalu di TWRP pilih Install > zip ini > geser.
+            Lewat PC   : ekstrak ke folder platform-tools, HP di FASTBOOT
+                         (Power + Volume Bawah), klik dua kali 1-PASANG-ORANGEFOX.bat.
+            Lalu Reboot > Recovery.
+
+          KEMBALI
+            Ke TWRP : HP di FASTBOOT, klik dua kali 3-KEMBALI-KE-TWRP.bat.
+            Ke stok : HP di FASTBOOT, klik dua kali 2-KEMBALIKAN-STOK.bat.
+            HP terus masuk recovery? Tahan Power + Volume Bawah sampai FASTBOOT.
+
+          JANGAN saat uji: OTA/reflash/Magisk bawaan OrangeFox, Format Data, flash ROM.
+
+          SHA256
+            $os  $o
+            $ts  $t
+            $ss  $s
+          EOF
+          sed -i 's/$/\r/' ofox/BACA-SAYA.txt
+          echo "::notice title=OrangeFox UJI::$o sha256 $os; TWRP $rel $ts"
 
       - uses: actions/upload-artifact@v4
         if: env.VARIANT == 'ofox'
         with:
-          name: OFOX-UJI-rothko-${{ env.VERSION }}
+          name: PAKET-OFOX-UJI-rothko-${{ env.VERSION }}
           path: ofox/
 
       - name: Package for end users
