@@ -64,19 +64,44 @@ def rel(p):
     return '/' + os.path.relpath(p, root)
 
 
+def present(path):
+    """Does the phone path exist in the ramdisk? Symlinks (also absolute ones and in parent
+    dirs) resolve inside the ramdisk, so a dangling or looping link counts as missing."""
+    todo, cur, hops = [x for x in path.split('/') if x], '', 0
+    while todo:
+        x = todo.pop(0)
+        if x == '..':
+            cur = cur.rsplit('/', 1)[0]
+        elif x != '.':
+            p = root + cur + '/' + x
+            if os.path.islink(p):
+                hops += 1
+                if hops > 40:
+                    return False
+                t = os.readlink(p)
+                if t.startswith('/'):
+                    cur = ''
+                todo = [y for y in t.split('/') if y] + todo
+            elif os.path.lexists(p):
+                cur += '/' + x
+            else:
+                return False
+    return True
+
+
 libs, unresolved = None, {}
 while True:
     missing = {}
     for p in elfs():
         for n in readelf(p, '-d', r'Shared library: \[(.+?)\]'):
-            if not any(os.path.lexists(os.path.join(root, d, n)) for d in LIBDIRS):
+            if not any(present(f'/{d}/{n}') for d in LIBDIRS):
                 missing.setdefault(n, rel(p))
         for interp in readelf(p, '-l', r'program interpreter: (.+?)\]'):
             dst = root + interp
-            if os.path.lexists(dst):
+            if present(interp):
                 continue
             target = '/system/bin/' + os.path.basename(interp)
-            if os.path.lexists(root + target):
+            if not os.path.lexists(dst) and present(target):
                 os.makedirs(os.path.dirname(dst), exist_ok=True)
                 os.symlink(target, dst)
                 print(f'{interp} -> {target} (interpreter of {rel(p)})')
