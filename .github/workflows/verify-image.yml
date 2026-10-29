@@ -221,12 +221,17 @@ jobs:
           cp twrp/vendor_boot.img dist/$t
           cp stock/vendor_boot.img dist/$s
           ts=$(sha256sum dist/$t | cut -d' ' -f1); ss=$(sha256sum dist/$s | cut -d' ' -f1)
+          fill() { sed -e "s/@VERSION@/$VERSION/g" -e "s/@TWRP_IMG@/$t/g" -e "s/@TWRP_SHA256@/$ts/g" \
+                       -e "s/@STOCK_IMG@/$s/g" -e "s/@STOCK_SHA256@/$ss/g" "$@"; }
           for f in repo/release/*; do
+            [ -f "$f" ] || continue
             # Windows scripts and notes: fill in names and hashes, CRLF line endings
-            sed -e "s/@VERSION@/$VERSION/g" -e "s/@TWRP_IMG@/$t/g" -e "s/@TWRP_SHA256@/$ts/g" \
-                -e "s/@STOCK_IMG@/$s/g" -e "s/@STOCK_SHA256@/$ss/g" -e 's/$/\r/' "$f" > "dist/$(basename "$f")"
+            fill -e 's/$/\r/' "$f" > "dist/$(basename "$f")"
           done
-          ! grep -l '@[A-Z0-9_]*@' dist/*.bat dist/*.txt dist/*.sh
+          # makes the package zip flashable in TWRP (Install); runs on the phone, so LF
+          a=META-INF/com/google/android; mkdir -p dist/$a
+          for f in update-binary updater-script; do fill "repo/release/$a/$f" > "dist/$a/$f"; done
+          ! grep -l '@[A-Z0-9_]*@' dist/*.bat dist/*.txt dist/*.sh dist/$a/*
           command -v zip >/dev/null 2>&1 || { sudo apt-get update -q && sudo apt-get install -y -q zip; }
           (cd dist && zip -qr "../PAKET-TWRP-rothko-$VERSION.zip" .)
           echo "::notice title=Paket siap::$t sha256 $ts; $s sha256 $ss"

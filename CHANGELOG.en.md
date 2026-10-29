@@ -4,6 +4,14 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.4 — 29 Oct 2026
+
+### ✨ What's new
+- **The package zip can be flashed straight in TWRP** (Install → zip → swipe). No unzipping, no partition to choose. The zip checks the phone and the file, writes TWRP to `vendor_boot`, then reads it back. If anything doesn't match, nothing is written.
+
+### 🔧 What's fixed
+- No more *Invalid zip file format* when installing the package zip in TWRP (it used to need unzipping, and the `TWRP-` file was easy to mix up with `STOK-`).
+
 ## v1.3 — 29 Oct 2026
 
 ### 🔧 What's fixed

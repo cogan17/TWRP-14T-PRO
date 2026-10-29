@@ -1,0 +1,16 @@
+#!/sbin/sh
+# TWRP Install (zip): reuses twrp-update.sh, the same checks as 5-UPDATE-LEWAT-TWRP.bat
+OUTFD=$2; ZIP=$3
+say() { echo "ui_print $1" > /proc/self/fd/$OUTFD; echo ui_print > /proc/self/fd/$OUTFD; }
+say "TWRP rothko - update ke @TWRP_IMG@"
+unzip -p "$ZIP" "@TWRP_IMG@" > /tmp/twrp-baru.img
+hasil=$(unzip -p "$ZIP" twrp-update.sh | tr -d '\r' | sh)
+rm -f /tmp/twrp-baru.img
+case "$hasil" in
+  SELESAI) say "Berhasil: TWRP ditulis ke vendor_boot dan sudah dicek ulang."; say "Reboot -> System, lalu masuk TWRP seperti biasa."; exit 0 ;;
+  HP_LAIN) say "GAGAL: ini bukan Xiaomi 14T Pro (rothko). Tidak ada yang ditulis." ;;
+  TIDAK_ADA_PARTISI) say "GAGAL: partisi vendor_boot tidak ditemukan. Tidak ada yang ditulis." ;;
+  KIRIM_RUSAK|'') say "GAGAL: zip rusak / unduhan tidak lengkap. Tidak ada yang ditulis. Unduh ulang." ;;
+  *) say "GAGAL MENULIS vendor_boot ($hasil). JANGAN reboot."; say "Flash ulang zip ini, atau pakai 2-KEMBALIKAN-STOK.bat dari PC." ;;
+esac
+exit 1

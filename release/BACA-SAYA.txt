@@ -31,8 +31,9 @@ CARA MEMASANG
 SUDAH PUNYA TWRP? CARA UPDATE (tanpa FASTBOOT)
   Lewat PC : masuk TWRP (Power + Volume Atas), sambungkan kabel,
              klik dua kali 5-UPDATE-LEWAT-TWRP.bat.
-  Tanpa PC : salin @TWRP_IMG@ ke HP, lalu di TWRP pilih
-             Install > Install Image > file itu > vendor_boot.
+  Tanpa PC : salin zip paket ini ke HP (tidak perlu diekstrak),
+             lalu di TWRP pilih Install > zip itu > geser.
+             Atau: Install > Install Image > @TWRP_IMG@ > vendor_boot.
 
 KALAU HP BOOTLOOP ATAU ADA MASALAH
   1. Matikan HP (tahan Power 10-15 detik).
