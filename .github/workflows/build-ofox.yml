@@ -81,10 +81,16 @@ jobs:
           rm -rf prebuilts/abi-dumps
           # Android 16 soong_build needs >32 GB (RAM + swap) even for this minimal tree, so the
           # 19 GB of git history becomes swap. Only cosmetic version strings read git later.
+          # every project's exact revision, for rebuilding this source later (uploaded with the image)
+          mkdir -p "$OUT_DIR/target/product/rothko"  # next to the image, so the artifact stays flat
+          repo manifest -r -o "$OUT_DIR/target/product/rothko/ofox-manifest-pinned.xml"
           rm -rf .repo
           # leave ~28 GB for out/, the rest (16-56 GB) becomes swap for soong_build
           f=$(df -BG --output=avail "$(dirname "$SWAP")" | tail -1 | tr -dc 0-9)
-          n=$(( f - 28 )); [ $n -gt 56 ] && n=56; [ $n -lt 16 ] && n=16
+          if [ "$f" -lt 44 ]; then
+            echo "::error title=Disk::only ${f}G free after sync; need 16G swap + 28G for out/"; exit 1
+          fi
+          n=$(( f - 28 )); [ $n -gt 56 ] && n=56
           sudo fallocate -l ${n}G "$SWAP" && sudo chmod 600 "$SWAP" && sudo mkswap "$SWAP" >/dev/null && sudo swapon "$SWAP"
           echo "::notice title=Swap::${n}G (${f}G was free after sync)"
           echo "::notice title=Disk after sync::$(df -h --output=avail / | tail -1) free; biggest: $(du -sh prebuilts/* external/* 2>/dev/null | sort -h | tail -6 | tr '\t\n' ' ;')"
@@ -144,3 +150,4 @@ jobs:
           path: |
             ${{ env.OUT_DIR }}/target/product/rothko/vendor_boot.img
             ${{ env.OUT_DIR }}/target/product/rothko/vendor_boot.img.sha256
+            ${{ env.OUT_DIR }}/target/product/rothko/ofox-manifest-pinned.xml
