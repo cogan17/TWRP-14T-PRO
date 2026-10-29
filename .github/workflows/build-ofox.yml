@@ -85,7 +85,9 @@ jobs:
           # 19 GB of git history becomes swap. Only cosmetic version strings read git later.
           # every project's exact revision, for rebuilding this source later (uploaded with the image)
           mkdir -p "$OUT_DIR/target/product/rothko"  # next to the image, so the artifact stays flat
-          repo manifest -r -o "$OUT_DIR/target/product/rothko/ofox-manifest-pinned.xml"
+          # a record only: its failure must not stop the build (it did on 30 Oct 2026; reason shown below)
+          repo manifest -r -o "$OUT_DIR/target/product/rothko/ofox-manifest-pinned.xml" 2>/tmp/manifest.err ||
+            echo "::warning title=Pinned manifest::$(tail -5 /tmp/manifest.err | tr '\n' ';')"
           rm -rf .repo
           # leave ~28 GB for out/, the rest (16-56 GB) becomes swap for soong_build
           f=$(df -BG --output=avail "$(dirname "$SWAP")" | tail -1 | tr -dc 0-9)
