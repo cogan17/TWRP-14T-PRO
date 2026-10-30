@@ -22,6 +22,7 @@ Isi paket:
 | `2-KEMBALIKAN-STOK.bat` | Kembali ke stok, tanpa recovery kustom |
 | `3-KEMBALI-KE-TWRP.bat` | Pasang lagi TWRP versi terbaru lewat PC (FASTBOOT) |
 | `OrangeFox-…img` · `TWRP-…img` · `STOK-…img` | Ketiga image di atas, dicek sha256 oleh `.bat` |
+| `PANDUAN-ORANGEFOX.html` | Panduan lengkap langkah demi langkah, bisa dibuka offline dan di-print |
 | `BACA-SAYA.txt` | Ringkasan cara pakai + SHA256 |
 
 ---
