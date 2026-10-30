@@ -4,6 +4,12 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.5 — 30 Okt 2026
+
+### 🔧 Perbaikan
+- **Restore Data di Android 16** tidak lagi gagal dengan `extractTarFork() ... 255` di folder `/data/user/0/…`. Sebelumnya wipe sebelum restore ikut menghapus `/data/data` yang sedang dipakai Android, sehingga data aplikasi tidak bisa dikembalikan.
+- **Backup Data lebih kecil dan cepat**: data aplikasi tidak lagi tersimpan dua kali.
+
 ## v1.4 — 29 Okt 2026
 
 ### ✨ Baru
