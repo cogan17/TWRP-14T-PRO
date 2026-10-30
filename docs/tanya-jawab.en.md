@@ -34,7 +34,7 @@ Common questions, from real experience on this phone.
 
 **Restoring Data fails with `extractTarFork() … 255`.** A bug in v1.4 and older, fixed in **v1.5**. Emergency steps: [Backup → Restoring Data](backup.en.md#restoring-data).
 
-**After a factory reset from TWRP, APKs won't install.** That's **FRP**. The Play Store and MT Manager still work. Explained in [Reset & FRP](reset-dan-frp.en.md).
+**After a factory reset from TWRP, APKs won't install.** That's **FRP**. The Play Store and MT Manager still work; flashing the full stock ROM clears it. Explained in [Reset & FRP](reset-dan-frp.en.md).
 
 **Can I restore a Data backup onto a different HyperOS version?** No. See [Update HyperOS](update-hos.en.md).
 

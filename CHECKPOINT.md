@@ -30,6 +30,8 @@ Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat wo
 - **Jawaban owner soal penyiapan awal** (30 Okt 2026): setelah reset dari TWRP, owner sampai di layar akun Google, **tidak login**, langsung masuk TWRP lalu Restore Data. Urutan ini dan pelajarannya (layar akun Google = satu-satunya kesempatan resmi mematikan FRP; jangan ditinggalkan untuk restore) ditambahkan ke [Reset & FRP](docs/reset-dan-frp.md). Belum diuji: apakah FRP tetap mati bila login dulu lalu Data di-restore — ditulis jelas sebagai belum diuji.
 - **KSUN vs BakaSU setelah restore**: restore Data mengembalikan aplikasi sesuai tanggal backup (KSUN kembali, BakaSU — dipasang setelah backup — hilang). Root di kernel (`boot`), bukan `init_boot`; manager harus cocok dengan varian kernel yang terpasang. Dicatat di [Root & Kernel](docs/root-dan-kernel.md).
 
+- **FRP hilang lewat flash ROM stok penuh** (owner, 30 Okt 2026): pemasang aplikasi bawaan normal lagi. Ditambahkan ke [Reset & FRP](docs/reset-dan-frp.md) bagian "Cara ampuh". Setelah flash, HP stok total — TWRP/kernel/root perlu dipasang ulang.
+
 ## Belum terbukti / pertanyaan terbuka
 
 - `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja, tapi workflow sengaja tidak menyentuhnya.
