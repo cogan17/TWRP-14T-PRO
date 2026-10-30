@@ -18,6 +18,18 @@ Di Android 15/16 (HyperOS 3), reset dari TWRP **termasuk** reset yang tidak dipe
 - Di log Android tertulis: `Can't install packages while in secure FRP`.
 - Fungsi lain normal.
 
+## Contoh nyata di HP ini (30 Okt 2026)
+
+Urutan yang dialami owner, sampai FRP tertinggal:
+
+1. Reset pabrik dari TWRP.
+2. Boot ke Android, masuk layar penyiapan awal.
+3. Saat diminta **akun Google**, penyiapan **ditinggalkan** (tidak login) dan HP langsung masuk TWRP.
+4. **Pulihkan → Data** dari backup lama.
+5. Android boot normal tanpa layar penyiapan awal — Data hasil restore berasal dari HP yang sudah selesai penyiapan. FRP tetap aktif dan tidak bisa dibersihkan lagi dengan cara biasa.
+
+Pelajarannya: layar **akun Google** di penyiapan awal adalah satu-satunya kesempatan resmi untuk mematikan FRP. Begitu Data di-restore, layar itu tidak muncul lagi.
+
 ## Yang tetap berjalan normal
 
 | Cara pasang aplikasi | Saat FRP aktif |
@@ -42,5 +54,6 @@ FRP hilang secara resmi saat HP melewati **layar penyiapan awal** dan kamu **mas
 ## Cara mencegahnya
 
 1. Reset pabrik **hanya dari Setelan HyperOS**.
-2. Mau restore Data? **Jangan reset pabrik dulu.** **Pulihkan → Data** sudah mengosongkan Data sendiri sebelum restore, jadi reset terpisah tidak perlu. Lihat [Backup](backup.md).
-3. Setelah restore Data, cek modul root (mis. NoMount) — kadang perlu dipasang ulang. Lihat [Root & Kernel](root-dan-kernel.md).
+2. Terlanjur reset dari TWRP dan sedang di layar penyiapan? **Jangan tinggalkan layar akun Google untuk restore Data.** Selesaikan penyiapan dengan **akun Google yang sama** — itu cara resmi mematikan FRP. Catatan: di HP ini belum diuji apakah FRP tetap mati kalau sesudahnya Data di-restore.
+3. Mau restore Data? **Jangan reset pabrik dulu.** **Pulihkan → Data** sudah mengosongkan Data sendiri sebelum restore, jadi reset terpisah tidak perlu. Lihat [Backup](backup.md).
+4. Setelah restore Data, cek modul root (mis. NoMount) — kadang perlu dipasang ulang. Lihat [Root & Kernel](root-dan-kernel.md).

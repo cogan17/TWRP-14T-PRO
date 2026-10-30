@@ -27,11 +27,11 @@ Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat wo
 - **Workflow sekali pakai hapus branch** (PR #73, dihapus lagi PR #74): 44 branch lama dihapus, aturan ketat (hanya branch dengan PR merged yang masih menunjuk commit yang sama persis).
 - Ruleset GitHub `lindungi-branch-utama` + "Automatically delete head branches" diaktifkan owner (lewat UI, bukan API — restrict deletions, block force pushes, target Default + `orangefox`).
 - **FRP owner**: factory reset dari TWRP memicu FRP Android 15/16 (`secure_frp_mode` reset ke 1 tiap boot). Play Store, bank, MT Manager/App Manager, adb tetap normal; hanya pemasang bawaan yang diblokir. Owner memilih tidak mengutak-atik partisi `frp`; didokumentasikan di [Reset & FRP](docs/reset-dan-frp.md).
+- **Jawaban owner soal penyiapan awal** (30 Okt 2026): setelah reset dari TWRP, owner sampai di layar akun Google, **tidak login**, langsung masuk TWRP lalu Restore Data. Urutan ini dan pelajarannya (layar akun Google = satu-satunya kesempatan resmi mematikan FRP; jangan ditinggalkan untuk restore) ditambahkan ke [Reset & FRP](docs/reset-dan-frp.md). Belum diuji: apakah FRP tetap mati bila login dulu lalu Data di-restore — ditulis jelas sebagai belum diuji.
 - **KSUN vs BakaSU setelah restore**: restore Data mengembalikan aplikasi sesuai tanggal backup (KSUN kembali, BakaSU — dipasang setelah backup — hilang). Root di kernel (`boot`), bukan `init_boot`; manager harus cocok dengan varian kernel yang terpasang. Dicatat di [Root & Kernel](docs/root-dan-kernel.md).
 
 ## Belum terbukti / pertanyaan terbuka
 
-- Owner belum konfirmasi apakah saat penyiapan awal (setelah reset pabrik dari TWRP, sebelum restore Data) sempat **login akun Google** atau melewatinya. Ini menentukan apakah perlu peringatan tambahan di [Reset & FRP](docs/reset-dan-frp.md) soal restore Data setelah sempat boot ke Android pasca-reset. **Jangan tambahkan peringatan itu sampai owner menjawab** — jangan menebak penyebabnya.
 - `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja, tapi workflow sengaja tidak menyentuhnya.
 
 ## Langkah pertama berikutnya

@@ -18,6 +18,18 @@ On Android 15/16 (HyperOS 3), a reset from TWRP **counts** as an untrusted reset
 - Android's log says: `Can't install packages while in secure FRP`.
 - Everything else works.
 
+## A real case on this phone (30 Oct 2026)
+
+What the owner did, ending with FRP stuck on:
+
+1. Factory reset from TWRP.
+2. Booted into Android and reached the setup screens.
+3. When asked for a **Google account**, **left setup** (no sign-in) and went straight to TWRP.
+4. **Restore → Data** from an older backup.
+5. Android booted normally with no setup screens — the restored Data came from a phone that had already finished setup. FRP stayed on and can no longer be cleared the normal way.
+
+The lesson: the **Google account** screen during setup is the only official chance to turn FRP off. Once Data is restored, that screen never comes back.
+
 ## What still works
 
 | How the app is installed | While FRP is on |
@@ -42,5 +54,6 @@ FRP is cleared officially when the phone goes through the **setup screens** and 
 ## How to avoid it
 
 1. Factory reset **only from HyperOS Settings**.
-2. Restoring Data? **Don't factory reset first.** **Restore → Data** already empties Data by itself before restoring, so a separate reset isn't needed. See [Backup](backup.en.md).
-3. After restoring Data, check your root modules (e.g. NoMount) — they sometimes need reinstalling. See [Root & Kernel](root-dan-kernel.en.md).
+2. Already reset from TWRP and sitting on the setup screens? **Don't leave the Google account screen to restore Data.** Finish setup with the **same Google account** — that's the official way to turn FRP off. Note: it hasn't been tested on this phone whether FRP stays off if Data is restored afterwards.
+3. Restoring Data? **Don't factory reset first.** **Restore → Data** already empties Data by itself before restoring, so a separate reset isn't needed. See [Backup](backup.en.md).
+4. After restoring Data, check your root modules (e.g. NoMount) — they sometimes need reinstalling. See [Root & Kernel](root-dan-kernel.en.md).
