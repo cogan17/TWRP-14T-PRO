@@ -225,3 +225,5 @@ OF_STATUS_H := 96
 OF_STATUS_INDENT_LEFT := 48
 OF_STATUS_INDENT_RIGHT := 48
 OF_CLOCK_POS := 1
+# repack-based "Flash current OrangeFox" + auto-reflash: untested with rothko's two-fragment vendor_boot
+OF_NO_REFLASH_CURRENT_ORANGEFOX := 1
