@@ -36,11 +36,19 @@
 |---|---|
 | 📥 **[Install / Update TWRP](docs/pasang.en.md)** | From a PC (`.bat`) or straight from TWRP |
 | 🔑 **[Enter TWRP](docs/masuk-twrp.en.md)** | Buttons or Termux |
+| 🧭 **[TWRP Menu Tour](docs/menu-twrp.en.md)** | What each menu does, which are dangerous |
 | 💾 **[Backup](docs/backup.en.md)** | Data & key partitions |
 | 🔄 **[Update HyperOS](docs/update-hos.en.md)** | Update without losing data |
+| 🪄 **[Root & Kernel](docs/root-dan-kernel.en.md)** | Install a kernel/root, recover from a bootloop |
 | ↩️ **[Back to Stock](docs/kembali-ke-stok.en.md)** | Undo TWRP / fix bootloop |
 | 🔐 **[Encryption & Pattern](docs/enkripsi-dan-pola.en.md)** | Unlock encrypted data |
+| 🔁 **[Reset & FRP](docs/reset-dan-frp.en.md)** | Why not to factory reset from TWRP |
 | 🩺 **[Issues & Logs](docs/masalah-dan-log.en.md)** | When something goes wrong |
+| ❓ **[FAQ](docs/tanya-jawab.en.md)** | Common questions |
+
+### 🦊 OrangeFox
+
+A second recovery for this phone: OrangeFox, with a new look, a full file manager and KernelSU module management. It can be swapped with TWRP at any time. **[OrangeFox guide →](docs/orangefox/README.en.md)**
 
 ---
 

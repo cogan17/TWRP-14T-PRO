@@ -27,6 +27,15 @@ plug in the cable → choose **File Transfer (MTP)** → copy the folders to you
 
 ## Restoring Data
 
+1. [Enter TWRP](masuk-twrp.en.md) → unlock with your [pattern](enkripsi-dan-pola.en.md).
+2. **Restore** → pick the backup folder → tick **Data** (and any other partitions you need) → swipe.
+3. Wait until it finishes, then **Reboot → System**. The first boot can take a while.
+
+The rules:
+- **Don't factory reset first** — TWRP empties Data by itself. A reset from TWRP triggers FRP ([Reset & FRP](reset-dan-frp.en.md)).
+- Restore Data only onto the **same HyperOS version** it was made on ([Update HyperOS](update-hos.en.md)).
+- After restoring, reinstall root modules if one stops working ([Root & Kernel](root-dan-kernel.en.md)).
+
 > ⚠️ **TWRP v1.4 and older:** on Android 16, restoring **Data** can fail with `extractTarFork() ... 255` in a `/data/user/0/…` folder. This is a TWRP bug, fixed in v1.5. Internal storage and the backup files stay safe.
 
 If it happens, **don't reboot and don't Format Data**. With the phone still in TWRP, run on the PC:

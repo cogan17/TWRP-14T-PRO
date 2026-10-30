@@ -37,3 +37,8 @@ Keduanya menyimpan hasil ke folder **`Downloads`** di PC, lalu membuka foldernya
 | "Failed to decrypt" / pola gagal | protektor / pola | [Enkripsi & Pola](enkripsi-dan-pola.md) |
 | Layar tidak bisa disentuh | mode THP touch | [Catatan Developer §6](../arsip/developer.md#6-touch-focaltech-mulai-di-mode-thp) |
 | Download/DCIM kosong | data belum didekripsi | buka pola dulu |
+| Restore Data gagal `extractTarFork() … 255` | bug v1.4 ke bawah | [Backup → Restore Data](backup.md#restore-data) |
+| APK tidak bisa dipasang setelah reset pabrik | FRP | [Reset & FRP](reset-dan-frp.md) |
+| Zip paket ditolak *Invalid zip file format* | zip v1.3 ke bawah khusus PC | [Tanya-Jawab](tanya-jawab.md) |
+| Repair gagal *device or resource busy* | MTP masih aktif | Mount → Nonaktifkan MTP |
+| HP terus masuk recovery | loop *boot-recovery* | FASTBOOT → `.bat` ([Tanya-Jawab](tanya-jawab.md)) |

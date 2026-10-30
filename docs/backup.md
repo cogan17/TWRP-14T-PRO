@@ -27,6 +27,15 @@ colok kabel → pilih **Transfer File (MTP)** → salin folder ke PC.
 
 ## Restore Data
 
+1. [Masuk TWRP](masuk-twrp.md) → buka kunci dengan [pola](enkripsi-dan-pola.md).
+2. **Pulihkan** → pilih folder backup → centang **Data** (dan partisi lain yang perlu) → geser.
+3. Tunggu sampai selesai, lalu **Reboot → System**. Boot pertama bisa lama.
+
+Aturannya:
+- **Jangan reset pabrik dulu** sebelum restore — TWRP mengosongkan Data sendiri. Reset dari TWRP memicu FRP ([Reset & FRP](reset-dan-frp.md)).
+- Restore Data hanya ke **versi HyperOS yang sama** dengan saat backup ([Update HyperOS](update-hos.md)).
+- Setelah restore, pasang ulang modul root kalau ada yang tidak bekerja ([Root & Kernel](root-dan-kernel.md)).
+
 > ⚠️ **TWRP v1.4 ke bawah:** di Android 16, restore **Data** bisa gagal dengan `extractTarFork() ... 255` di folder `/data/user/0/…`. Ini bug TWRP yang diperbaiki di v1.5. Penyimpanan internal dan file backup tetap aman.
 
 Kalau kamu mengalaminya, **jangan reboot, jangan Format Data**. Dengan HP tetap di TWRP, jalankan di PC:
