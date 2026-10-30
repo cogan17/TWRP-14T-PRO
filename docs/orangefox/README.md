@@ -38,6 +38,7 @@ Ragu? Pakai **TWRP**. Mau fitur lebih? Coba **OrangeFox** — kembali ke TWRP ha
 | 📥 **[Pasang & Kembali](pasang.md)** | Pasang OrangeFox, update, kembali ke TWRP atau stok |
 | 🧭 **[Tur Menu OrangeFox](menu.md)** | Fungsi tiap menu, mana yang berbahaya |
 | 🩺 **[Masalah & Log](masalah-dan-log.md)** | Kalau ada kendala |
+| 📝 **[Catatan Rilis](../../CHANGELOG-orangefox.md)** | Yang baru dan diperbaiki tiap versi `ofox-…` |
 
 Panduan TWRP yang juga berlaku untuk OrangeFox: [Masuk recovery](../masuk-twrp.md) · [Enkripsi & Pola](../enkripsi-dan-pola.md) · [Backup](../backup.md) · [Update HyperOS](../update-hos.md) · [Root & Kernel](../root-dan-kernel.md) · [Reset & FRP](../reset-dan-frp.md)
 

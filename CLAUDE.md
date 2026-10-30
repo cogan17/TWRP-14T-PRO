@@ -16,7 +16,9 @@ Recovery untuk Xiaomi 14T Pro (`rothko`, HyperOS, Android 16) di `cogan17/TWRP-1
 ## Isi repo
 
 - **`twrp-14.1_a16`** (default): TWRP 14.1, device tree, dokumen, paket rilis (`release/`), workflow. Firmware acuan ada di `.github/firmware.env`.
-- **`orangefox`**: varian OrangeFox `fox_16.0` (eksperimen), memakai device tree yang sama ditambah `vendorsetup.sh` dan pengaturan `OF_*`. Setiap push ke branch ini memicu *Build OrangeFox* (±1,5 jam); perubahan yang bukan untuk build diberi `[skip ci]`. Hasilnya hanya artifact `PAKET-OFOX-UJI-…` (image, `.bat` pasang, kembali ke TWRP dan ke stok; zip-nya bisa di-flash di TWRP), belum dirilis.
+- **`orangefox`**: varian OrangeFox `fox_16.0`, memakai device tree yang sama ditambah `vendorsetup.sh`, pengaturan `OF_*` dan `patches-ofox/`. Setiap push ke branch ini memicu *Build OrangeFox* (±2 jam); perubahan yang bukan untuk build diberi `[skip ci]`. Isi `twrp-14.1_a16` (dokumen, skrip, `CHANGELOG-orangefox`) di-merge ke `orangefox` supaya Verify memakai versi yang sama.
+- **Rilis OrangeFox**: versi dari judul `## ofox-vX.Y` teratas di `CHANGELOG-orangefox.md` dan `.en.md` (harus sama); tag `ofox-vX.Y`. Verify menerbitkan pre-release hanya bila versi itu belum ada; kalau sudah, build hanya jadi artifact `PAKET-OrangeFox-…` untuk uji. Rilis berisi zip paket (`1-PASANG-ORANGEFOX.bat`, `2-KEMBALIKAN-STOK.bat`, `3-KEMBALI-KE-TWRP.bat` dengan image TWRP rilis terbaru), `OrangeFox-….img` dan `STOK-….img`, dengan attestation.
+- **Hapus log run lama**: workflow tombol; menyimpan `keep` run terbaru per workflow, run sukses terakhir dan `STOCK_RUN`. Jangan menghapus run lain secara manual tanpa memastikan artifact-nya tidak dipakai.
 - **Alur build**: *Build TWRP* (±80 menit, hanya lewat tombol atau saat `build-twrp.yml` berubah) → *Verify* (otomatis, ±3 menit) memecah image jadi dua fragmen seperti stok, menjalankan gate, lalu merilis. Perubahan yang hanya menyentuh `recovery/root` cukup lewat *Verify* manual (jalur cepat) dengan run build terakhir.
 - **Dokumen dua bahasa**: semua yang terjangkau dari README punya versi Indonesia (utama) dan English (`*.en.md`), termasuk `arsip/`. Isi paket rilis (`.bat`, `BACA-SAYA.txt`, `PANDUAN-TWRP.html`) boleh hanya Indonesia.
 - **Isi tiap bahasa harus sesuai bahasanya**: bagian English tidak boleh menyalin teks Indonesia, dan sebaliknya.
@@ -29,6 +31,9 @@ Recovery untuk Xiaomi 14T Pro (`rothko`, HyperOS, Android 16) di `cogan17/TWRP-1
 - **Gate gagal, bukan lolos diam-diam.** Gate Verify (fragmen, ukuran, dtb, modul, fstab, library) menghentikan rilis. Jangan pernah mengubahnya jadi peringatan.
 - **Jalur darurat tetap aman.** Tidak pernah wipe data. File `STOK-` dan `2-KEMBALIKAN-STOK.bat` selalu ikut paket ([kembali ke stok](docs/kembali-ke-stok.md)). Ingat loop BCB: `reboot recovery` ke recovery yang rusak terus berulang; jalan keluarnya FASTBOOT. Flash selalu keputusan owner.
 - **Unduh hanya dari Releases.** Artifact Actions bertahan 90 hari dan bukan untuk pengguna; yang permanen hanya file rilis.
+- **Jangan reset pabrik dari recovery.** Di Android 15/16 itu memicu FRP yang tidak bisa dibersihkan tanpa penyiapan awal (owner 30 Okt 2026). Restore Data cukup lewat Pulihkan; jangan sarankan alat atau langkah melewati FRP.
+- **`/data/data` di-bind-mount ke `/data/user/0`** (Android 15+). Wipe yang menghapus `/data/data` merusak restore (patch 0006; OrangeFox `OF_WORKAROUND_BACKUP_BUG`).
+- **Di OrangeFox, "Muat" = Mount.** Memasang file lewat **Berkas**. Menu yang me-repack recovery atau menulis ke `boot` (Flash OrangeFox saat ini, reflash otomatis, Fix recovery bootloop) tidak dipakai di HP ini.
 - **Instruksi yang bisa dibaca dua arah: tanya dulu.** Hal berisiko (flash, partisi, rilis) dibicarakan dulu, ringkas dan mudah dipahami orang awam.
 
 ## Hemat run workflow
