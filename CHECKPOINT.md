@@ -1,31 +1,39 @@
 # Checkpoint — 30 Okt 2026 (WIB)
 
-Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owner meminta**. Jangan otomatis mem-flash, menguji HP, atau menerbitkan rilis di luar daftar "Tertunda" yang sudah disetujui owner.
+Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owner meminta**. Jangan otomatis mem-flash, menguji HP, atau menerbitkan rilis.
 
-## Sedang berjalan
+## Status sekarang
 
-- **Build TWRP v1.5** — [run 40991563409](https://github.com/cogan17/TWRP-14T-PRO/actions/runs/40991563409) (full build ±80 menit). Setelah sukses, *Verify* otomatis menerbitkan pre-release **v1.5** (CHANGELOG v1.5 sudah di `twrp-14.1_a16`, PR #69). Cek hasilnya; kalau gagal, investigasi dulu sebelum menjalankan ulang.
+**Tidak ada yang berjalan.** TWRP dan OrangeFox sama-sama punya rilis resmi terbaru dan bisa saling menggantikan.
 
-## Sudah selesai (sesi 29–30 Okt)
+| | Versi terbaru | |
+|---|---|---|
+| TWRP | **v1.5** | restore Data Android 16 diperbaiki, backup tanpa duplikat |
+| OrangeFox | **ofox-v1.0** | rilis pertama; diuji owner di HP (boot, sentuh, dekripsi pola) |
 
-- **v1.4** terbit: zip paket bisa di-flash langsung di TWRP (diuji owner, berhasil).
-- Perbaikan audit run 40891952288 (PR #65): gate library menolak symlink putus (+ self-test), jalur cepat menolak penghapusan/chmod, artifact paket diunggah sebelum publish, helper preloader.
-- `CLAUDE.md` dari Cogan-Kernel (PR #66). Paket uji OrangeFox lengkap dengan `.bat` (PR #67).
-- **Bug restore Data Android 16** (temuan owner): wipe menghapus `/data/data` yang di-bind-mount ke `/data/user/0` → `extractTarFork 255`. Patch `patches/bootable_recovery/0006` (PR #68), ikut di v1.5. Langkah darurat (`adb shell umount /data/user/0`) sudah di panduan Backup.
-- Workflow tombol **Hapus log run lama** (PR #70): simpan `keep` run terbaru per workflow + sukses terakhir + `STOCK_RUN`; ada dry run; self-test `old_runs.py`.
-- **OrangeFox** (branch `orangefox`): build #7 sukses ([run 40969099622](https://github.com/cogan17/TWRP-14T-PRO/actions/runs/40969099622)), Verify [40987179296](https://github.com/cogan17/TWRP-14T-PRO/actions/runs/40987179296) → artifact `PAKET-OFOX-UJI`. **Diuji owner di HP 30 Okt ±10.00 WIB: boot, sentuh, dekripsi pola berhasil** (log: Weaver gagal cepat → protector Gatekeeper → `User 0 Decrypted Successfully`). Perbaikan yang membuatnya jalan: trim proyek + swap dari `.repo`, patch vold Weaver fail-fast/Gatekeeper fallback (`patches-ofox/`), lewati repo privat libvpx/libwebm, pin `foxcli` ke `288f557`, `repo manifest -r` sebelum pangkas.
-- HP owner: data kembali setelah restore; **FRP aktif** akibat reset pabrik dari TWRP (`secure_frp_mode` kembali 1 setiap boot). Play Store, bank, MT Manager/App Manager, adb normal; hanya pemasang bawaan yang diblokir. Owner memilih tidak mengutak-atik partisi `frp`.
+Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat workflow sekali pakai; sekarang tersisa `twrp-14.1_a16`, `orangefox`, dan (opsional, boleh dihapus manual) `docs/pedoman`. Ruleset GitHub `lindungi-branch-utama` melindungi `twrp-14.1_a16` dan `orangefox` dari penghapusan/force-push. "Automatically delete head branches" sudah diaktifkan owner, jadi branch PR berikutnya terhapus otomatis setelah merge.
 
-## Tertunda (disetujui owner 30 Okt: "lakukan yg dibutuhkan", rilis ofox-v1.0 ya, hapus log = run Actions)
+## Sudah selesai (sesi 29–30 Okt 2026)
 
-1. **Buku panduan** — branch `docs/buku-panduan` (commit 9b90186, belum merge): halaman TWRP selesai (Tur Menu, Reset & FRP, Root & Kernel, Tanya-Jawab, restore biasa di Backup, README). **Belum:** `docs/orangefox/` (README, pasang, menu, masalah-dan-log; ID+EN) — tautannya sudah ada di README/Tanya-Jawab/Root & Kernel, jadi merge setelah halaman ini dibuat.
-2. **Rilis OrangeFox `ofox-v1.0`**, sesudah v1.5 terbit (jangan ubah Verify selagi build TWRP berjalan):
-   - `orangefox`: `OF_NO_REFLASH_CURRENT_ORANGEFOX := 1` di BoardConfig (sembunyikan "Flash OrangeFox saat ini" + reflash otomatis; repack magiskboot belum teruji di vendor_boot dua fragmen).
-   - `CHANGELOG-orangefox.md` / `.en.md` (`## v1.0`), tag `ofox-v1.0`.
-   - Verify varian ofox: terbitkan pre-release bila versi teratas belum dirilis (kalau sudah, cukup artifact uji); nama file tanpa "UJI"; attestation; `release_notes.sh`/`tag_message.sh` menerima nama changelog.
-3. **Koreksi ke owner:** di OrangeFox **"Muat" = Mount**, bukan Install. Memasang/flash: **Berkas** → ketuk file → **Pasang ZIP** / **Flash Image File** → pilih `vendor_boot`.
-4. Perbarui `CLAUDE.md`: alur rilis OrangeFox, workflow hapus log, pelajaran FRP & restore.
+- **v1.4**: zip paket bisa di-flash langsung di TWRP (diuji owner, berhasil).
+- Perbaikan audit run 40891952288 (PR #65): gate library menolak symlink putus (+ self-test), jalur cepat Verify menolak penghapusan/chmod yang tak didukung, artifact paket diunggah sebelum publish, helper preloader `mtk_plpath_utils` diperbaiki.
+- `CLAUDE.md` diambil dari Cogan-Kernel dan disesuaikan (PR #66).
+- Paket uji OrangeFox lengkap dengan `.bat` pasang/kembali (PR #67).
+- **Bug restore Data Android 16** (temuan owner, 30 Okt dini hari): wipe sebelum restore menghapus `/data/data` yang di-bind-mount vold ke `/data/user/0`, sehingga restore gagal `extractTarFork() 255`. Patch `patches/bootable_recovery/0006` (PR #68), terbit di **v1.5**. Langkah darurat (`adb shell umount /data/user/0`) ada di panduan Backup.
+- Workflow tombol **Hapus log run lama** (PR #70): per workflow menyimpan `keep` run terbaru + sukses terakhir + `STOCK_RUN`; ada dry run; self-test `old_runs.py`.
+- **Buku panduan lengkap, dua bahasa** (PR #72): TWRP — Tur Menu, Reset & FRP, Root & Kernel, Tanya-Jawab, langkah restore biasa di Backup. OrangeFox (`docs/orangefox/`) — Beranda, Pasang & Kembali, Tur Menu, Masalah & Log. Semua tautan/anchor dicek otomatis (0 masalah).
+- **OrangeFox** (branch `orangefox`, `fox_16.0`): setelah 7 percobaan build (OOM, repo privat libvpx/libwebm, `repo manifest -r` gagal, dependensi `foxcli`), build #7 sukses. **Diuji owner di HP 30 Okt ±10.00 WIB: boot, sentuh, dekripsi pola berhasil** (log: Weaver gagal cepat → protector Gatekeeper → `User 0 Decrypted Successfully`). Perbaikan kunci: trim proyek + swap dari `.repo`, patch vold Weaver fail-fast/Gatekeeper fallback (`patches-ofox/`), lewati repo privat libvpx/libwebm, pin `foxcli` ke commit `288f557`, `repo manifest -r` dipindah sebelum pangkas (audit run 40951823094, PR tersendiri).
+- **Rilis OrangeFox `ofox-v1.0`** (PR #75 + build + Verify): `OF_NO_REFLASH_CURRENT_ORANGEFOX := 1` menyembunyikan "Flash OrangeFox saat ini" dan reflash otomatis (repack magiskboot belum teruji dengan `vendor_boot` dua fragmen). `CHANGELOG-orangefox.md`/`.en.md`, tag `ofox-v1.0`, paket `PAKET-OrangeFox-rothko-….zip` (bisa di-flash, berisi `.bat` pasang/kembali ke TWRP/stok), attestation. **Terbit**, prerelease.
+- **Workflow sekali pakai hapus branch** (PR #73, dihapus lagi PR #74): 44 branch lama dihapus, aturan ketat (hanya branch dengan PR merged yang masih menunjuk commit yang sama persis).
+- Ruleset GitHub `lindungi-branch-utama` + "Automatically delete head branches" diaktifkan owner (lewat UI, bukan API — restrict deletions, block force pushes, target Default + `orangefox`).
+- **FRP owner**: factory reset dari TWRP memicu FRP Android 15/16 (`secure_frp_mode` reset ke 1 tiap boot). Play Store, bank, MT Manager/App Manager, adb tetap normal; hanya pemasang bawaan yang diblokir. Owner memilih tidak mengutak-atik partisi `frp`; didokumentasikan di [Reset & FRP](docs/reset-dan-frp.md).
+- **KSUN vs BakaSU setelah restore**: restore Data mengembalikan aplikasi sesuai tanggal backup (KSUN kembali, BakaSU — dipasang setelah backup — hilang). Root di kernel (`boot`), bukan `init_boot`; manager harus cocok dengan varian kernel yang terpasang. Dicatat di [Root & Kernel](docs/root-dan-kernel.md).
+
+## Belum terbukti / pertanyaan terbuka
+
+- Owner belum konfirmasi apakah saat penyiapan awal (setelah reset pabrik dari TWRP, sebelum restore Data) sempat **login akun Google** atau melewatinya. Ini menentukan apakah perlu peringatan tambahan di [Reset & FRP](docs/reset-dan-frp.md) soal restore Data setelah sempat boot ke Android pasca-reset. **Jangan tambahkan peringatan itu sampai owner menjawab** — jangan menebak penyebabnya.
+- `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja, tapi workflow sengaja tidak menyentuhnya.
 
 ## Langkah pertama berikutnya
 
-Cek hasil build TWRP v1.5 (run 40991563409) dan rilis v1.5. Lalu buat `docs/orangefox/` di branch `docs/buku-panduan` dan merge lewat PR.
+Tidak ada pekerjaan yang menggantung. Tunggu permintaan owner berikutnya (mis. uji OrangeFox lebih jauh, jawaban soal login Google saat reset, atau topik baru).
