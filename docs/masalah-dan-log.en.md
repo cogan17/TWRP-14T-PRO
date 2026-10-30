@@ -37,3 +37,8 @@ Both save the results to your PC's **`Downloads`** folder, then open the folder 
 | "Failed to decrypt" / pattern fails | protector / pattern | [Encryption & Pattern](enkripsi-dan-pola.en.md) |
 | Touchscreen doesn't respond | THP touch mode | [Developer notes §6](../arsip/developer.en.md#6-touch-focaltech-starts-in-thp-mode) |
 | Download/DCIM empty | data not decrypted yet | unlock with your pattern first |
+| Restoring Data fails with `extractTarFork() … 255` | bug in v1.4 and older | [Backup → Restoring Data](backup.en.md#restoring-data) |
+| APKs won't install after a factory reset | FRP | [Reset & FRP](reset-dan-frp.en.md) |
+| Package zip refused: *Invalid zip file format* | zips up to v1.3 are PC-only | [FAQ](tanya-jawab.en.md) |
+| Repair fails with *device or resource busy* | MTP still on | Mount → Disable MTP |
+| The phone keeps entering recovery | *boot-recovery* loop | FASTBOOT → `.bat` ([FAQ](tanya-jawab.en.md)) |

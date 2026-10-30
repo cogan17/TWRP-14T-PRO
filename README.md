@@ -36,11 +36,19 @@
 |---|---|
 | 📥 **[Pasang / Update TWRP](docs/pasang.md)** | Lewat PC (`.bat`) atau langsung dari TWRP |
 | 🔑 **[Masuk TWRP](docs/masuk-twrp.md)** | Tombol atau Termux |
+| 🧭 **[Tur Menu TWRP](docs/menu-twrp.md)** | Fungsi tiap menu, mana yang berbahaya |
 | 💾 **[Backup](docs/backup.md)** | Data & partisi penting |
 | 🔄 **[Update HyperOS](docs/update-hos.md)** | Update tanpa kehilangan data |
+| 🪄 **[Root & Kernel](docs/root-dan-kernel.md)** | Pasang kernel/root, pulih dari bootloop |
 | ↩️ **[Kembali ke Stok](docs/kembali-ke-stok.md)** | Batalkan TWRP / perbaiki bootloop |
 | 🔐 **[Enkripsi & Pola](docs/enkripsi-dan-pola.md)** | Buka data terkunci |
+| 🔁 **[Reset & FRP](docs/reset-dan-frp.md)** | Kenapa jangan reset pabrik dari TWRP |
 | 🩺 **[Masalah & Log](docs/masalah-dan-log.md)** | Kalau ada kendala |
+| ❓ **[Tanya-Jawab](docs/tanya-jawab.md)** | Pertanyaan yang sering muncul |
+
+### 🦊 OrangeFox
+
+Varian kedua untuk HP ini: OrangeFox dengan tampilan baru, file manager lengkap, dan manajemen modul KernelSU. Bisa dipasang bergantian dengan TWRP. **[Panduan OrangeFox →](docs/orangefox/README.md)**
 
 ---
 
