@@ -1,0 +1,64 @@
+name: Hapus log run lama (rothko)
+
+# Button only: tidies the Actions tab. Keeps the newest runs of every workflow, the newest successful
+# one (its artifact feeds Verify's fast path) and STOCK_RUN (stock images for every Verify).
+# Releases and their files are not runs, so they are never touched.
+on:
+  workflow_dispatch:
+    inputs:
+      keep:
+        description: 'Run terbaru yang disimpan per workflow / newest runs kept per workflow'
+        default: '5'
+      dry_run:
+        description: 'Coba saja, jangan hapus / list only, delete nothing'
+        type: boolean
+        default: false
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  hapus:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Hapus run lama / Delete old runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KEEP: ${{ inputs.keep }}
+          DRY: ${{ inputs.dry_run }}
+        run: |
+          [[ "$KEEP" =~ ^[0-9]+$ ]] || { echo "::error title=keep::bukan angka / not a number: $KEEP"; exit 1; }
+          . .github/firmware.env
+          gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs?per_page=100" \
+            --jq '.workflow_runs[] | {id, workflow_id, status, conclusion, created_at}' > runs.jsonl
+          python3 -I .github/scripts/old_runs.py --selftest
+          python3 -I .github/scripts/old_runs.py "$KEEP" "$STOCK_RUN" < runs.jsonl > old.txt
+          total=$(wc -l < runs.jsonl); n=$(wc -l < old.txt); gone=0; failed=0
+          if [ "$DRY" != true ]; then
+            while read -r id; do
+              if gh api -X DELETE "repos/$GITHUB_REPOSITORY/actions/runs/$id" >/dev/null 2>&1; then gone=$((gone + 1)); else failed=$((failed + 1)); fi
+            done < old.txt
+          fi
+          {
+            echo "## 🧹 Hapus log run lama"
+            echo
+            echo "| | Indonesia | English |"
+            echo "|---|---|---|"
+            echo "| Run di repo | $total | runs in repo |"
+            echo "| Disimpan per workflow | $KEEP terbaru + 1 sukses terakhir + STOCK_RUN | newest $KEEP + latest success + STOCK_RUN |"
+            if [ "$DRY" = true ]; then
+              echo "| Akan dihapus (coba saja) | $n | would be deleted (dry run) |"
+            else
+              echo "| Dihapus | $gone | deleted |"
+              echo "| Gagal | $failed | failed |"
+            fi
+            echo
+            echo "Rilis dan file rilis tidak tersentuh. / Releases and their files are untouched."
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$failed" -eq 0 ]
