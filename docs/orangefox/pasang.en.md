@@ -22,6 +22,7 @@ What's in the package:
 | `2-KEMBALIKAN-STOK.bat` (*back to stock*) | Back to stock, no custom recovery |
 | `3-KEMBALI-KE-TWRP.bat` (*back to TWRP*) | Reinstall the latest TWRP from a PC (FASTBOOT) |
 | `OrangeFox-…img` · `TWRP-…img` · `STOK-…img` | The three images above, sha256-checked by the `.bat` scripts |
+| `PANDUAN-ORANGEFOX.html` | Full step-by-step guide (in Indonesian), works offline and prints |
 | `BACA-SAYA.txt` (*read me*) | Short how-to + SHA256 |
 
 ---

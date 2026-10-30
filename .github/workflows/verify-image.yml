@@ -265,7 +265,11 @@ jobs:
           fill $o $os -e "$fox" repo/release/$a/update-binary > ofox/$a/update-binary
           fill $o $os repo/release/$a/updater-script > ofox/$a/updater-script
           fill $o $os repo/release/twrp-update.sh > ofox/twrp-update.sh
-          ! grep -rl '@[A-Z0-9_]*@' ofox --include='*.bat' --include='*.sh' --include='update*'
+          # the guide names all three images and both versions
+          sed -e "s/@VERSION@/$VERSION/g" -e "s/@OFOX_VER@/$BUILD_VER/g" -e "s/@TWRP_VER@/$rel/g" \
+              -e "s/@TWRP_IMG@/$t/g" -e "s/@STOCK_IMG@/$s/g" -e "$crlf" \
+              repo/release/orangefox/PANDUAN-ORANGEFOX.html > ofox/PANDUAN-ORANGEFOX.html
+          ! grep -rl '@[A-Z0-9_]*@' ofox --include='*.bat' --include='*.sh' --include='*.html' --include='update*'
           cat > ofox/BACA-SAYA.txt <<EOF
           OrangeFox $BUILD_VER untuk Xiaomi 14T Pro (rothko) - firmware $VERSION
           Data di HP tidak dihapus oleh paket ini. Panduan lengkap:
@@ -278,6 +282,7 @@ jobs:
             $o
             $t
             $s
+            PANDUAN-ORANGEFOX.html : panduan lengkap, bisa dibuka offline
             META-INF, twrp-update.sh : supaya zip ini bisa di-flash di TWRP
 
           CARA PASANG
