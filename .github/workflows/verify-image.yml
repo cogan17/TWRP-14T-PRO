@@ -57,7 +57,12 @@ jobs:
           . repo/.github/firmware.env
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
           if [ "$VARIANT" = ofox ]; then
-            echo "BUILD_VER=uji-run$TWRP_RUN" >> "$GITHUB_ENV"
+            # OrangeFox has its own notes and tags: newest "## ofox-vX.Y" of CHANGELOG-orangefox.md
+            BUILD_VER=$(grep -m1 -oE '^## ofox-v[0-9]+(\.[0-9]+)*' repo/CHANGELOG-orangefox.md | cut -c4- || true)
+            EN_VER=$(grep -m1 -oE '^## ofox-v[0-9]+(\.[0-9]+)*' repo/CHANGELOG-orangefox.en.md | cut -c4- || true)
+            [ -n "$BUILD_VER" ] && [ "$EN_VER" = "$BUILD_VER" ] ||
+              { echo "::error title=CHANGELOG::CHANGELOG-orangefox.md ('$BUILD_VER') and .en.md ('$EN_VER') need the same '## ofox-vX.Y' heading"; exit 1; }
+            echo "BUILD_VER=$BUILD_VER" >> "$GITHUB_ENV"
             echo "STOCK_RUN=${INPUT_STOCK_RUN:-$STOCK_RUN}" >> "$GITHUB_ENV"
             exit 0
           fi
@@ -236,12 +241,12 @@ jobs:
           [ -z "$d" ] || echo "::warning title=modules diff::$(echo "$d" | head -20 | tr '\n' ';')"
           exit $bad
 
-      - name: OrangeFox test package
+      - name: OrangeFox package
         if: env.VARIANT == 'ofox'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          o=OFOX-UJI-rothko-$VERSION.img; t=TWRP-rothko-$VERSION.img; s=STOK-vendor_boot-$VERSION.img
+          o=OrangeFox-rothko-$VERSION.img; t=TWRP-rothko-$VERSION.img; s=STOK-vendor_boot-$VERSION.img
           mkdir ofox && cp twrp/vendor_boot.img ofox/$o && cp stock/vendor_boot.img ofox/$s
           # the way back to TWRP: image of the newest TWRP release (tags vX.Y)
           rel=$(gh api "repos/$GITHUB_REPOSITORY/releases" --jq '[.[] | select(.tag_name | test("^v[0-9]"))][0].tag_name')
@@ -262,9 +267,9 @@ jobs:
           fill $o $os repo/release/twrp-update.sh > ofox/twrp-update.sh
           ! grep -rl '@[A-Z0-9_]*@' ofox --include='*.bat' --include='*.sh' --include='update*'
           cat > ofox/BACA-SAYA.txt <<EOF
-          OrangeFox UJI untuk Xiaomi 14T Pro (rothko) - firmware $VERSION
-          EKSPERIMEN tahap 1: hanya untuk mengecek OrangeFox menyala dan layar sentuh.
-          Data kemungkinan belum bisa dibuka dengan pola. Data di HP tidak dihapus.
+          OrangeFox $BUILD_VER untuk Xiaomi 14T Pro (rothko) - firmware $VERSION
+          Data di HP tidak dihapus oleh paket ini. Panduan lengkap:
+          https://github.com/$GITHUB_REPOSITORY/blob/HEAD/docs/orangefox/README.md
 
           ISI
             1-PASANG-ORANGEFOX.bat : pasang OrangeFox lewat PC (FASTBOOT)
@@ -278,6 +283,7 @@ jobs:
           CARA PASANG
             Lewat TWRP : salin zip ini ke HP (tidak perlu diekstrak),
                          lalu di TWRP pilih Install > zip ini > geser.
+            Lewat OrangeFox (update): Berkas > ketuk zip ini > Pasang ZIP.
             Lewat PC   : ekstrak ke folder platform-tools, HP di FASTBOOT
                          (Power + Volume Bawah), klik dua kali 1-PASANG-ORANGEFOX.bat.
             Lalu Reboot > Recovery.
@@ -287,7 +293,9 @@ jobs:
             Ke stok : HP di FASTBOOT, klik dua kali 2-KEMBALIKAN-STOK.bat.
             HP terus masuk recovery? Tahan Power + Volume Bawah sampai FASTBOOT.
 
-          JANGAN saat uji: OTA/reflash/Magisk bawaan OrangeFox, Format Data, flash ROM.
+          JANGAN: reset pabrik / Format Data dari recovery (memicu FRP),
+                  OTA dan pasang Magisk/KernelSU dari menu OrangeFox.
+          Di OrangeFox, "Muat" = Mount. Memasang file lewat Berkas.
 
           SHA256
             $os  $o
@@ -295,13 +303,45 @@ jobs:
             $ss  $s
           EOF
           sed -i 's/$/\r/' ofox/BACA-SAYA.txt
-          echo "::notice title=OrangeFox UJI::$o sha256 $os; TWRP $rel $ts"
+          command -v zip >/dev/null 2>&1 || { sudo apt-get update -q && sudo apt-get install -y -q zip; }
+          (cd ofox && zip -qr "../PAKET-OrangeFox-rothko-$VERSION.zip" .)
+          echo "::notice title=OrangeFox $BUILD_VER::$o sha256 $os; TWRP $rel $ts"
 
+      # kept before publishing, so a failed publish never loses the package
       - uses: actions/upload-artifact@v4
         if: env.VARIANT == 'ofox'
         with:
-          name: PAKET-OFOX-UJI-rothko-${{ env.VERSION }}
+          name: PAKET-OrangeFox-rothko-${{ env.VERSION }}
           path: ofox/
+
+      - uses: actions/attest@v4
+        if: env.VARIANT == 'ofox'
+        with:
+          subject-path: |
+            PAKET-OrangeFox-rothko-${{ env.VERSION }}.zip
+            ofox/OrangeFox-rothko-${{ env.VERSION }}.img
+
+      # every orangefox push builds; only a new "## ofox-vX.Y" in CHANGELOG-orangefox.md becomes a release
+      - name: Publish OrangeFox pre-release
+        if: env.VARIANT == 'ofox'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          CL: CHANGELOG-orangefox
+        run: |
+          if gh release view "$BUILD_VER" >/dev/null 2>&1; then
+            echo "::notice title=Sudah dirilis::$BUILD_VER is already on Releases; this build stays a test artifact. Add a new '## ofox-vX.Y' to CHANGELOG-orangefox.md (+ .en.md) to release it."
+            exit 0
+          fi
+          zip="PAKET-OrangeFox-rothko-$VERSION.zip"
+          os=$(sha256sum "ofox/OrangeFox-rothko-$VERSION.img" | cut -d' ' -f1)
+          (cd repo && .github/scripts/release_notes.sh "$BUILD_VER" "$VERSION" "$os" "$GH_REPO") > /tmp/notes.md
+          if ! gh release create "$BUILD_VER" "$zip" "ofox/OrangeFox-rothko-$VERSION.img" "ofox/STOK-vendor_boot-$VERSION.img" --target "$(git -C repo rev-parse HEAD)" --prerelease --title "OrangeFox $BUILD_VER · $VERSION" --notes-file /tmp/notes.md 2>/tmp/rel.err; then
+            echo "::error title=Pre-release gagal::$(tr '\n' ' ' </tmp/rel.err | sed 's/%/%25/g')"
+            exit 1
+          fi
+          (cd repo && .github/scripts/annotate_tag.sh "$BUILD_VER" "$VERSION" "$GH_REPO")
+          echo "::notice title=Pre-release::OrangeFox $BUILD_VER · $VERSION -> $zip"
 
       - name: Package for end users
         if: env.VARIANT == 'twrp'

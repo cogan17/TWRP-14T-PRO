@@ -38,6 +38,7 @@ Not sure? Use **TWRP**. Want more features? Try **OrangeFox** — going back to 
 | 📥 **[Install & Go Back](pasang.en.md)** | Install OrangeFox, update it, go back to TWRP or stock |
 | 🧭 **[OrangeFox Menu Tour](menu.en.md)** | What each menu does, which are dangerous |
 | 🩺 **[Issues & Logs](masalah-dan-log.en.md)** | When something goes wrong |
+| 📝 **[Release Notes](../../CHANGELOG-orangefox.en.md)** | What is new and fixed in each `ofox-…` version |
 
 TWRP guides that also apply to OrangeFox: [Enter recovery](../masuk-twrp.en.md) · [Encryption & Pattern](../enkripsi-dan-pola.en.md) · [Backup](../backup.en.md) · [Update HyperOS](../update-hos.en.md) · [Root & Kernel](../root-dan-kernel.en.md) · [Reset & FRP](../reset-dan-frp.en.md)
 
