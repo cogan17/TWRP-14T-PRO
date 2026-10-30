@@ -45,6 +45,18 @@ So the phone stays usable every day. Install APKs from outside the Play Store th
 
 FRP is cleared officially when the phone goes through the **setup screens** and you **sign in with the same Google account** as before the reset. That happens if you ever reset **from HyperOS Settings** (this erases data — back up first).
 
+## What works: flash the full stock ROM
+
+**Proven on the owner's phone (30 Oct 2026):** flashing the official HyperOS fastboot ROM cleared FRP — the built-in app installer works again.
+
+1. **Copy all backups to a PC first.** A full flash erases all data, including the TWRP backup folder on internal storage.
+2. Use the official **fastboot** ROM of the **same version** as on the phone (currently `OS3.0.301.0.WNNIDXM`) — the TWRP/OrangeFox images in Releases are built for that version.
+3. In Mi Flash pick **`clean all`**. ⛔ **Not `clean all and lock`** — that relocks the bootloader and TWRP can't be installed until you unlock again.
+4. On the setup screens, **sign in with your own Google account** (the one last used on this phone). Don't skip it.
+5. The phone is now fully stock: TWRP, kernel and root are gone. Reinstall TWRP with `1-PASANG-TWRP.bat` from [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases), then your kernel and root as usual.
+
+## What doesn't work
+
 - ❌ Waiting doesn't clear it — Android turns it back on at every boot.
 - ❌ Signing out of and back into Gmail in Settings isn't enough — the flag is owned by the setup screens, not by the account.
 - ❌ A HyperOS update (OTA) doesn't remove it.

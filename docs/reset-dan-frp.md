@@ -45,6 +45,18 @@ Jadi HP tetap bisa dipakai sehari-hari. APK dari luar Play Store cukup dipasang 
 
 FRP hilang secara resmi saat HP melewati **layar penyiapan awal** dan kamu **masuk akun Google yang sama** seperti sebelum reset. Itu terjadi kalau suatu saat kamu reset **lewat Setelan HyperOS** (data terhapus — backup dulu).
 
+## Cara ampuh: flash ROM stok penuh
+
+**Terbukti di HP owner (30 Okt 2026):** flash ROM fastboot resmi HyperOS menghilangkan FRP — pemasang aplikasi bawaan kembali normal.
+
+1. **Pindahkan semua backup ke PC dulu.** Flash penuh menghapus seluruh data, termasuk folder backup TWRP di memori internal.
+2. Pakai ROM **fastboot** resmi dengan **versi yang sama** seperti di HP (sekarang `OS3.0.301.0.WNNIDXM`) — image TWRP/OrangeFox di Releases dibuat untuk versi itu.
+3. Di Mi Flash pilih **`clean all`**. ⛔ **Jangan `clean all and lock`** — bootloader terkunci lagi dan TWRP tidak bisa dipasang sampai unlock ulang.
+4. Di layar penyiapan awal, **masuk akun Google-mu sendiri** (yang terakhir dipakai di HP ini). Jangan dilewati.
+5. HP sekarang stok total: TWRP, kernel dan root hilang. Pasang lagi TWRP lewat `1-PASANG-TWRP.bat` dari [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases), lalu kernel dan root seperti biasa.
+
+## Yang tidak berhasil
+
 - ❌ Menunggu tidak membuatnya hilang — Android menyalakannya lagi setiap boot.
 - ❌ Logout lalu login Gmail di Setelan tidak cukup — tandanya diatur oleh penyiapan awal, bukan oleh akun.
 - ❌ Update HyperOS (OTA) tidak menghapusnya.
