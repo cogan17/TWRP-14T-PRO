@@ -1,0 +1,54 @@
+name: Hapus branch lama (sekali pakai)
+
+# One-shot: runs once when this file lands on the default branch, then the file is removed again.
+# Deletes a branch only when its PR was merged and the branch still points at exactly that merged
+# commit (nothing newer would be lost). Default branch, open-PR branches, branches without a merged
+# PR (orangefox, work in progress) and branches with newer commits are kept.
+on:
+  push:
+    branches: [twrp-14.1_a16]
+    paths: ['.github/workflows/hapus-branch-sekali.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  hapus:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Hapus branch yang sudah di-merge / Delete merged branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          default=$(gh api "repos/$R" --jq .default_branch)
+          gh api --paginate "repos/$R/pulls?state=all&per_page=100" \
+            --jq '.[] | [.head.ref, .state, (.merged_at != null), .head.sha] | @tsv' > prs.tsv
+          gh api --paginate "repos/$R/branches?per_page=100" --jq '.[] | [.name, .commit.sha] | @tsv' > branches.tsv
+          gone=0; kept=0; failed=0; : > kept.txt
+          while IFS=$'\t' read -r b sha; do
+            why=""
+            if [ "$b" = "$default" ] || [ "$b" = orangefox ]; then why="branch utama / main branch"
+            elif awk -F'\t' -v b="$b" '$1 == b && $2 == "open"' prs.tsv | grep -q .; then why="PR masih terbuka / open PR"
+            elif ! awk -F'\t' -v b="$b" -v s="$sha" '$1 == b && $3 == "true" && $4 == s' prs.tsv | grep -q .; then why="belum di-merge atau ada commit baru / unmerged or newer commits"
+            fi
+            if [ -n "$why" ]; then kept=$((kept + 1)); echo "| \`$b\` | $why |" >> kept.txt; continue; fi
+            if gh api -X DELETE "repos/$R/git/refs/heads/$b" >/dev/null 2>&1; then gone=$((gone + 1)); else failed=$((failed + 1)); echo "| \`$b\` | gagal dihapus / delete failed |" >> kept.txt; fi
+          done < branches.tsv
+          {
+            echo "## 🌿 Hapus branch lama"
+            echo
+            echo "Dihapus / deleted: **$gone** · disimpan / kept: **$kept** · gagal / failed: **$failed**"
+            echo
+            echo "| Branch disimpan / kept | Alasan / reason |"
+            echo "|---|---|"
+            cat kept.txt
+            echo
+            echo "Commit dari branch yang dihapus tetap ada di PR masing-masing. / Deleted branches' commits stay available in their PRs."
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$failed" -eq 0 ]
