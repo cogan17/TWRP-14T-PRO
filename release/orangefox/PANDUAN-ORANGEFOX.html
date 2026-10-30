@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panduan OrangeFox Xiaomi 14T Pro (rothko)</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --muted:#5b6672;
+    --line:#e3e7ec; --accent:#1769aa; --accent-ink:#0d4f85;
+    --warn-bg:#fff4e5; --warn-line:#f0b429; --warn-ink:#7a4f00;
+    --danger-bg:#fdecec; --danger-line:#e0574f; --danger-ink:#9b2820;
+    --ok-bg:#e9f7ee; --ok-line:#38a169; --ok-ink:#1f6e43;
+  }
+  :root:not([data-theme="light"]) @media (prefers-color-scheme:dark){}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+    --bg:#15181c; --card:#1e2228; --ink:#e7ebf0; --muted:#9aa5b1;
+    --line:#2c323a; --accent:#5fa8dd; --accent-ink:#8fc3e8;
+    --warn-bg:#36291060; --warn-line:#c9971f; --warn-ink:#f0c86a;
+    --danger-bg:#3a1b1860; --danger-line:#d9574e; --danger-ink:#f0a79f;
+    --ok-bg:#16301f60; --ok-line:#45a86b; --ok-ink:#8fd6a7;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#15181c; --card:#1e2228; --ink:#e7ebf0; --muted:#9aa5b1;
+    --line:#2c323a; --accent:#5fa8dd; --accent-ink:#8fc3e8;
+    --warn-bg:#36291060; --warn-line:#c9971f; --warn-ink:#f0c86a;
+    --danger-bg:#3a1b1860; --danger-line:#d9574e; --danger-ink:#f0a79f;
+    --ok-bg:#16301f60; --ok-line:#45a86b; --ok-ink:#8fd6a7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:clamp(17px, 0.9rem + 0.8vw, 23px);
+    line-height:1.65;-webkit-text-size-adjust:100%}
+  .wrap{max-width:min(880px, 92vw);margin:0 auto;padding:clamp(16px,3vw,30px) clamp(16px,4vw,28px) 72px}
+  header{text-align:center;padding:28px 16px 8px}
+  header .badge{display:inline-block;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent-ink);background:var(--card);border:1px solid var(--line);
+    border-radius:999px;padding:4px 14px;margin-bottom:14px}
+  h1{font-size:clamp(26px, 4.5vw, 40px);margin:.2em 0 .1em;line-height:1.2}
+  header p{color:var(--muted);margin:.3em 0 0}
+  h2{font-size:clamp(20px, 3vw, 28px);margin:34px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  h2 .n{color:var(--accent);font-variant-numeric:tabular-nums}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin:14px 0}
+  ol,ul{padding-left:22px;margin:8px 0}
+  li{margin:7px 0}
+  code,kbd{background:var(--bg);border:1px solid var(--line);border-radius:6px;
+    padding:1px 6px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+  kbd{font-weight:600}
+  .keys{font-weight:600;color:var(--accent-ink);white-space:nowrap}
+  .box{border-radius:12px;padding:12px 16px;margin:14px 0;border-left:5px solid}
+  .warn{background:var(--warn-bg);border-color:var(--warn-line);color:var(--warn-ink)}
+  .danger{background:var(--danger-bg);border-color:var(--danger-line);color:var(--danger-ink)}
+  .ok{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok-ink)}
+  .box b{color:inherit}
+  .file{font-family:ui-monospace,monospace;font-weight:600;color:var(--accent-ink)}
+  .lead{color:var(--muted);font-size:1.02em}
+  footer{text-align:center;color:var(--muted);font-size:.95em;margin-top:40px;
+    padding-top:18px;border-top:1px solid var(--line)}
+  .toc{columns:2;column-gap:24px}
+  .toc a{color:var(--accent-ink);text-decoration:none;display:block;margin:5px 0;font-size:15px}
+  @media (max-width:520px){.toc{columns:1}}
+  @media print{body{background:#fff;color:#000}.card,.box{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="badge">OrangeFox Recovery</span>
+  <h1>Panduan OrangeFox<br>Xiaomi 14T Pro (rothko)</h1>
+  <p>@OFOX_VER@ &middot; firmware @VERSION@ &middot; oleh <b>Cogan17</b></p>
+</header>
+
+<div class="card">
+  <p class="lead">Buku ini memandu kamu langkah demi langkah: memasang OrangeFox, masuk ke OrangeFox,
+  membuka data, mengenal menunya, mencadangkan (backup), dan kembali ke TWRP atau stok kapan saja.
+  Tidak perlu jadi ahli — ikuti saja urutannya.</p>
+  <div class="toc">
+    <a href="#siap">1. Yang perlu disiapkan</a>
+    <a href="#pasang">2. Memasang OrangeFox</a>
+    <a href="#masuk">3. Masuk ke OrangeFox</a>
+    <a href="#buka">4. Membuka data (pola/sandi)</a>
+    <a href="#menu">5. Kenali menunya</a>
+    <a href="#backup">6. Backup &amp; restore</a>
+    <a href="#kembali">7. Kembali ke TWRP atau stok</a>
+    <a href="#log">8. Ambil log kalau bermasalah</a>
+    <a href="#aman">9. Aturan penting</a>
+  </div>
+</div>
+
+<h2 id="siap"><span class="n">1.</span> Yang perlu disiapkan</h2>
+<div class="card">
+  <ul>
+    <li>Versi firmware di nama paket harus <b>sama</b> dengan HyperOS di HP
+      (<i>Setelan → Tentang ponsel</i>). Paket ini untuk <b>@VERSION@</b>.</li>
+    <li>Bootloader HP sudah <b>ter-unlock</b>.</li>
+    <li><b>Tanpa PC:</b> cukup TWRP yang sudah terpasang.</li>
+    <li><b>Lewat PC:</b> komputer <b>Windows</b>, kabel USB yang bagus, dan folder <b>platform-tools</b>
+      (berisi <code>adb.exe</code> &amp; <code>fastboot.exe</code>). Ekstrak <b>semua</b> isi paket ke folder itu.</li>
+  </ul>
+  <div class="box warn">Baterai HP minimal <b>50%</b> sebelum mulai, biar aman.</div>
+</div>
+
+<h2 id="pasang"><span class="n">2.</span> Memasang OrangeFox</h2>
+<div class="card">
+  <p><b>Dari TWRP (tanpa PC — paling mudah):</b></p>
+  <ol>
+    <li>Salin zip paket ini ke HP. <b>Tidak perlu diekstrak.</b></li>
+    <li>Masuk TWRP → <b>Install</b> → pilih zip itu → geser.</li>
+    <li>Tunggu tulisan <b>Berhasil</b> → <b>Reboot → Recovery</b>.</li>
+  </ol>
+  <p>Zip mengecek HP dan file, menulis OrangeFox ke <b>vendor_boot</b>, lalu memeriksa ulang.
+  Kalau ada yang tidak cocok, <b>tidak ada yang ditulis</b>.</p>
+  <p><b>Lewat PC (FASTBOOT):</b></p>
+  <ol>
+    <li>Matikan HP. Tahan <span class="keys">Power + Volume Bawah</span> sampai muncul tulisan <b>FASTBOOT</b>.</li>
+    <li>Sambungkan HP ke komputer dengan kabel.</li>
+    <li>Klik dua kali <span class="file">1-PASANG-ORANGEFOX.bat</span>, ikuti petunjuk sampai <b>BERHASIL</b>.</li>
+  </ol>
+  <p><b>Update OrangeFox:</b> di OrangeFox buka <b>Berkas</b> → ketuk zip paket versi baru → <b>Pasang ZIP</b> → geser.</p>
+  <div class="box ok">Data di HP <b>tidak dihapus</b> oleh semua cara di atas.</div>
+</div>
+
+<h2 id="masuk"><span class="n">3.</span> Masuk ke OrangeFox</h2>
+<div class="card">
+  <ol>
+    <li>Matikan HP sampai benar-benar mati.</li>
+    <li>Tahan <span class="keys">Volume Atas + Power</span> bersamaan.</li>
+    <li>Saat logo Mi muncul, <b>lepas tombol Power</b> tapi tahan terus Volume Atas sebentar, sampai OrangeFox terbuka.</li>
+  </ol>
+  <div class="box warn">Masuk recovery harus dari kondisi <b>HP mati</b> + tombol, bukan lewat perintah "reboot recovery".</div>
+</div>
+
+<h2 id="buka"><span class="n">4.</span> Membuka data (pola / sandi)</h2>
+<div class="card">
+  <ul>
+    <li><b>Pengguna utama (0):</b> gambar <b>pola</b> yang sama seperti di layar kunci HP — <b>sekali saja, teliti</b>.
+      Kalau benar, data, foto dan Download langsung terbuka.</li>
+    <li><b>XSpace / Ruang Kedua (999):</b> profil terpisah dengan <b>sandi sendiri</b>.
+      Masukkan kalau kamu memakainya; kalau tidak, <b>lewati saja</b>.</li>
+  </ul>
+  <div class="box danger"><b>Jangan coba berkali-kali</b> kalau lupa. Salah berulang bisa mengunci sementara.</div>
+  <p>Setelah terbuka, coba layar sentuh, lalu <b>Pilihan → Mulai ulang → System</b> untuk memastikan Android menyala normal.</p>
+</div>
+
+<h2 id="menu"><span class="n">5.</span> Kenali menunya</h2>
+<div class="card">
+  <p>Di bawah layar ada 4 tab: <b>Berkas</b>, <b>Cadangkan</b>, <b>Bersihkan</b>, <b>Pilihan</b>.</p>
+  <div class="box warn">Di OrangeFox, <b>"Muat" artinya <i>Mount</i></b>, bukan memasang file.
+  Memasang file selalu lewat <b>Berkas</b>: ketuk file-nya.</div>
+  <ul>
+    <li><b>Berkas</b> — file manager. Ketuk <span class="file">.zip</span> → <b>Pasang ZIP</b>;
+      ketuk <span class="file">.img</span> → <b>Flash Image File</b> → pilih partisi
+      (recovery → <b>vendor_boot</b>, kernel → <b>boot</b>).</li>
+    <li><b>Cadangkan</b> — membuat dan memulihkan backup (lihat bagian 6).</li>
+    <li><b>Bersihkan</b> — hanya <b>Dalvik / ART Cache</b> dan <b>Cache</b> yang aman.
+      Data, Metadata, Penyimpanan Internal dan Format Data <b>menghapus</b> isi HP.</li>
+    <li><b>Pilihan</b> — Muat (Mount &amp; MTP), ADB &amp; Sideload, Mulai ulang,
+      <b>Modul KernelSU</b> (mematikan modul yang membuat bootloop), <b>Salin Log ke kartu SD</b>.</li>
+  </ul>
+</div>
+
+<h2 id="backup"><span class="n">6.</span> Backup &amp; restore</h2>
+<div class="card">
+  <ol>
+    <li>Buka tab <b>Cadangkan</b> → <b>Cadangan Baru</b>.</li>
+    <li>Pilih partisi. Sebelum bereksperimen, cadangkan minimal <b>boot</b> dan <b>init_boot</b>.</li>
+    <li>Geser untuk memulai. <b>Pilih Penyimpanan</b> untuk menyimpan ke internal atau USB OTG.</li>
+  </ol>
+  <p><b>Memulihkan:</b> ketuk backup yang ada → <b>Pulihkan</b>.</p>
+  <ul>
+    <li>Backup <b>Data</b> tidak berisi foto dan Download (penyimpanan internal). Salin itu ke PC terpisah.</li>
+    <li>Restore Data hanya ke <b>versi HyperOS yang sama</b> dengan saat backup.</li>
+    <li><b>Jangan reset pabrik dulu</b> sebelum restore — Pulihkan sudah mengosongkan Data sendiri.</li>
+  </ul>
+  <div class="box ok">Simpan salinan backup ke PC/flashdisk juga, biar aman kalau HP bermasalah.</div>
+</div>
+
+<h2 id="kembali"><span class="n">7.</span> Kembali ke TWRP atau stok</h2>
+<div class="card">
+  <p><b>Kembali ke TWRP</b> (@TWRP_VER@ ikut di paket ini):</p>
+  <ul>
+    <li><b>Lewat PC:</b> HP di FASTBOOT → klik dua kali <span class="file">3-KEMBALI-KE-TWRP.bat</span>.</li>
+    <li><b>Di OrangeFox:</b> <b>Berkas</b> → ketuk <span class="file">@TWRP_IMG@</span> → <b>Flash Image File</b>
+      → <b>vendor_boot</b> → geser. Atau ketuk zip paket TWRP → <b>Pasang ZIP</b>.</li>
+  </ul>
+  <p><b>Kembali ke stok</b> (tanpa recovery kustom, <b>data tidak dihapus</b>):</p>
+  <ul>
+    <li><b>Lewat PC:</b> HP di FASTBOOT → klik dua kali <span class="file">2-KEMBALIKAN-STOK.bat</span>.</li>
+    <li><b>Di OrangeFox:</b> <b>Berkas</b> → ketuk <span class="file">@STOCK_IMG@</span> → <b>Flash Image File</b>
+      → <b>vendor_boot</b> → geser → Mulai ulang → System.</li>
+  </ul>
+  <div class="box warn">Wajib <b>vendor_boot</b>, jangan boot / init_boot. File <span class="file">STOK-…</span>
+  menghapus recovery kustom — jangan tertukar dengan <span class="file">OrangeFox-…</span> atau <span class="file">TWRP-…</span>.</div>
+  <div class="box warn">HP terus masuk recovery atau <b>bootloop</b>? Paksa mati (tahan Power ~15 detik),
+  tahan <span class="keys">Power + Volume Bawah</span> sampai FASTBOOT, lalu jalankan <span class="file">.bat</span> dari PC.</div>
+</div>
+
+<h2 id="log"><span class="n">8.</span> Ambil log kalau butuh bantuan</h2>
+<div class="card">
+  <ul>
+    <li><b>Di HP:</b> <b>Pilihan → Salin Log ke kartu SD</b>. Log tersimpan di folder <code>Fox</code>
+      di penyimpanan internal. Lakukan <b>sebelum reboot</b> — log hilang setelah HP menyala ulang.</li>
+    <li><b>Lewat PC:</b> <span class="file">3-AMBIL-LOG.bat</span> atau, untuk bootloop,
+      <span class="file">4-LOG-BOOTLOOP.bat</span> dari paket TWRP.</li>
+  </ul>
+  <p>Kirim log beserta foto layar saat error. Jangan menebak — log menunjukkan penyebabnya.</p>
+</div>
+
+<h2 id="aman"><span class="n">9.</span> Aturan penting (baca ini!)</h2>
+<div class="card">
+  <div class="box danger"><b>JANGAN reset pabrik / Bersihkan Data / Format Data dari recovery.</b>
+  Di Android 15/16 itu memicu <b>FRP</b>: APK tidak bisa dipasang dengan cara biasa, dan tandanya tidak hilang
+  tanpa penyiapan awal. Kalau perlu reset, pakai <b>Setelan HyperOS → Tentang ponsel → Reset pabrik</b>.</div>
+  <div class="box warn"><b>Terlanjur reset dari recovery?</b> Saat penyiapan awal meminta <b>akun Google</b>,
+  jangan tinggalkan layar itu untuk restore Data. Masuk dengan <b>akun Google yang sama</b> — itu satu-satunya
+  kesempatan resmi mematikan FRP. Setelah Data di-restore, layar itu tidak muncul lagi.</div>
+  <div class="box danger"><b>Menu yang tidak boleh dipakai di HP ini</b> (belum teruji dengan vendor_boot dua bagian,
+  bisa membuat recovery atau Android tidak bisa boot):
+  <ul>
+    <li><b>Flash OrangeFox saat ini</b> dan reflash otomatis (sudah disembunyikan).</li>
+    <li><b>Fix recovery bootloop</b>, <b>Inject OrangeFox</b>.</li>
+    <li>Pasang <b>Magisk / KernelSU</b> dari recovery, dan menu <b>OTA</b> OrangeFox.</li>
+  </ul></div>
+  <ul>
+    <li>Selalu <b>backup data penting</b> sebelum bereksperimen.</li>
+    <li>Pasang hanya file untuk <b>rothko (14T Pro)</b> — jangan dari HP lain.</li>
+    <li>Jangan pakai "FRP unlock tool" pihak ketiga dan jangan mengutak-atik partisi <code>frp</code>.</li>
+  </ul>
+</div>
+
+<footer>
+  OrangeFox untuk Xiaomi 14T Pro (rothko) &middot; Maintainer: <b>Cogan17</b><br>
+  OrangeFox Recovery Project &middot; TeamWin Recovery Project &middot; pohon perangkat asli oleh JonesqPacMan<br>
+  💬 Komunitas: <a href="https://t.me/coganTWRP">t.me/coganTWRP</a><br>
+  Panduan ini bisa dibuka offline dan di-print (Ctrl&nbsp;+&nbsp;P) jadi PDF.
+</footer>
+
+</div>
+</body>
+</html>
