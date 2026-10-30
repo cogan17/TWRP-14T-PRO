@@ -83,15 +83,15 @@ jobs:
           repo sync -c -j"$(nproc --all)" --no-clone-bundle --no-tags --optimized-fetch --prune 2>&1 | tee /tmp/sync.log ||
             { echo "::error title=repo sync::$(grep -iE 'error|fatal|failed' /tmp/sync.log | sort -u | tail -15 | tr '\n' ';')"; exit 1; }
           echo "::notice title=OrangeFox sources::recovery $(git -C bootable/recovery log -1 --format='%h %cd' --date=short); vendor/recovery $(git -C vendor/recovery log -1 --format='%h %cd' --date=short)"
+          # every project's exact revision, for rebuilding this source later (uploaded with the image).
+          # Must run BEFORE any working tree is removed: it reads each project's git, abi-dumps included.
+          mkdir -p "$OUT_DIR/target/product/rothko"  # next to the image, so the artifact stays flat
+          repo manifest -r -o "$OUT_DIR/target/product/rothko/ofox-manifest-pinned.xml" 2>/tmp/manifest.err ||
+            echo "::warning title=Pinned manifest::$(tail -5 /tmp/manifest.err | tr '\n' ';')"
           # reference ABI dumps only feed optional ABI checks (skipped when missing); frees space for swap
           rm -rf prebuilts/abi-dumps
           # Android 16 soong_build needs >32 GB (RAM + swap) even for this minimal tree, so the
           # 19 GB of git history becomes swap. Only cosmetic version strings read git later.
-          # every project's exact revision, for rebuilding this source later (uploaded with the image)
-          mkdir -p "$OUT_DIR/target/product/rothko"  # next to the image, so the artifact stays flat
-          # a record only: its failure must not stop the build (it did on 30 Oct 2026; reason shown below)
-          repo manifest -r -o "$OUT_DIR/target/product/rothko/ofox-manifest-pinned.xml" 2>/tmp/manifest.err ||
-            echo "::warning title=Pinned manifest::$(tail -5 /tmp/manifest.err | tr '\n' ';')"
           rm -rf .repo
           # leave ~28 GB for out/, the rest (16-56 GB) becomes swap for soong_build
           f=$(df -BG --output=avail "$(dirname "$SWAP")" | tail -1 | tr -dc 0-9)
@@ -161,3 +161,11 @@ jobs:
             ${{ env.OUT_DIR }}/target/product/rothko/vendor_boot.img
             ${{ env.OUT_DIR }}/target/product/rothko/vendor_boot.img.sha256
             ${{ env.OUT_DIR }}/target/product/rothko/ofox-manifest-pinned.xml
+
+      # the exact upstream revisions, even when the build failed, to compare drift between runs
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ofox-manifest-${{ github.run_number }}
+          path: ${{ env.OUT_DIR }}/target/product/rothko/ofox-manifest-pinned.xml
+          if-no-files-found: ignore
