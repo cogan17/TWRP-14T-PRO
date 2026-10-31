@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Panduan OrangeFox Xiaomi 14T Pro (rothko)</title>
+<title>Buku Manual OrangeFox</title>
 <style>
   :root{
     --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --muted:#5b6672;
@@ -61,6 +61,10 @@
   .toc{columns:2;column-gap:24px}
   .toc a{color:var(--accent-ink);text-decoration:none;display:block;margin:5px 0;font-size:15px}
   @media (max-width:520px){.toc{columns:1}}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92em}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--bg)}
+  .card{overflow-x:auto}
   @media print{body{background:#fff;color:#000}.card,.box{break-inside:avoid}}
 </style>
 </head>
@@ -69,41 +73,71 @@
 
 <header>
   <span class="badge">OrangeFox Recovery</span>
-  <h1>Panduan OrangeFox<br>Xiaomi 14T Pro (rothko)</h1>
+  <h1>Buku Manual OrangeFox<br>Xiaomi 14T Pro (rothko)</h1>
   <p>@OFOX_VER@ &middot; firmware @VERSION@ &middot; oleh <b>Cogan17</b></p>
 </header>
 
 <div class="card">
-  <p class="lead">Buku ini memandu kamu langkah demi langkah: memasang OrangeFox, masuk ke OrangeFox,
-  membuka data, mengenal menunya, mencadangkan (backup), dan kembali ke TWRP atau stok kapan saja.
-  Tidak perlu jadi ahli — ikuti saja urutannya.</p>
+  <p class="lead">Satu buku untuk semua hal tentang OrangeFox di HP ini: memasang, masuk, membuka data,
+  setiap menu, backup, root, pengaturan, sampai kembali ke TWRP atau stok. Tidak perlu jadi ahli —
+  ikuti urutannya. Nama menu di buku ini sama dengan yang tampil di layar OrangeFox berbahasa Indonesia.</p>
+  <p class="lead">Tanda: ✅ aman &middot; ⚠️ hati-hati &middot; ⛔ jangan dipakai di HP ini</p>
   <div class="toc">
-    <a href="#siap">1. Yang perlu disiapkan</a>
-    <a href="#pasang">2. Memasang OrangeFox</a>
-    <a href="#masuk">3. Masuk ke OrangeFox</a>
-    <a href="#buka">4. Membuka data (pola/sandi)</a>
-    <a href="#menu">5. Kenali menunya</a>
-    <a href="#backup">6. Backup &amp; restore</a>
-    <a href="#kembali">7. Kembali ke TWRP atau stok</a>
-    <a href="#log">8. Ambil log kalau bermasalah</a>
-    <a href="#aman">9. Aturan penting</a>
+    <a href="#kenal">1. Kenalan dengan OrangeFox</a>
+    <a href="#siap">2. Persiapan &amp; cek file</a>
+    <a href="#pasang">3. Memasang OrangeFox</a>
+    <a href="#masuk">4. Masuk ke OrangeFox</a>
+    <a href="#buka">5. Membuka data (pola)</a>
+    <a href="#layar">6. Layar &amp; navigasi</a>
+    <a href="#berkas">7. Berkas — memasang file</a>
+    <a href="#backup">8. Cadangkan — backup &amp; restore</a>
+    <a href="#wipe">9. Bersihkan — wipe</a>
+    <a href="#pilihan">10. Pilihan — semua menu</a>
+    <a href="#modul">11. Modul KernelSU</a>
+    <a href="#root">12. Kernel &amp; root</a>
+    <a href="#setel">13. Pengaturan OrangeFox</a>
+    <a href="#hos">14. Update HyperOS</a>
+    <a href="#kembali">15. Kembali ke TWRP atau stok</a>
+    <a href="#frp">16. Reset pabrik &amp; FRP</a>
+    <a href="#log">17. Masalah &amp; log</a>
+    <a href="#aman">18. Daftar larangan</a>
+    <a href="#istilah">19. Istilah</a>
   </div>
 </div>
 
-<h2 id="siap"><span class="n">1.</span> Yang perlu disiapkan</h2>
+<h2 id="kenal"><span class="n">1.</span> Kenalan dengan OrangeFox</h2>
+<div class="card">
+  <p>OrangeFox adalah recovery turunan TWRP: tampilan modern, file manager lengkap, pengelola modul KernelSU,
+  dan tema yang bisa diganti. Di HP ini OrangeFox dibangun dari device tree yang <b>sama</b> dengan TWRP.</p>
+  <ul>
+    <li>TWRP dan OrangeFox <b>tinggal di tempat yang sama</b> (<b>vendor_boot</b>). Yang terpasang hanya satu;
+      memasang yang satu otomatis menggantikan yang lain.</li>
+    <li><b>vendor_boot</b> juga berisi modul yang <b>dipakai Android saat boot normal</b>. Karena itu image harus
+      untuk versi HyperOS yang <b>sama persis</b>: paket ini untuk <b>@VERSION@</b>.</li>
+    <li>Data, foto dan aplikasi <b>tidak tersentuh</b> saat memasang, mengganti atau melepas OrangeFox.</li>
+  </ul>
+</div>
+
+<h2 id="siap"><span class="n">2.</span> Persiapan &amp; cek file</h2>
 <div class="card">
   <ul>
-    <li>Versi firmware di nama paket harus <b>sama</b> dengan HyperOS di HP
-      (<i>Setelan → Tentang ponsel</i>). Paket ini untuk <b>@VERSION@</b>.</li>
-    <li>Bootloader HP sudah <b>ter-unlock</b>.</li>
-    <li><b>Tanpa PC:</b> cukup TWRP yang sudah terpasang.</li>
+    <li>Versi HyperOS (<i>Setelan → Tentang ponsel</i>) harus <b>@VERSION@</b>.</li>
+    <li>Bootloader sudah <b>ter-unlock</b>. Baterai minimal <b>50%</b>. Foto dan Download sudah disalin ke PC.</li>
+    <li><b>Tanpa PC:</b> cukup TWRP atau OrangeFox yang sudah terpasang.</li>
     <li><b>Lewat PC:</b> komputer <b>Windows</b>, kabel USB yang bagus, dan folder <b>platform-tools</b>
       (berisi <code>adb.exe</code> &amp; <code>fastboot.exe</code>). Ekstrak <b>semua</b> isi paket ke folder itu.</li>
   </ul>
-  <div class="box warn">Baterai HP minimal <b>50%</b> sebelum mulai, biar aman.</div>
+  <p><b>Pastikan file utuh.</b> Unduhan yang terputus membuat zip rusak: ZArchiver menulis <b>"Kesalahan Data"</b>
+  dan image hasil ekstrak <b>lebih kecil dari 64 MB</b>. Ketiga <span class="file">.img</span> di paket ini
+  masing-masing <b>64,00 MB</b>. Cek SHA256 zip di Termux:</p>
+  <p><code>sha256sum PAKET-OrangeFox-*.zip</code></p>
+  <p>Hasilnya harus sama dengan halaman rilis. SHA256 tiap image ada di <span class="file">BACA-SAYA.txt</span>;
+  di OrangeFox bisa dicek lewat <b>Berkas</b> → tekan lama file → <b>Cheksum</b>.</p>
+  <div class="box danger">Image yang ukurannya bukan 64 MB atau SHA256-nya beda: <b>jangan di-flash</b>. Unduh ulang
+  dari <b>Releases</b> (bukan dari tab <i>Actions</i>). Ekstrak ke <b>folder baru</b> supaya tidak tercampur.</div>
 </div>
 
-<h2 id="pasang"><span class="n">2.</span> Memasang OrangeFox</h2>
+<h2 id="pasang"><span class="n">3.</span> Memasang OrangeFox</h2>
 <div class="card">
   <p><b>Dari TWRP (tanpa PC — paling mudah):</b></p>
   <ol>
@@ -113,84 +147,206 @@
   </ol>
   <p>Zip mengecek HP dan file, menulis OrangeFox ke <b>vendor_boot</b>, lalu memeriksa ulang.
   Kalau ada yang tidak cocok, <b>tidak ada yang ditulis</b>.</p>
+  <p><b>Dari OrangeFox (update versi):</b> <b>Berkas</b> → ketuk zip paket versi baru → <b>Pasang Zip</b>
+    → <b>Gesek untuk Menginstal</b> → <b>Pilihan → Mulai ulang → Pemulihan</b>.</p>
   <p><b>Lewat PC (FASTBOOT):</b></p>
   <ol>
     <li>Matikan HP. Tahan <span class="keys">Power + Volume Bawah</span> sampai muncul tulisan <b>FASTBOOT</b>.</li>
     <li>Sambungkan HP ke komputer dengan kabel.</li>
     <li>Klik dua kali <span class="file">1-PASANG-ORANGEFOX.bat</span>, ikuti petunjuk sampai <b>BERHASIL</b>.</li>
   </ol>
-  <p><b>Update OrangeFox:</b> di OrangeFox buka <b>Berkas</b> → ketuk zip paket versi baru → <b>Pasang ZIP</b> → geser.</p>
+  <p><b>Setelah memasang:</b> masuk OrangeFox, buka dengan pola, coba layar sentuh dan buka <b>Berkas</b>,
+  lalu <b>Pilihan → Mulai ulang → Sistem</b> untuk memastikan Android menyala normal.</p>
   <div class="box ok">Data di HP <b>tidak dihapus</b> oleh semua cara di atas.</div>
 </div>
 
-<h2 id="masuk"><span class="n">3.</span> Masuk ke OrangeFox</h2>
+<h2 id="masuk"><span class="n">4.</span> Masuk ke OrangeFox</h2>
 <div class="card">
   <ol>
     <li>Matikan HP sampai benar-benar mati.</li>
     <li>Tahan <span class="keys">Volume Atas + Power</span> bersamaan.</li>
     <li>Saat logo Mi muncul, <b>lepas tombol Power</b> tapi tahan terus Volume Atas sebentar, sampai OrangeFox terbuka.</li>
   </ol>
-  <div class="box warn">Masuk recovery harus dari kondisi <b>HP mati</b> + tombol, bukan lewat perintah "reboot recovery".</div>
+  <p>HP sudah root? Dari Termux: <code>su -c 'reboot recovery'</code> — <b>hanya</b> kalau OrangeFox yang terpasang
+  sudah terbukti jalan.</p>
+  <div class="box warn">"reboot recovery" meninggalkan tanda di partisi <code>misc</code>. Kalau recovery-nya rusak,
+  HP terus kembali ke recovery yang rusak itu. Jalan keluar: tahan Power ~15 detik sampai mati →
+  <span class="keys">Power + Volume Bawah</span> → FASTBOOT → <span class="file">.bat</span> dari PC.</div>
+  <p>Keluar dari OrangeFox: <b>Pilihan → Mulai ulang → Sistem</b>.</p>
 </div>
 
-<h2 id="buka"><span class="n">4.</span> Membuka data (pola / sandi)</h2>
+<h2 id="buka"><span class="n">5.</span> Membuka data (pola)</h2>
+<div class="card">
+  <p>Muncul tulisan <b>"Partisi Data dienkripsi"</b> dan permintaan pola.</p>
+  <ul>
+    <li><b>Pengguna utama (0):</b> gambar <b>pola layar kunci</b> — <b>sekali saja, teliti</b>. Muncul
+      <i>Mencoba Dekripsi</i> lalu <i>Deskripsi sukses!</i>; foto dan Download langsung terbuka.</li>
+    <li><b>XSpace / Ruang Kedua (999):</b> profil terpisah dengan <b>sandi sendiri</b>.
+      Kalau tidak dipakai, tekan <b>kembali</b> untuk melewati.</li>
+    <li>Terlewat? Buka nanti lewat <b>Pilihan → Lainnya → Dekripsi data</b> (atau <b>Dekripsi Pengguna</b>).</li>
+  </ul>
+  <div class="box danger"><b>Pola gagal!</b> berulang kali bisa mengunci sementara. Jangan dicoba terus — ambil log (bagian 17).</div>
+  <p>Ganti pola di Android? OrangeFox otomatis memakai pola yang baru.</p>
+</div>
+
+<h2 id="layar"><span class="n">6.</span> Layar &amp; navigasi</h2>
 <div class="card">
   <ul>
-    <li><b>Pengguna utama (0):</b> gambar <b>pola</b> yang sama seperti di layar kunci HP — <b>sekali saja, teliti</b>.
-      Kalau benar, data, foto dan Download langsung terbuka.</li>
-    <li><b>XSpace / Ruang Kedua (999):</b> profil terpisah dengan <b>sandi sendiri</b>.
-      Masukkan kalau kamu memakainya; kalau tidak, <b>lewati saja</b>.</li>
+    <li>Bilah bawah berisi 4 tab: <b>Berkas</b>, <b>Cadangkan</b>, <b>Bersihkan</b>, <b>Pilihan</b>.</li>
+    <li>Tombol navigasi paling bawah: kembali, beranda, sembunyikan bilah.</li>
+    <li><b>Ikon roda gigi</b> di atas tab <b>Pilihan</b> = <b>Pengaturan</b> (bagian 13).</li>
+    <li>Tindakan berisiko selalu minta <b>geser</b> (<i>Gesek untuk Mengonfirmasi</i>) — sebelum digeser, belum ada yang terjadi.</li>
   </ul>
-  <div class="box danger"><b>Jangan coba berkali-kali</b> kalau lupa. Salah berulang bisa mengunci sementara.</div>
-  <p>Setelah terbuka, coba layar sentuh, lalu <b>Pilihan → Mulai ulang → System</b> untuk memastikan Android menyala normal.</p>
-</div>
-
-<h2 id="menu"><span class="n">5.</span> Kenali menunya</h2>
-<div class="card">
-  <p>Di bawah layar ada 4 tab: <b>Berkas</b>, <b>Cadangkan</b>, <b>Bersihkan</b>, <b>Pilihan</b>.</p>
   <div class="box warn">Di OrangeFox, <b>"Muat" artinya <i>Mount</i></b>, bukan memasang file.
   Memasang file selalu lewat <b>Berkas</b>: ketuk file-nya.</div>
-  <ul>
-    <li><b>Berkas</b> — file manager. Ketuk <span class="file">.zip</span> → <b>Pasang ZIP</b>;
-      ketuk <span class="file">.img</span> → <b>Flash Image File</b> → pilih partisi
-      (recovery → <b>vendor_boot</b>, kernel → <b>boot</b>).</li>
-    <li><b>Cadangkan</b> — membuat dan memulihkan backup (lihat bagian 6).</li>
-    <li><b>Bersihkan</b> — hanya <b>Dalvik / ART Cache</b> dan <b>Cache</b> yang aman.
-      Data, Metadata, Penyimpanan Internal dan Format Data <b>menghapus</b> isi HP.</li>
-    <li><b>Pilihan</b> — Muat (Mount &amp; MTP), ADB &amp; Sideload, Mulai ulang,
-      <b>Modul KernelSU</b> (mematikan modul yang membuat bootloop), <b>Salin Log ke kartu SD</b>.</li>
-  </ul>
 </div>
 
-<h2 id="backup"><span class="n">6.</span> Backup &amp; restore</h2>
+<h2 id="berkas"><span class="n">7.</span> Berkas — file manager &amp; memasang file</h2>
 <div class="card">
+  <table>
+    <tr><th>Ketuk file</th><th>Yang terbuka</th><th>Langkah</th></tr>
+    <tr><td><span class="file">.zip</span></td><td><b>Pasang Zip</b></td><td>cek Opsi → <b>Gesek untuk Menginstal</b></td></tr>
+    <tr><td><span class="file">.img</span></td><td><b>Pasang Image</b></td><td>di <b>Partisi</b> pilih tujuan → geser</td></tr>
+  </table>
+  <table>
+    <tr><th>File image</th><th>Partisi</th></tr>
+    <tr><td><span class="file">OrangeFox-…</span>, <span class="file">TWRP-…</span>, <span class="file">STOK-vendor_boot-…</span></td><td><b>vendor_boot</b></td></tr>
+    <tr><td>kernel <span class="file">boot.img</span></td><td>boot</td></tr>
+    <tr><td><span class="file">init_boot</span> hasil patch root</td><td>init_boot</td></tr>
+  </table>
+  <div class="box danger">Jangan pernah menulis recovery ke <b>boot</b> atau <b>init_boot</b>. Di halaman <b>Pasang Image</b>,
+  biarkan <b>Flash ke kedua slot</b> mati dan <b>jangan</b> tekan <b>Instal Ramdisk</b>.</div>
+  <p><b>Opsi di Pasang Zip:</b> <b>Tambahkan ke antrian</b> (maks 10 zip) dan <b>Mulai ulang setelah pemasangan selesai</b> ✅.
+  <b>Flash Ulang OrangeFox setelah flashing ROM</b>, <b>Suntikkan OrangeFox</b>, <b>Nonaktifkan vbmeta AVB2.0</b>,
+  <b>Tambah Magisk</b> ⛔ — kalau muncul, biarkan mati.</p>
+  <p><b>Tekan lama</b> file/folder: <b>Buka sebagai</b>, <b>Salin</b>, <b>Pindah</b>, <b>Ubah Nama</b>, <b>Hapus</b> ⚠️,
+  <b>Kompres</b>, <b>Buka paket arsip</b>, <b>Cheksum</b>, <b>Informasi</b>. Tekan lama lalu ketuk file lain untuk
+  memilih banyak (<b>Urutan aksi</b>). <b>Atur Perizinan</b>, <b>Edit File di nano</b> dan <b>Buka terminal disini</b> ⚠️ hanya untuk yang paham.</p>
+  <p>Lokasi penting: penyimpanan internal <code>/sdcard</code> &middot; backup <code>Fox/BACKUPS</code> &middot; log <code>Fox/logs</code>.</p>
+</div>
+
+<h2 id="backup"><span class="n">8.</span> Cadangkan — backup &amp; restore</h2>
+<div class="card">
+  <p><b>Membuat backup:</b></p>
   <ol>
-    <li>Buka tab <b>Cadangkan</b> → <b>Cadangan Baru</b>.</li>
-    <li>Pilih partisi. Sebelum bereksperimen, cadangkan minimal <b>boot</b> dan <b>init_boot</b>.</li>
-    <li>Geser untuk memulai. <b>Pilih Penyimpanan</b> untuk menyimpan ke internal atau USB OTG.</li>
+    <li>Tab <b>Cadangkan</b> → <b>Cadangan Baru</b>.</li>
+    <li><b>Nama</b>: biarkan otomatis atau ketik sendiri.</li>
+    <li>Centang <b>Partisi</b>: minimal <b>boot</b>, <b>init_boot</b>, <b>vendor_boot</b>; tambah <b>Data</b> kalau perlu.</li>
+    <li><b>Geser untuk mencadangkan</b> → tunggu <b>Pencadangan selesai</b>.</li>
   </ol>
-  <p><b>Memulihkan:</b> ketuk backup yang ada → <b>Pulihkan</b>.</p>
+  <p><b>Pilih Penyimpanan</b> menentukan tempat simpan (internal atau USB OTG). Hasilnya di
+  <code>Fox/BACKUPS</code>. <b>Aktifkan Enkripsi</b> boleh, tapi kata sandinya wajib diingat.</p>
+  <p><b>Memulihkan:</b> tab <b>Cadangkan</b> → ketuk backup → centang partisi → <b>Geser untuk Mengembalikan</b>
+  → tunggu <b>Pemulihan selesai</b> → <b>Mulai ulang → Sistem</b>. Boot pertama bisa lama.</p>
   <ul>
-    <li>Backup <b>Data</b> tidak berisi foto dan Download (penyimpanan internal). Salin itu ke PC terpisah.</li>
+    <li>Backup <b>Data</b> tidak berisi foto dan Download. Salin itu ke PC terpisah.</li>
     <li>Restore Data hanya ke <b>versi HyperOS yang sama</b> dengan saat backup.</li>
-    <li><b>Jangan reset pabrik dulu</b> sebelum restore — Pulihkan sudah mengosongkan Data sendiri.</li>
+    <li><b>Jangan reset pabrik / Bersihkan Data dulu</b> sebelum restore — restore sudah mengosongkan Data sendiri.</li>
+    <li>Setelah restore, aplikasi kembali seperti <b>tanggal backup</b>; modul root kadang perlu dipasang ulang.</li>
   </ul>
   <div class="box ok">Simpan salinan backup ke PC/flashdisk juga, biar aman kalau HP bermasalah.</div>
 </div>
 
-<h2 id="kembali"><span class="n">7.</span> Kembali ke TWRP atau stok</h2>
+<h2 id="wipe"><span class="n">9.</span> Bersihkan — wipe</h2>
+<div class="card">
+  <p>Tab <b>Bersihkan</b> menampilkan daftar partisi bercentang dan tombol <b>Format Data</b>.</p>
+  <table>
+    <tr><th>Pilihan</th><th>Akibat</th><th></th></tr>
+    <tr><td><b>Dalvik / ART Cache</b>, <b>Cache</b></td><td>cache dibuang, Android membangun ulang</td><td>✅</td></tr>
+    <tr><td><b>Data</b></td><td>sama dengan reset pabrik</td><td>⛔ FRP</td></tr>
+    <tr><td><b>Metadata</b></td><td>data tidak bisa dibuka lagi</td><td>⛔</td></tr>
+    <tr><td><b>Penyimpanan Internal</b></td><td>foto, Download, backup terhapus</td><td>⛔</td></tr>
+    <tr><td><b>Format Data</b></td><td>semua terhapus</td><td>⛔</td></tr>
+  </table>
+  <p>Membersihkan cache: centang <b>Dalvik / ART Cache</b> dan <b>Cache</b> saja → <b>Geser untuk Bersihkan</b>.</p>
+</div>
+
+<h2 id="pilihan"><span class="n">10.</span> Pilihan — semua menu</h2>
+<div class="card">
+  <table>
+    <tr><th>Menu</th><th>Guna</th><th></th></tr>
+    <tr><td><b>Muat</b></td><td>mount partisi, <b>Aktifkan MTP</b> supaya HP terbaca di PC</td><td>✅</td></tr>
+    <tr><td><b>Partitions Management</b></td><td>info partisi, Perbaiki FS, Gabungkan Snapshot</td><td>⚠️</td></tr>
+    <tr><td><b>ADB &amp; Sideload</b></td><td>pasang zip dari PC: <code>adb sideload nama.zip</code></td><td>✅</td></tr>
+    <tr><td><b>Mulai ulang</b></td><td>Sistem, Pemulihan, Bootloader, Fastboot, Matikan Perangkat</td><td>✅ — ⛔ Beralih slot</td></tr>
+    <tr><td><b>Modul KernelSU</b></td><td>mematikan/menghapus modul (bagian 11)</td><td>✅</td></tr>
+    <tr><td><b>Manajer Aplikasi</b></td><td>melihat dan menghapus aplikasi</td><td>⚠️ jangan aplikasi sistem</td></tr>
+    <tr><td><b>Salin Log ke kartu SD</b></td><td>simpan log ke <code>Fox/logs</code></td><td>✅</td></tr>
+    <tr><td><b>Addon C++</b></td><td>Cadangkan Pengaturan OrangeFox, Setel ulang ke default, Hapus kata sandi (OrangeFox)</td><td>✅</td></tr>
+    <tr><td><b>Addon C++</b></td><td>Remove FRP, init.d, Pasang Magisk / KernelSU, AromaFM</td><td>⛔</td></tr>
+    <tr><td><b>Lainnya</b></td><td>Dekripsi data, Dekripsi Pengguna</td><td>✅</td></tr>
+    <tr><td><b>Lainnya</b></td><td>Terminal, Perbaiki Konteks</td><td>⚠️</td></tr>
+    <tr><td><b>Lainnya</b></td><td>Suntikkan OrangeFox, Perbaiki Bootloop Pemulihan</td><td>⛔</td></tr>
+  </table>
+  <p><b>Perbaiki FS</b> gagal <i>device or resource busy</i>? Matikan MTP dulu di <b>Muat</b>.</p>
+</div>
+
+<h2 id="modul"><span class="n">11.</span> Modul KernelSU — bootloop karena modul</h2>
+<div class="card">
+  <ol>
+    <li>Masuk OrangeFox, buka dengan pola.</li>
+    <li><b>Pilihan → Modul KernelSU</b> → tunggu daftar modul.</li>
+    <li>Ketuk modul yang dicurigai → matikan <b>Aktif</b>, atau <b>Lewati mount</b>, atau
+      <b>Hapus modul mulai ulang selanjutnya</b>.</li>
+    <li><b>Mulai ulang</b> → Android menyala tanpa modul itu.</li>
+  </ol>
+  <p>Ragu yang mana? Matikan yang <b>terakhir dipasang</b>, lalu satu per satu.</p>
+</div>
+
+<h2 id="root"><span class="n">12.</span> Kernel &amp; root</h2>
+<div class="card">
+  <p>Sebelum apa pun: <b>Cadangkan</b> <b>boot</b> dan <b>init_boot</b>, salin ke PC.</p>
+  <ul>
+    <li><b>Kernel (AnyKernel3 zip):</b> <b>Berkas</b> → ketuk zip → <b>Gesek untuk Menginstal</b> → <b>Mulai ulang → Sistem</b>.</li>
+    <li><b>Root (init_boot hasil patch):</b> patch <span class="file">init_boot.img</span> stok di aplikasi manager
+      (KernelSU/Magisk) di Android → <b>Berkas</b> → ketuk hasilnya → <b>Pasang Image</b> → <b>init_boot</b> → geser.</li>
+    <li><b>Bermasalah:</b> <b>Cadangkan</b> → backup tadi → centang boot/init_boot → <b>Geser untuk Mengembalikan</b>.</li>
+  </ul>
+  <div class="box warn">Jangan pakai <b>Pasang Magisk/KernelSU</b> dari menu OrangeFox. Aplikasi manager root
+  harus cocok dengan varian kernel yang terpasang.</div>
+</div>
+
+<h2 id="setel"><span class="n">13.</span> Pengaturan OrangeFox</h2>
+<div class="card">
+  <p>Buka lewat <b>ikon roda gigi</b> di tab <b>Pilihan</b>.</p>
+  <ul>
+    <li><b>Umum</b> ✅ — file tersembunyi, deteksi jenis file, <b>Mode pemulihan performa tinggi</b>.
+      Opsi flash ROM (vbmeta, Flash Ulang/Suntikkan OrangeFox) ⛔ biarkan mati.</li>
+    <li><b>OTA &amp; ROM</b> ⛔ — jangan diubah (untuk ROM kustom, bukan HyperOS stok).</li>
+    <li><b>Kustomisasi</b> ✅ — tema, warna aksen, font, splash, bilah navigasi.</li>
+    <li><b>Keamanan</b> ⚠️ — mengunci OrangeFox dengan PIN/sandi. Tidak perlu; lupa sandi berarti terkunci dari recovery sendiri.</li>
+    <li><b>Tampilan</b>, <b>Getaran</b> ✅ — kecerahan, batas waktu layar, getaran.</li>
+    <li><b>Cadangkan</b> ✅ — kompresi, verifikasi digest, partisi Backup Cepat.</li>
+    <li><b>Daerah</b> ✅ — Zona Waktu <i>(UTC +7) Bangkok, Hanoi, Jakarta</i>, format 24 jam, <b>Bahasa</b>.</li>
+  </ul>
+  <p><b>Setel ulang ke default</b> hanya mengembalikan pengaturan OrangeFox — data HP tidak tersentuh.</p>
+</div>
+
+<h2 id="hos"><span class="n">14.</span> Update HyperOS</h2>
+<div class="card">
+  <p>Update HyperOS menimpa <b>vendor_boot</b>, jadi OrangeFox hilang setelah update — itu wajar.</p>
+  <ol>
+    <li><b>Backup</b> dulu (file pribadi ke PC, partisi boot/init_boot/vendor_boot).</li>
+    <li>Kembali ke stok (bagian 15) — OTA sering gagal kalau partisi masih termodifikasi.</li>
+    <li>Update dari <b>Setelan</b> HyperOS. <b>Jangan wipe</b> — data ikut terbawa.</li>
+    <li>Pasang OrangeFox <b>versi yang cocok dengan HyperOS baru</b>.</li>
+  </ol>
+  <div class="box warn">Jangan pakai menu OTA OrangeFox untuk HyperOS stok. Jangan restore Data dari versi HyperOS lama.</div>
+</div>
+
+<h2 id="kembali"><span class="n">15.</span> Kembali ke TWRP atau stok</h2>
 <div class="card">
   <p><b>Kembali ke TWRP</b> (@TWRP_VER@ ikut di paket ini):</p>
   <ul>
     <li><b>Lewat PC:</b> HP di FASTBOOT → klik dua kali <span class="file">3-KEMBALI-KE-TWRP.bat</span>.</li>
-    <li><b>Di OrangeFox:</b> <b>Berkas</b> → ketuk <span class="file">@TWRP_IMG@</span> → <b>Flash Image File</b>
-      → <b>vendor_boot</b> → geser. Atau ketuk zip paket TWRP → <b>Pasang ZIP</b>.</li>
+    <li><b>Di OrangeFox:</b> <b>Berkas</b> → ketuk <span class="file">@TWRP_IMG@</span> → <b>Pasang Image</b>
+      → <b>vendor_boot</b> → geser. Atau ketuk zip paket TWRP → <b>Gesek untuk Menginstal</b>.</li>
   </ul>
   <p><b>Kembali ke stok</b> (tanpa recovery kustom, <b>data tidak dihapus</b>):</p>
   <ul>
     <li><b>Lewat PC:</b> HP di FASTBOOT → klik dua kali <span class="file">2-KEMBALIKAN-STOK.bat</span>.</li>
-    <li><b>Di OrangeFox:</b> <b>Berkas</b> → ketuk <span class="file">@STOCK_IMG@</span> → <b>Flash Image File</b>
-      → <b>vendor_boot</b> → geser → Mulai ulang → System.</li>
+    <li><b>Di OrangeFox:</b> <b>Berkas</b> → ketuk <span class="file">@STOCK_IMG@</span> → <b>Pasang Image</b>
+      → <b>vendor_boot</b> → geser → <b>Mulai ulang → Sistem</b>.</li>
   </ul>
   <div class="box warn">Wajib <b>vendor_boot</b>, jangan boot / init_boot. File <span class="file">STOK-…</span>
   menghapus recovery kustom — jangan tertukar dengan <span class="file">OrangeFox-…</span> atau <span class="file">TWRP-…</span>.</div>
@@ -198,37 +354,74 @@
   tahan <span class="keys">Power + Volume Bawah</span> sampai FASTBOOT, lalu jalankan <span class="file">.bat</span> dari PC.</div>
 </div>
 
-<h2 id="log"><span class="n">8.</span> Ambil log kalau butuh bantuan</h2>
+<h2 id="frp"><span class="n">16.</span> Reset pabrik &amp; FRP</h2>
+<div class="card">
+  <div class="box danger"><b>JANGAN reset pabrik / Bersihkan Data / Format Data dari recovery.</b>
+  Di Android 15/16 itu memicu <b>FRP</b>: APK tidak bisa dipasang lewat pemasang bawaan
+  (Play Store, MT Manager dengan root dan <code>adb install</code> tetap bisa).
+  Kalau perlu reset, pakai <b>Setelan HyperOS → Tentang ponsel → Reset pabrik</b>.</div>
+  <ul>
+    <li><b>Terlanjur reset dari recovery?</b> Saat penyiapan awal meminta <b>akun Google</b>, jangan tinggalkan
+      layar itu untuk restore Data. Masuk dengan <b>akun Google yang sama</b>.</li>
+    <li><b>Terbukti di HP owner (30 Okt 2026):</b> flash <b>ROM fastboot stok penuh</b> dengan Mi Flash
+      <b>clean all</b> (bukan <i>clean all and lock</i>), lalu login akun Google sendiri saat penyiapan, menghilangkan FRP.
+      Data terhapus — pindahkan backup ke PC dulu. Setelah itu pasang ulang TWRP/OrangeFox, kernel dan root.</li>
+  </ul>
+  <div class="box danger">Jangan pakai <b>Remove FRP</b> di OrangeFox, "FRP unlock tool" pihak ketiga,
+  atau mengutak-atik partisi <code>frp</code>.</div>
+</div>
+
+<h2 id="log"><span class="n">17.</span> Masalah &amp; log</h2>
 <div class="card">
   <ul>
-    <li><b>Di HP:</b> <b>Pilihan → Salin Log ke kartu SD</b>. Log tersimpan di folder <code>Fox</code>
-      di penyimpanan internal. Lakukan <b>sebelum reboot</b> — log hilang setelah HP menyala ulang.</li>
+    <li><b>Di HP:</b> <b>Pilihan → Salin Log ke kartu SD</b> → file ada di <code>Fox/logs</code>.
+      Lakukan <b>sebelum reboot</b> — log hilang setelah HP menyala ulang. Dekripsi gagal? Ada <code>lastrecoverylog.log</code> di folder yang sama.</li>
     <li><b>Lewat PC:</b> <span class="file">3-AMBIL-LOG.bat</span> atau, untuk bootloop,
       <span class="file">4-LOG-BOOTLOOP.bat</span> dari paket TWRP.</li>
   </ul>
+  <table>
+    <tr><th>Gejala</th><th>Solusi</th></tr>
+    <tr><td>Macet di <b>Mencoba Dekripsi</b></td><td>pakai ofox-v1.0 atau lebih baru</td></tr>
+    <tr><td>Tidak menemukan menu Install</td><td>ketuk file di <b>Berkas</b></td></tr>
+    <tr><td>"Muat" tidak memasang apa-apa</td><td>Muat = Mount, bukan Install</td></tr>
+    <tr><td>ZArchiver "Kesalahan Data", image &lt; 64 MB</td><td>unduhan rusak — unduh ulang, cek SHA256</td></tr>
+    <tr><td>HP terus masuk recovery</td><td>Power ~15 detik → Power + Volume Bawah → FASTBOOT → .bat</td></tr>
+    <tr><td>Bootloop setelah modul</td><td>bagian 11</td></tr>
+    <tr><td>Bootloop setelah kernel/root</td><td>restore boot/init_boot (bagian 12)</td></tr>
+    <tr><td>HP tidak terbaca di PC</td><td><b>Muat → Aktifkan MTP</b>, ganti kabel</td></tr>
+    <tr><td>APK tidak bisa dipasang setelah reset</td><td>FRP (bagian 16)</td></tr>
+  </table>
   <p>Kirim log beserta foto layar saat error. Jangan menebak — log menunjukkan penyebabnya.</p>
 </div>
 
-<h2 id="aman"><span class="n">9.</span> Aturan penting (baca ini!)</h2>
+<h2 id="aman"><span class="n">18.</span> Daftar larangan (baca ini!)</h2>
 <div class="card">
-  <div class="box danger"><b>JANGAN reset pabrik / Bersihkan Data / Format Data dari recovery.</b>
-  Di Android 15/16 itu memicu <b>FRP</b>: APK tidak bisa dipasang dengan cara biasa, dan tandanya tidak hilang
-  tanpa penyiapan awal. Kalau perlu reset, pakai <b>Setelan HyperOS → Tentang ponsel → Reset pabrik</b>.</div>
-  <div class="box warn"><b>Terlanjur reset dari recovery?</b> Saat penyiapan awal meminta <b>akun Google</b>,
-  jangan tinggalkan layar itu untuk restore Data. Masuk dengan <b>akun Google yang sama</b> — itu satu-satunya
-  kesempatan resmi mematikan FRP. Setelah Data di-restore, layar itu tidak muncul lagi.</div>
-  <div class="box danger"><b>Menu yang tidak boleh dipakai di HP ini</b> (belum teruji dengan vendor_boot dua bagian,
-  bisa membuat recovery atau Android tidak bisa boot):
-  <ul>
-    <li><b>Flash OrangeFox saat ini</b> dan reflash otomatis (sudah disembunyikan).</li>
-    <li><b>Fix recovery bootloop</b>, <b>Inject OrangeFox</b>.</li>
-    <li>Pasang <b>Magisk / KernelSU</b> dari recovery, dan menu <b>OTA</b> OrangeFox.</li>
+  <div class="box danger"><ul>
+    <li>Reset pabrik, Bersihkan <b>Data</b>, <b>Metadata</b>, <b>Penyimpanan Internal</b>, <b>Format Data</b> dari recovery.</li>
+    <li>Menulis recovery ke <b>boot</b>/<b>init_boot</b>; <b>Instal Ramdisk</b>; <b>Flash ke kedua slot</b>; <b>Beralih slot</b>.</li>
+    <li><b>Flash OrangeFox saat ini</b>, <b>Flash Ulang OrangeFox setelah flashing ROM</b>, <b>Suntikkan OrangeFox</b>,
+      <b>Perbaiki Bootloop Pemulihan</b> — belum teruji dengan vendor_boot dua bagian.</li>
+    <li><b>Pasang Magisk / KernelSU</b> dari recovery, <b>Nonaktifkan vbmeta / DM-Verity / Enkripsi Paksa</b>, init.d, menu <b>OTA</b>.</li>
+    <li><b>Remove FRP</b>, "FRP unlock tool", partisi <code>frp</code>.</li>
+    <li>File untuk HP lain atau versi HyperOS lain.</li>
   </ul></div>
-  <ul>
-    <li>Selalu <b>backup data penting</b> sebelum bereksperimen.</li>
-    <li>Pasang hanya file untuk <b>rothko (14T Pro)</b> — jangan dari HP lain.</li>
-    <li>Jangan pakai "FRP unlock tool" pihak ketiga dan jangan mengutak-atik partisi <code>frp</code>.</li>
-  </ul>
+  <p>Selalu <b>backup data penting</b> sebelum bereksperimen.</p>
+</div>
+
+<h2 id="istilah"><span class="n">19.</span> Istilah</h2>
+<div class="card">
+  <table>
+    <tr><td><b>Recovery</b></td><td>sistem kecil terpisah untuk backup, restore dan memasang file</td></tr>
+    <tr><td><b>vendor_boot</b></td><td>partisi tempat OrangeFox/TWRP tinggal, juga berisi modul untuk boot Android</td></tr>
+    <tr><td><b>boot / init_boot</b></td><td>kernel / tempat root hasil patch</td></tr>
+    <tr><td><b>FASTBOOT</b></td><td>mode (Power + Volume Bawah) untuk menulis partisi dari PC</td></tr>
+    <tr><td><b>Flash</b></td><td>menulis file ke partisi</td></tr>
+    <tr><td><b>Wipe</b> (Bersihkan)</td><td>menghapus isi partisi</td></tr>
+    <tr><td><b>Muat</b> (Mount)</td><td>membuat partisi bisa dibaca/ditulis di recovery</td></tr>
+    <tr><td><b>MTP</b></td><td>mode supaya PC bisa melihat penyimpanan HP</td></tr>
+    <tr><td><b>FRP</b></td><td>perlindungan anti-maling setelah reset tidak tepercaya</td></tr>
+    <tr><td><b>SHA256</b></td><td>sidik jari file untuk memastikan file utuh dan asli</td></tr>
+  </table>
 </div>
 
 <footer>

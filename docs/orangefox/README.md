@@ -35,6 +35,7 @@ Ragu? Pakai **TWRP**. Mau fitur lebih? Coba **OrangeFox** — kembali ke TWRP ha
 
 | | |
 |---|---|
+| 📘 **[Buku Manual Lengkap](buku-manual.md)** | Semua dalam satu buku: unduh, pasang, setiap menu, backup, root, pengaturan, masalah |
 | 📥 **[Pasang & Kembali](pasang.md)** | Pasang OrangeFox, update, kembali ke TWRP atau stok |
 | 🧭 **[Tur Menu OrangeFox](menu.md)** | Fungsi tiap menu, mana yang berbahaya |
 | 🩺 **[Masalah & Log](masalah-dan-log.md)** | Kalau ada kendala |

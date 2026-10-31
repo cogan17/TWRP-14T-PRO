@@ -20,7 +20,7 @@ If something goes wrong, **don't guess** — grab a log and send it.
 |---|---|---|
 | Stuck at **"Trying Decryption"** | OrangeFox test packages from before 30 Oct waited forever for the Weaver chip | Use **ofox-v1.0** or newer |
 | Pattern refused | Wrong pattern / protector | [Encryption & Pattern](../enkripsi-dan-pola.en.md); don't retry over and over |
-| Can't find an Install menu | OrangeFox installs from **Files** | Tap the file → **Install ZIP** / **Flash Image File** |
+| Can't find an Install menu | OrangeFox installs from **Files** | Tap the file → **Install ZIP** / **Install Image** |
 | "Muat" doesn't install anything | "Muat" = **Mount**, not Install | See the [Menu Tour](menu.en.md) |
 | Phone keeps entering recovery | *boot-recovery* loop | Hold **Power + Volume Down** → FASTBOOT → a `.bat` from a PC |
 | Second Space won't unlock | User 999's keys were lost in a factory reset from recovery | Can't be recovered |

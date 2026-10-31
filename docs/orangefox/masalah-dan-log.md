@@ -20,7 +20,7 @@ Kalau ada kendala, **jangan menebak** — ambil log dan kirim.
 |---|---|---|
 | Macet di **"Trying Decryption"** | Paket uji OrangeFox sebelum 30 Okt menunggu chip Weaver selamanya | Pakai **ofox-v1.0** atau lebih baru |
 | Pola ditolak | Pola salah / protektor | [Enkripsi & Pola](../enkripsi-dan-pola.md); jangan ulang berkali-kali |
-| Tidak menemukan menu Install | Di OrangeFox, memasang lewat **Berkas** | Ketuk file → **Pasang ZIP** / **Flash Image File** |
+| Tidak menemukan menu Install | Di OrangeFox, memasang lewat **Berkas** | Ketuk file → **Pasang Zip** / **Pasang Image** |
 | "Muat" tidak memasang apa-apa | "Muat" = **Mount**, bukan Install | Lihat [Tur Menu](menu.md) |
 | HP terus masuk recovery | loop *boot-recovery* | Tahan **Power + Volume Bawah** → FASTBOOT → `.bat` dari PC |
 | Second Space tidak terbuka | Kunci user 999 hilang setelah reset pabrik dari recovery | Tidak bisa dipulihkan |
