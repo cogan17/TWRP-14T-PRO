@@ -11,7 +11,7 @@ Open **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → a rele
 | File | Use |
 |---|---|
 | **`PAKET-OrangeFox-rothko-<version>.zip`** (*package*) | The full package: flash it in recovery **or** extract it for a PC |
-| `OrangeFox-rothko-<version>.img` | The OrangeFox image alone (for Install/Flash Image) |
+| `OrangeFox-rothko-<version>.img` | The OrangeFox image alone (for **Install Image**) |
 | `STOK-vendor_boot-<version>.img` (*stock*) | Xiaomi's original — **removes** the custom recovery |
 
 What's in the package:
@@ -58,14 +58,14 @@ Same as installing: flash the new package zip in OrangeFox (**Files** → tap th
 | From | How |
 |---|---|
 | **OrangeFox** | **Files** → tap the TWRP package zip (`PAKET-TWRP-…zip`, v1.4+) → **Install ZIP** → swipe |
-| **OrangeFox** (image) | **Files** → tap `TWRP-rothko-….img` → **Flash Image File** → pick **`vendor_boot`** → swipe |
+| **OrangeFox** (image) | **Files** → tap `TWRP-rothko-….img` → **Install Image** → pick **`vendor_boot`** → swipe |
 | **PC** | Phone in FASTBOOT → **`3-KEMBALI-KE-TWRP.bat`** |
 
 > ⚠️ In the Indonesian OrangeFox UI, **"Muat" means *Mount***, not Install. Installing a file always starts from **Files** (tap the file).
 
 ## Back to stock (no custom recovery)
 
-Phone in FASTBOOT → **`2-KEMBALIKAN-STOK.bat`**. Or in OrangeFox: **Files** → `STOK-vendor_boot-….img` → **Flash Image File** → **`vendor_boot`**.
+Phone in FASTBOOT → **`2-KEMBALIKAN-STOK.bat`**. Or in OrangeFox: **Files** → `STOK-vendor_boot-….img` → **Install Image** → **`vendor_boot`**.
 
 ## ⚠️ Important
 

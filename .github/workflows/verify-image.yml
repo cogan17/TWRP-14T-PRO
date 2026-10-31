@@ -288,7 +288,7 @@ jobs:
           CARA PASANG
             Lewat TWRP : salin zip ini ke HP (tidak perlu diekstrak),
                          lalu di TWRP pilih Install > zip ini > geser.
-            Lewat OrangeFox (update): Berkas > ketuk zip ini > Pasang ZIP.
+            Lewat OrangeFox (update): Berkas > ketuk zip ini > Pasang Zip.
             Lewat PC   : ekstrak ke folder platform-tools, HP di FASTBOOT
                          (Power + Volume Bawah), klik dua kali 1-PASANG-ORANGEFOX.bat.
             Lalu Reboot > Recovery.

@@ -34,7 +34,7 @@ Pertanyaan yang sering muncul, dari pengalaman nyata di HP ini.
 
 **Restore Data gagal `extractTarFork() … 255`.** Bug di v1.4 ke bawah, diperbaiki di **v1.5**. Langkah darurat: [Backup → Restore Data](backup.md#restore-data).
 
-**Setelah reset pabrik dari TWRP, APK tidak bisa dipasang.** Itu **FRP**. Play Store dan MT Manager tetap bisa. Penjelasan: [Reset & FRP](reset-dan-frp.md).
+**Setelah reset pabrik dari TWRP, APK tidak bisa dipasang.** Itu **FRP**. Play Store dan MT Manager tetap bisa; flash ROM stok penuh menghilangkannya. Penjelasan: [Reset & FRP](reset-dan-frp.md).
 
 **Boleh restore backup Data ke HyperOS versi lain?** Tidak. Lihat [Update HyperOS](update-hos.md).
 

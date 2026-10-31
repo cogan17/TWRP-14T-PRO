@@ -48,7 +48,7 @@
 
 ### 🦊 OrangeFox
 
-A second recovery for this phone: OrangeFox, with a new look, a full file manager and KernelSU module management. It can be swapped with TWRP at any time. **[OrangeFox guide →](docs/orangefox/README.en.md)**
+A second recovery for this phone: OrangeFox, with a new look, a full file manager and KernelSU module management. It can be swapped with TWRP at any time. **[OrangeFox guide →](docs/orangefox/README.en.md)** · **[📘 Complete Manual →](docs/orangefox/buku-manual.en.md)**
 
 ---
 

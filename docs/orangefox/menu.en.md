@@ -16,8 +16,8 @@ A full file manager. **Every install starts here** — tap the file:
 
 | Tapped file | Option | |
 |---|---|---|
-| `.zip` | **Install ZIP** (Pasang ZIP) | ✅ TWRP/OrangeFox packages, AnyKernel3 kernels |
-| `.img` | **Flash Image File** → pick a partition | ⚠️ pick the right one: recovery → `vendor_boot`, kernel → `boot`, patched root → `init_boot` |
+| `.zip` | **Install ZIP** → **Swipe to Install** | ✅ TWRP/OrangeFox packages, AnyKernel3 kernels |
+| `.img` | **Install Image** → pick the **Partition** → swipe | ⚠️ pick the right one: recovery → `vendor_boot`, kernel → `boot`, patched root → `init_boot` |
 | other files | copy, move, rename, delete, zip/unzip, view/edit text | ⚠️ careful when deleting |
 
 The **`STOK-…`** file removes the custom recovery — don't mix it up with `OrangeFox-…`/`TWRP-…`.
@@ -58,6 +58,7 @@ Same rules as TWRP: **Data** doesn't include internal storage, restore Data only
 |---|---|---|
 | **KernelSU modules** (Modul KernelSU) | List, disable or remove KernelSU modules — a lifesaver when a module bootloops the phone | ✅ |
 | **C++ Addons** (Addon C++) | OrangeFox's built-in addons | ⚠️ |
+| **App Manager** (Manajer Aplikasi) | View and remove installed apps | ⚠️ don't remove system apps |
 | **Copy Log to SD** (Salin Log ke kartu SD) | Saves the log to storage, to send when something goes wrong | ✅ |
 | **More** (Lainnya) | Terminal, fix contexts, decrypt again, and more | ⚠️ see below |
 
@@ -68,6 +69,8 @@ On this phone the recovery lives in **`vendor_boot`**, split in two parts like s
 - **Flash current OrangeFox** and **auto-reflash OrangeFox after flashing a ROM** — hidden in ofox-v1.0.
 - **Fix recovery bootloop**, **Inject OrangeFox** — if they show up, don't use them.
 - **Install Magisk / KernelSU from recovery** (under *More*) — install root via [Root & Kernel](../root-dan-kernel.en.md) instead.
+- **Install Ramdisk** and **Flash to both slots** on the Install Image page, **Switch slots** under Reboot.
+- **Remove FRP** (Fox Addons), **Disable DM-Verity / Forced Encryption** (Settings → OTA & ROM).
 - OrangeFox's OTA menus — to update HyperOS follow [Update HyperOS](../update-hos.en.md).
 
 ## ⚙️ Settings (gear icon)

@@ -16,8 +16,8 @@ File manager lengkap. **Semua pemasangan dimulai dari sini** — ketuk file-nya:
 
 | File yang diketuk | Pilihan | |
 |---|---|---|
-| `.zip` | **Pasang ZIP** (Install ZIP) | ✅ paket TWRP/OrangeFox, kernel AnyKernel3 |
-| `.img` | **Flash Image File** → pilih partisi | ⚠️ pilih yang benar: recovery → `vendor_boot`, kernel → `boot`, root patch → `init_boot` |
+| `.zip` | **Pasang Zip** → **Gesek untuk Menginstal** | ✅ paket TWRP/OrangeFox, kernel AnyKernel3 |
+| `.img` | **Pasang Image** → pilih **Partisi** → geser | ⚠️ pilih yang benar: recovery → `vendor_boot`, kernel → `boot`, root patch → `init_boot` |
 | file lain | salin, pindah, ganti nama, hapus, zip/unzip, lihat/edit teks | ⚠️ hati-hati menghapus |
 
 File **`STOK-…`** menghapus recovery kustom — jangan tertukar dengan `OrangeFox-…`/`TWRP-…`.
@@ -58,6 +58,7 @@ Aturannya sama dengan TWRP: **Data** tidak berisi penyimpanan internal, restore 
 |---|---|---|
 | **Modul KernelSU** | Melihat, mematikan atau menghapus modul KernelSU — penyelamat saat modul membuat bootloop | ✅ |
 | **Addon C++** | Addon bawaan OrangeFox | ⚠️ |
+| **Manajer Aplikasi** (App Manager) | Melihat dan menghapus aplikasi terpasang | ⚠️ jangan hapus aplikasi sistem |
 | **Salin Log ke kartu SD** (Copy Log to SD) | Menyimpan log ke penyimpanan, untuk dikirim saat ada masalah | ✅ |
 | **Lainnya** (More) | Terminal, perbaiki konteks, dekripsi ulang, dan lain-lain | ⚠️ lihat di bawah |
 
@@ -68,6 +69,8 @@ Di HP ini recovery tinggal di **`vendor_boot`** dengan susunan dua bagian sepert
 - **Flash OrangeFox saat ini** dan **reflash OrangeFox otomatis setelah flash ROM** — disembunyikan di ofox-v1.0.
 - **Fix recovery bootloop**, **Inject OrangeFox** — kalau muncul, jangan dipakai.
 - **Pasang Magisk / KernelSU dari recovery** (di *Lainnya*) — pasang root lewat [Root & Kernel](../root-dan-kernel.md) saja.
+- **Instal Ramdisk** dan **Flash ke kedua slot** di halaman Pasang Image, **Beralih slot** di Mulai ulang.
+- **Remove FRP** (Addon C++), **Nonaktifkan DM-Verity / Enkripsi Paksa** (Pengaturan → OTA & ROM).
 - Menu OTA OrangeFox — untuk update HyperOS ikuti [Update HyperOS](../update-hos.md).
 
 ## ⚙️ Pengaturan (ikon roda gigi)

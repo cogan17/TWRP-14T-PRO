@@ -30,6 +30,10 @@ Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat wo
 - **Jawaban owner soal penyiapan awal** (30 Okt 2026): setelah reset dari TWRP, owner sampai di layar akun Google, **tidak login**, langsung masuk TWRP lalu Restore Data. Urutan ini dan pelajarannya (layar akun Google = satu-satunya kesempatan resmi mematikan FRP; jangan ditinggalkan untuk restore) ditambahkan ke [Reset & FRP](docs/reset-dan-frp.md). Belum diuji: apakah FRP tetap mati bila login dulu lalu Data di-restore — ditulis jelas sebagai belum diuji.
 - **KSUN vs BakaSU setelah restore**: restore Data mengembalikan aplikasi sesuai tanggal backup (KSUN kembali, BakaSU — dipasang setelah backup — hilang). Root di kernel (`boot`), bukan `init_boot`; manager harus cocok dengan varian kernel yang terpasang. Dicatat di [Root & Kernel](docs/root-dan-kernel.md).
 
+- **FRP hilang lewat flash ROM stok penuh** (owner, 30 Okt 2026): pemasang aplikasi bawaan normal lagi. Ditambahkan ke [Reset & FRP](docs/reset-dan-frp.md) bagian "Cara ampuh". Setelah flash, HP stok total — TWRP/kernel/root perlu dipasang ulang.
+
+- **Buku Manual OrangeFox lengkap** (31 Okt 2026): `docs/orangefox/buku-manual.md` + `.en.md` (20 bab), dan `PANDUAN-ORANGEFOX.html` di paket diperluas jadi buku manual (19 bagian). Nama menu diambil dari kode sumber OrangeFox `fox_16.0` (`gui/theme`, `id_ID.xml`) — label lama yang keliru diperbaiki ("Flash Image File" → **Pasang Image**, "Pasang ZIP" → **Pasang Zip**). HTML baru ikut paket pada rilis OrangeFox berikutnya.
+
 ## Belum terbukti / pertanyaan terbuka
 
 - `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja, tapi workflow sengaja tidak menyentuhnya.
