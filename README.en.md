@@ -18,8 +18,10 @@
   <a href="docs/pasang.en.md"><b>📖 Guide</b></a>
   &nbsp;·&nbsp;
   <a href="CHANGELOG.en.md"><b>📝 Release Notes</b></a>
-  &nbsp;·&nbsp;
-  <a href="https://t.me/coganTWRP"><b>💬 Telegram Community</b></a>
+</p>
+
+<p align="center">
+  <b>💬 Community:</b> <a href="https://t.me/coganTWRP"><b>Telegram</b></a> · <a href="https://www.facebook.com/groups/2221961848351895/"><b>Facebook</b></a>
 </p>
 
 > [!CAUTION]
