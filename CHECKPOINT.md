@@ -32,6 +32,8 @@ Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat wo
 
 - **FRP hilang lewat flash ROM stok penuh** (owner, 30 Okt 2026): pemasang aplikasi bawaan normal lagi. Ditambahkan ke [Reset & FRP](docs/reset-dan-frp.md) bagian "Cara ampuh". Setelah flash, HP stok total — TWRP/kernel/root perlu dipasang ulang.
 
+- **Buku Manual OrangeFox lengkap** (31 Okt 2026): `docs/orangefox/buku-manual.md` + `.en.md` (20 bab), dan `PANDUAN-ORANGEFOX.html` di paket diperluas jadi buku manual (19 bagian). Nama menu diambil dari kode sumber OrangeFox `fox_16.0` (`gui/theme`, `id_ID.xml`) — label lama yang keliru diperbaiki ("Flash Image File" → **Pasang Image**, "Pasang ZIP" → **Pasang Zip**). HTML baru ikut paket pada rilis OrangeFox berikutnya.
+
 ## Belum terbukti / pertanyaan terbuka
 
 - `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja, tapi workflow sengaja tidak menyentuhnya.

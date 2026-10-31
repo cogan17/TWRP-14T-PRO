@@ -48,7 +48,7 @@
 
 ### 🦊 OrangeFox
 
-Varian kedua untuk HP ini: OrangeFox dengan tampilan baru, file manager lengkap, dan manajemen modul KernelSU. Bisa dipasang bergantian dengan TWRP. **[Panduan OrangeFox →](docs/orangefox/README.md)**
+Varian kedua untuk HP ini: OrangeFox dengan tampilan baru, file manager lengkap, dan manajemen modul KernelSU. Bisa dipasang bergantian dengan TWRP. **[Panduan OrangeFox →](docs/orangefox/README.md)** · **[📘 Buku Manual →](docs/orangefox/buku-manual.md)**
 
 ---
 

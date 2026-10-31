@@ -11,7 +11,7 @@ Buka **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → rilis 
 | File | Guna |
 |---|---|
 | **`PAKET-OrangeFox-rothko-<versi>.zip`** | Paket lengkap: bisa di-flash di recovery **atau** diekstrak untuk PC |
-| `OrangeFox-rothko-<versi>.img` | Image OrangeFox saja (untuk Install/Flash Image) |
+| `OrangeFox-rothko-<versi>.img` | Image OrangeFox saja (untuk **Pasang Image**) |
 | `STOK-vendor_boot-<versi>.img` | Bawaan Xiaomi — **menghapus** recovery kustom |
 
 Isi paket:
@@ -51,21 +51,21 @@ Zip mengecek HP & file, menulis OrangeFox ke `vendor_boot`, lalu memeriksa ulang
 
 ## Update OrangeFox
 
-Sama seperti memasang: flash zip paket versi baru di OrangeFox (**Berkas** → ketuk zip → **Pasang ZIP**), atau `1-PASANG-ORANGEFOX.bat` dari PC.
+Sama seperti memasang: flash zip paket versi baru di OrangeFox (**Berkas** → ketuk zip → **Pasang Zip**), atau `1-PASANG-ORANGEFOX.bat` dari PC.
 
 ## Kembali ke TWRP
 
 | Dari | Cara |
 |---|---|
-| **OrangeFox** | **Berkas** → ketuk zip paket TWRP (`PAKET-TWRP-…zip`, v1.4+) → **Pasang ZIP** → geser |
-| **OrangeFox** (image) | **Berkas** → ketuk `TWRP-rothko-….img` → **Flash Image File** → pilih **`vendor_boot`** → geser |
+| **OrangeFox** | **Berkas** → ketuk zip paket TWRP (`PAKET-TWRP-…zip`, v1.4+) → **Pasang Zip** → geser |
+| **OrangeFox** (image) | **Berkas** → ketuk `TWRP-rothko-….img` → **Pasang Image** → pilih **`vendor_boot`** → geser |
 | **PC** | HP di FASTBOOT → **`3-KEMBALI-KE-TWRP.bat`** |
 
 > ⚠️ Di OrangeFox, **"Muat" artinya *Mount***, bukan Install. Memasang file selalu lewat **Berkas** (ketuk file-nya).
 
 ## Kembali ke stok (tanpa recovery kustom)
 
-HP di FASTBOOT → **`2-KEMBALIKAN-STOK.bat`**. Atau di OrangeFox: **Berkas** → `STOK-vendor_boot-….img` → **Flash Image File** → **`vendor_boot`**.
+HP di FASTBOOT → **`2-KEMBALIKAN-STOK.bat`**. Atau di OrangeFox: **Berkas** → `STOK-vendor_boot-….img` → **Pasang Image** → **`vendor_boot`**.
 
 ## ⚠️ Penting
 

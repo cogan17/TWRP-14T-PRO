@@ -35,6 +35,7 @@ Not sure? Use **TWRP**. Want more features? Try **OrangeFox** — going back to 
 
 | | |
 |---|---|
+| 📘 **[Complete Manual](buku-manual.en.md)** | Everything in one book: download, install, every menu, backup, root, settings, issues |
 | 📥 **[Install & Go Back](pasang.en.md)** | Install OrangeFox, update it, go back to TWRP or stock |
 | 🧭 **[OrangeFox Menu Tour](menu.en.md)** | What each menu does, which are dangerous |
 | 🩺 **[Issues & Logs](masalah-dan-log.en.md)** | When something goes wrong |
