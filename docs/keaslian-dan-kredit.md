@@ -2,9 +2,9 @@
 
 [← Kembali ke README](../README.md) · <img src="https://flagcdn.com/24x18/gb.png" width="22" alt=""> [English](keaslian-dan-kredit.en.md)
 
-TWRP rothko di repo ini dibangun dan dirilis otomatis oleh GitHub Actions dari **[cogan17/TWRP-14T-PRO](https://github.com/cogan17/TWRP-14T-PRO)**. Paket rilis (zip) dan image TWRP-nya **ditandatangani secara digital**, jadi siapa pun bisa membuktikan asal-usulnya. (`STOK-vendor_boot` tidak ikut ditandatangani — itu file asli Xiaomi, bukan buatan repo ini.)
+TWRP dan OrangeFox rothko di repo ini dibangun dan dirilis otomatis oleh GitHub Actions dari **[cogan17/TWRP-14T-PRO](https://github.com/cogan17/TWRP-14T-PRO)**. Paket rilis (zip) dan image TWRP/OrangeFox-nya **ditandatangani secara digital**, jadi siapa pun bisa membuktikan asal-usulnya. (`STOK-vendor_boot` tidak ikut ditandatangani — itu file asli Xiaomi, bukan buatan repo ini.)
 
-> Yang dibuktikan adalah **build/port TWRP untuk rothko** ini dibuat dan dirilis dari repo cogan17. TWRP sendiri adalah karya TeamWin dan para kontributor di [Kredit](#-kredit).
+> Yang dibuktikan adalah **build/port TWRP dan OrangeFox untuk rothko** ini dibuat dan dirilis dari repo cogan17. TWRP sendiri adalah karya TeamWin, OrangeFox karya OrangeFox Recovery Project, beserta para kontributor di [Kredit](#-kredit).
 
 ---
 
@@ -16,7 +16,7 @@ TWRP rothko di repo ini dibangun dan dirilis otomatis oleh GitHub Actions dari *
    gh attestation verify <file> --repo cogan17/TWRP-14T-PRO
    ```
    Hanya file resmi dari repo ini yang lolos.
-3. **Di HP** (TWRP → *Advanced → Terminal*):
+3. **Di HP** (TWRP → *Advanced → Terminal*; OrangeFox → *Pilihan → Lainnya → Terminal*):
    - `cat /BUILD-INFO.txt` — repo asal, commit, dan tanggal build.
    - Bandingkan isi partisi dengan sha256 file `.img` di halaman [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases):
      ```
@@ -41,10 +41,11 @@ TWRP rothko di repo ini dibangun dan dirilis otomatis oleh GitHub Actions dari *
 
 | Siapa | Kontribusi |
 |---|---|
-| **[JonesqPacMan](https://github.com/JonesqPacMan)** | Device tree asal rothko: [android_device_xiaomi_rothko_twrp](https://github.com/JonesqPacMan/android_device_xiaomi_rothko_twrp) ("Initial Release", 21 Sep 2025). Repo ini melanjutkan langsung dari commit terakhirnya (`b246a04`) |
-| **Cogan17** | Maintainer: port ke HyperOS 3 / Android 16, dekripsi pola (Gatekeeper), vendor_boot dua-fragmen, sinkron firmware, paket & skrip end user, CI dan rilis |
-| **[TeamWin Recovery Project](https://twrp.me)** | TWRP itu sendiri |
-| **[minimal-manifest-twrp](https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp)** | Manifest sumber build |
+| **[JonesqPacMan](https://github.com/JonesqPacMan)** | Device tree asal rothko: [android_device_xiaomi_rothko_twrp](https://github.com/JonesqPacMan/android_device_xiaomi_rothko_twrp) ("Initial Release", 21 Sep 2025). Repo ini melanjutkan langsung dari commit terakhirnya (`b246a04`). Tree yang sama dipakai **TWRP dan OrangeFox** |
+| **Cogan17** | Maintainer: port ke HyperOS 3 / Android 16, dekripsi pola (Gatekeeper), vendor_boot dua-fragmen, sinkron firmware, paket & skrip end user, CI dan rilis; port **OrangeFox** (build `fox_16.0`, patch vold Weaver→Gatekeeper, paket pasang/kembali) |
+| **[TeamWin Recovery Project](https://twrp.me)** | TWRP itu sendiri — juga dasar OrangeFox |
+| **[OrangeFox Recovery Project](https://gitlab.com/OrangeFox)** | OrangeFox itu sendiri: kode recovery, tema, manifest `fox_16.0`, `foxcli`. Tim inti menurut halaman *Tentang* di OrangeFox: **DarthJabba9**, **MrYacha**, **fordownloads** |
+| **[minimal-manifest-twrp](https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp)** | Manifest sumber build TWRP |
 | **AOSP (Google) & LineageOS** | Kode platform Android yang ikut dibangun |
 | **phhusson** | `vendor_lptools` |
 | **[ssut / payload-dumper-go](https://github.com/ssut/payload-dumper-go)** | Mengekstrak firmware resmi di workflow |
