@@ -18,8 +18,10 @@
   <a href="docs/pasang.md"><b>📖 Panduan</b></a>
   &nbsp;·&nbsp;
   <a href="CHANGELOG.md"><b>📝 Catatan Rilis</b></a>
-  &nbsp;·&nbsp;
-  <a href="https://t.me/coganTWRP"><b>💬 Komunitas Telegram</b></a>
+</p>
+
+<p align="center">
+  <b>💬 Komunitas:</b> <a href="https://t.me/coganTWRP"><b>Telegram</b></a> · <a href="https://www.facebook.com/groups/2221961848351895/"><b>Facebook</b></a>
 </p>
 
 > [!CAUTION]
