@@ -15,6 +15,8 @@ Memasang TWRP ke Xiaomi 14T Pro (rothko) lewat **platform-tools** dan skrip `.ba
 | 🔓 Bootloader | sudah **ter-unlock** |
 | 🔋 Baterai | minimal **50%** |
 
+> 📱 **Tanpa PC?** Kalau HP sudah root, bisa pasang lewat Kernel Flasher: [Pasang lewat Kernel Flasher](pasang-kernel-flasher.md).
+
 ## Langkah
 
 1. **Unduh paket** TWRP (lihat [cara unduh](#cara-unduh-paket) di bawah), lalu **ekstrak semua isinya** ke dalam folder `platform-tools` (timpa kalau ada yang sama).
