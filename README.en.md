@@ -27,6 +27,13 @@
 > [!CAUTION]
 > **Understand the risks before using recovery.** Mistakes during flashing, wiping, or restoring can cause data loss or leave the device unusable. Keep important backups outside the device and read [how to return to stock](docs/kembali-ke-stok.en.md). You decide which actions to perform in TWRP; the maintainer/developer accepts no responsibility for resulting damage or data loss.
 
+> [!WARNING]
+> **Stock HyperOS `OS3.0.301.0.WNNIDXM` only.** *Settings → About phone* shows `3.0.301.0.WNNIDXM`, sometimes with a suffix such as `.C07`. Other versions and **custom ROMs** (e.g. ROMs based on the Vietnamese ROM) are **not supported**.
+>
+> The TWRP/OrangeFox images here are **not generic images** like a GKI `boot.img`. Besides recovery, `vendor_boot` holds Android's boot modules and files, copied **exactly** from that stock ROM version. On another ROM or version, recovery may still open, but Android can **bootloop**.
+>
+> Every release title names its firmware — match it to your phone. Already installed it on another ROM? Restore `vendor_boot` from your own ROM's backup; the `STOK-…` file in the package only fits `OS3.0.301.0.WNNIDXM`.
+
 > [!TIP]
 > A patched kernel with integrated **SUSFS** and additional features is available. [Check it out](https://github.com/cogan17/Cogan-Kernel).
 
