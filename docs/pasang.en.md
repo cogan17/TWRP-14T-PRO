@@ -17,6 +17,8 @@ Install TWRP on the Xiaomi 14T Pro (rothko) with **platform-tools** and the read
 | 🔓 Bootloader | **unlocked** |
 | 🔋 Battery | at least **50%** |
 
+> 📱 **No PC?** If the phone is already rooted, you can install through Kernel Flasher: [Install with Kernel Flasher](pasang-kernel-flasher.en.md).
+
 ## Steps
 
 1. **Download the package** (see [how to download](#how-to-download-the-package) below), then **extract everything** into the `platform-tools` folder (overwrite if asked).
