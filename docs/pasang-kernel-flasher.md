@@ -34,8 +34,8 @@
    sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
    ```
    Untuk v1.5 hasilnya harus `ff5f9f560d5bc696d95b7360ed1b80f80ee2b0eaaa5b78ad254264423b0fdaec`.
-3. Buka **Kernel Flasher**, lalu ketuk slot yang bertanda **[Active]** (mis. *Slot A [Active]*).
-4. Di bagian **Flash**, pilih **Flash Partition Image**. **Jangan** pilih **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** atau **Flash KernelSU LKM Driver** — ketiganya untuk kernel dan root, bukan recovery.
+3. Buka **Kernel Flasher**. Di kartu **Device**, *Slot Suffix* menunjukkan slot aktif (`_a` atau `_b`). Ketuk **View** di kartu slot yang bertanda **[Active]** (mis. *Slot A [Active]*).
+4. Ketuk **Flash**, lalu **Flash Partition Image**. **Jangan** pilih **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** atau **Flash KernelSU LKM Driver** — ketiganya untuk kernel dan root, bukan recovery.
 5. Di daftar partisi, ketuk **vendor_boot**, pilih file image, lalu tunggu sampai muncul **Done**. **Jangan** pilih `boot`, `init_boot` atau partisi lain. Tombol **Reboot** di layar itu belum perlu ditekan.
 6. Cek isi partisi (hanya membaca, aman):
    ```
