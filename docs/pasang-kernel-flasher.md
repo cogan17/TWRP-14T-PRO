@@ -34,20 +34,21 @@
    sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
    ```
    Untuk v1.5 hasilnya harus `ff5f9f560d5bc696d95b7360ed1b80f80ee2b0eaaa5b78ad254264423b0fdaec`.
-3. Buka **Kernel Flasher**. Slot aktif tampil di atas (mis. *Slot A [Active]*).
-4. Tekan **vendor_boot**, pilih file image, lalu tulis. **Jangan** pilih `boot` atau `init_boot`.
-5. Cek isi partisi (hanya membaca, aman):
+3. Buka **Kernel Flasher**, lalu ketuk slot yang bertanda **[Active]** (mis. *Slot A [Active]*).
+4. Di bagian **Flash**, pilih **Flash Partition Image**. **Jangan** pilih **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** atau **Flash KernelSU LKM Driver** — ketiganya untuk kernel dan root, bukan recovery.
+5. Di daftar partisi, ketuk **vendor_boot**, pilih file image, lalu tunggu sampai muncul **Done**. **Jangan** pilih `boot`, `init_boot` atau partisi lain. Tombol **Reboot** di layar itu belum perlu ditekan.
+6. Cek isi partisi (hanya membaca, aman):
    ```
    su -c 'n=$(wc -c < /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img); head -c $n /dev/block/by-name/vendor_boot_a | sha256sum'
    ```
-   Hasilnya harus sama dengan langkah 2.
-6. Masuk recovery: HP **mati**, tahan **Volume Atas + Power**, lepas Power saat logo muncul, lalu tahan Volume Atas.
-7. Buka pola layar kunci **sekali saja**. Jangan tekan **Wipe**, **Format** atau **Reset**.
-8. **Reboot → System**.
+   Hasilnya harus sama dengan langkah 2. Kalau slot aktif **B**, ganti `vendor_boot_a` dengan `vendor_boot_b`.
+7. Masuk recovery: HP **mati**, tahan **Volume Atas + Power**, lepas Power saat logo muncul, lalu tahan Volume Atas.
+8. Buka pola layar kunci **sekali saja**. Jangan tekan **Wipe**, **Format** atau **Reset**.
+9. **Reboot → System**.
 
 ## OrangeFox
 
-Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.0, hash di langkah 2 dan 5 harus `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
+Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.0, hash di langkah 2 dan 6 harus `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
 
 Di OrangeFox, jangan pakai **Flash OrangeFox saat ini**, **reflash otomatis**, atau **Fix recovery bootloop** (lihat [Tur Menu OrangeFox](orangefox/menu.md)).
 
