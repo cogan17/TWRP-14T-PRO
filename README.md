@@ -27,6 +27,13 @@
 > [!CAUTION]
 > **Kenali risikonya sebelum menggunakan recovery.** Kesalahan saat flashing, wipe, atau restore dapat menyebabkan kehilangan data hingga perangkat tidak dapat digunakan. Simpan cadangan data penting di luar perangkat dan pelajari [cara kembali ke stok](docs/kembali-ke-stok.md). Keputusan menjalankan setiap tindakan di TWRP ada di tanganmu; maintainer/developer tidak menanggung kerusakan atau kehilangan data yang timbul.
 
+> [!WARNING]
+> **Hanya untuk ROM stok HyperOS `OS3.0.301.0.WNNIDXM`.** Di *Setelan → Tentang ponsel* tertulis `3.0.301.0.WNNIDXM`, kadang dengan akhiran seperti `.C07`. Versi lain dan **custom ROM** (mis. ROM berbasis ROM Vietnam) **tidak didukung**.
+>
+> Image TWRP/OrangeFox di sini **bukan image generik** seperti `boot.img` GKI. Selain recovery, `vendor_boot` berisi modul dan file boot Android yang disalin **persis** dari ROM stok versi itu. Di ROM atau versi lain, recovery mungkin tetap terbuka, tapi Android bisa **bootloop**.
+>
+> Versi firmware selalu tertulis di judul tiap rilis — samakan dengan HP-mu. Terlanjur memasang di ROM lain? Kembalikan `vendor_boot` dari backup ROM-mu sendiri; file `STOK-…` di paket hanya cocok untuk `OS3.0.301.0.WNNIDXM`.
+
 > [!TIP]
 > Sudah tersedia kernel patch yang terintegrasi dengan **SUSFS** dan beberapa fitur lainnya. [Cek di sini](https://github.com/cogan17/Cogan-Kernel).
 

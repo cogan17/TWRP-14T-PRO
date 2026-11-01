@@ -4,6 +4,8 @@
 
 OrangeFox adalah recovery turunan TWRP dengan tampilan baru dan fitur tambahan. Di repo ini OrangeFox dibangun dari **device tree yang sama** dengan TWRP, jadi perangkat keras, modul, dan dekripsinya sama-sama sudah teruji.
 
+> ⚠️ **Hanya untuk ROM stok HyperOS `OS3.0.301.0.WNNIDXM`.** Bukan untuk versi lain atau custom ROM — Android bisa bootloop. Penjelasan di [README](../../README.md).
+
 > TWRP dan OrangeFox **tinggal di tempat yang sama** (`vendor_boot`). Yang terpasang hanya salah satu, dan keduanya bisa saling menggantikan kapan saja.
 
 ---
