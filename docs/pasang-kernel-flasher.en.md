@@ -34,20 +34,21 @@
    sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
    ```
    For v1.5 it must be `ff5f9f560d5bc696d95b7360ed1b80f80ee2b0eaaa5b78ad254264423b0fdaec`.
-3. Open **Kernel Flasher**. The active slot is shown at the top (e.g. *Slot A [Active]*).
-4. Tap **vendor_boot**, pick the image file, and write it. **Do not** pick `boot` or `init_boot`.
-5. Check the partition contents (read-only, safe):
+3. Open **Kernel Flasher** and tap the slot marked **[Active]** (e.g. *Slot A [Active]*).
+4. Under **Flash**, choose **Flash Partition Image**. **Do not** choose **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** or **Flash KernelSU LKM Driver** — those three are for kernels and root, not recovery.
+5. In the partition list, tap **vendor_boot**, pick the image file, and wait for **Done**. **Do not** pick `boot`, `init_boot` or any other partition. You don't need the **Reboot** button on that screen yet.
+6. Check the partition contents (read-only, safe):
    ```
    su -c 'n=$(wc -c < /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img); head -c $n /dev/block/by-name/vendor_boot_a | sha256sum'
    ```
-   The result must match step 2.
-6. Enter recovery: with the phone **off**, hold **Volume Up + Power**, release Power when the logo appears, then keep holding Volume Up.
-7. Unlock with your pattern **once**. Do not tap **Wipe**, **Format** or **Reset**.
-8. **Reboot → System**.
+   The result must match step 2. If the active slot is **B**, use `vendor_boot_b` instead of `vendor_boot_a`.
+7. Enter recovery: with the phone **off**, hold **Volume Up + Power**, release Power when the logo appears, then keep holding Volume Up.
+8. Unlock with your pattern **once**. Do not tap **Wipe**, **Format** or **Reset**.
+9. **Reboot → System**.
 
 ## OrangeFox
 
-The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.0 the hash in steps 2 and 5 must be `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
+The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.0 the hash in steps 2 and 6 must be `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
 
 In OrangeFox, do not use **Flash current OrangeFox**, **automatic reflash**, or **Fix recovery bootloop** (see [OrangeFox menu tour](orangefox/menu.en.md)).
 
