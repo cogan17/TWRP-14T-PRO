@@ -27,6 +27,8 @@ What's in the package:
 
 ---
 
+> 📱 **No PC?** If the phone is already rooted, you can install through Kernel Flasher: [Install with Kernel Flasher](../pasang-kernel-flasher.en.md).
+
 ## Install OrangeFox
 
 ### From TWRP (no PC — easiest)
