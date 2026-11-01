@@ -10,8 +10,8 @@
 
 | Recovery | Status |
 |---|---|
-| **TWRP v1.5** | ✅ tested by the owner on the phone: partition matches the release, TWRP opens, Android boots normally, root (BakaSU) still works |
-| **OrangeFox ofox-v1.0** | ⚠️ not yet tested this way |
+| **TWRP v1.5** | ✅ tested by the owner on the phone (1 Nov 2026): partition matches the release, TWRP opens, Android boots normally, root (BakaSU) still works |
+| **OrangeFox ofox-v1.0** | ✅ tested by the owner on the phone (1 Nov 2026): partition matches the release, OrangeFox opens and reads storage, Android boots normally, root still works |
 
 ---
 
@@ -47,9 +47,7 @@
 
 ## OrangeFox
 
-The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img`. Compare the hash with the `ofox-v1.0` release notes.
-
-This route has not been tested by the owner for OrangeFox. Follow steps 5 and 6 carefully, and if something goes wrong, follow **If it fails** below.
+The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.0 the hash in steps 2 and 5 must be `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
 
 In OrangeFox, do not use **Flash current OrangeFox**, **automatic reflash**, or **Fix recovery bootloop** (see [OrangeFox menu tour](orangefox/menu.en.md)).
 

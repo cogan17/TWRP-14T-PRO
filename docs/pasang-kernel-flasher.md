@@ -10,8 +10,8 @@
 
 | Recovery | Status |
 |---|---|
-| **TWRP v1.5** | ✅ diuji owner di HP: partisi cocok dengan rilis, TWRP terbuka, Android normal, root (BakaSU) tetap aktif |
-| **OrangeFox ofox-v1.0** | ⚠️ belum diuji dengan cara ini |
+| **TWRP v1.5** | ✅ diuji owner di HP (1 Nov 2026): partisi cocok dengan rilis, TWRP terbuka, Android normal, root (BakaSU) tetap aktif |
+| **OrangeFox ofox-v1.0** | ✅ diuji owner di HP (1 Nov 2026): partisi cocok dengan rilis, OrangeFox terbuka dan membaca penyimpanan, Android normal, root tetap aktif |
 
 ---
 
@@ -47,9 +47,7 @@
 
 ## OrangeFox
 
-Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img`. Cocokkan hash dengan catatan rilis `ofox-v1.0`.
-
-Cara ini belum diuji owner untuk OrangeFox. Ikuti langkah 5 dan 6 dengan cermat, dan kalau ada kendala ikuti bagian **Kalau gagal** di bawah.
+Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.0, hash di langkah 2 dan 5 harus `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
 
 Di OrangeFox, jangan pakai **Flash OrangeFox saat ini**, **reflash otomatis**, atau **Fix recovery bootloop** (lihat [Tur Menu OrangeFox](orangefox/menu.md)).
 

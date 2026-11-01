@@ -27,7 +27,7 @@ Isi paket:
 
 ---
 
-> 📱 **Tanpa PC?** Kalau HP sudah root, bisa pasang lewat Kernel Flasher (belum diuji untuk OrangeFox): [Pasang lewat Kernel Flasher](../pasang-kernel-flasher.md).
+> 📱 **Tanpa PC?** Kalau HP sudah root, bisa pasang lewat Kernel Flasher: [Pasang lewat Kernel Flasher](../pasang-kernel-flasher.md).
 
 ## Pasang OrangeFox
 
