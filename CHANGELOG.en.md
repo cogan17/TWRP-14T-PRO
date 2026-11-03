@@ -9,7 +9,7 @@ The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-1
 ### 🔧 What's fixed
 - The red `E:String resource 'rothko_…' not found` lines when TWRP opens are gone. The yellow warning texts from v1.6 are now also in the base language (English), which TWRP loads before Indonesian. The warnings themselves look and sit the same.
 
-Tested by the owner on the phone (3 Nov 2026, v1.6): the yellow warning shows on the Restore screen.
+Tested by the owner on the phone (3 Nov 2026): on v1.6 the yellow warning shows on the Restore screen; on v1.7 the red lines no longer appear when TWRP opens.
 
 ## v1.6 — 3 Nov 2026
 
