@@ -12,6 +12,8 @@ The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-1
 - The warning follows OrangeFox's language (Indonesian or English).
 - The package now includes **PANDUAN-ORANGEFOX.html** (offline manual, Indonesian), and `3-KEMBALI-KE-TWRP.bat` installs TWRP **v1.6**.
 
+Tested by the owner on the phone (3 Nov 2026): both yellow warnings show and are readable, also with a dark theme and a custom font.
+
 ## ofox-v1.0 — 30 Oct 2026
 
 The first OrangeFox release for rothko, firmware HyperOS OS3.0.301.0.WNNIDXM (Android 16).
