@@ -12,6 +12,8 @@ Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-
 - Teks peringatan mengikuti bahasa OrangeFox (Indonesia atau English).
 - Paket kini berisi **PANDUAN-ORANGEFOX.html** (buku manual offline), dan `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v1.6**.
 
+Diuji owner di HP (3 Nov 2026): kedua peringatan kuning tampil dan terbaca, juga dengan tema gelap dan font kustom.
+
 ## ofox-v1.0 — 30 Okt 2026
 
 Rilis pertama OrangeFox untuk rothko, firmware HyperOS OS3.0.301.0.WNNIDXM (Android 16).
