@@ -227,7 +227,11 @@ Key locations: internal storage = `/sdcard` (same as `/data/media/0`), OrangeFox
 2. On the **Restore Backup** page, tick the partitions to restore → **Swipe to Restore**.
 3. Wait for **Restore completed** → **Menu → Reboot → System**. The first boot after restoring Data can take a while.
 
-The same page offers **Rename Backup** and **Delete Backup**.
+The same page offers **Rename** (pencil icon) and **Delete Backup** (trash icon, top right).
+
+> ⚠️ **A swipe on this page always restores**, it never deletes. To delete, tap the trash icon and swipe on its confirmation page. During a restore, **"Wiping Data"** means Data is emptied before it is filled again — the backup is not deleted. From ofox-v1.1 both pages show a yellow warning.
+
+> 💡 A custom theme or font (saved in `Fox/.theme`) can only be read once your pattern unlocks the data, so OrangeFox reloads its look once and returns to the home screen. Wait for that before you start working.
 
 ### Rules for Data backups
 

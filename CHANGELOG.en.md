@@ -4,6 +4,13 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.6 — 3 Nov 2026
+
+### ✨ What's new
+- **Yellow warning on the Restore screen:** the swipe on this screen **restores** the backup and replaces Data (photos and Download stay safe). To delete a backup, tap **Delete Backup**.
+- **Yellow warning when deleting a backup:** the swipe deletes only that backup; the data on your phone is not changed.
+- The partition list on the Restore screen is a little shorter so the warning fits.
+
 ## v1.5 — 30 Oct 2026
 
 ### 🔧 What's fixed

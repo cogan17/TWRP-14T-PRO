@@ -4,6 +4,14 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tag `ofox-…`). Catatan rilis TWRP: [CHANGELOG.md](CHANGELOG.md).
 
+## ofox-v1.1 — 3 Nov 2026
+
+### ✨ Baru
+- **Peringatan kuning di halaman backup** (Cadangkan → ketuk backup): **Geser untuk Mengembalikan** memulihkan backup dan menimpa Data (foto dan Download tetap aman). Untuk menghapus, ketuk **ikon tempat sampah** di kanan atas.
+- **Peringatan kuning saat menghapus backup:** geseran hanya menghapus backup itu; data di HP tidak berubah.
+- Teks peringatan mengikuti bahasa OrangeFox (Indonesia atau English).
+- Paket kini berisi **PANDUAN-ORANGEFOX.html** (buku manual offline), dan `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v1.6**.
+
 ## ofox-v1.0 — 30 Okt 2026
 
 Rilis pertama OrangeFox untuk rothko, firmware HyperOS OS3.0.301.0.WNNIDXM (Android 16).

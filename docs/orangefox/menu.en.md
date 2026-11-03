@@ -27,6 +27,7 @@ The **`STOK-…`** file removes the custom recovery — don't mix it up with `Or
 - **New Backup** (Cadangan Baru) → pick partitions → swipe. Before experimenting, back up at least `boot` and `init_boot`.
 - **Select Storage** (Pilih Penyimpanan) → internal storage or a USB OTG drive.
 - Tap an existing backup → **Restore** (Pulihkan).
+- ⚠️ On a backup's page, **Swipe to Restore** restores it. To delete a backup, tap the **trash icon** at the top right. From ofox-v1.1 both screens show a yellow warning.
 
 Same rules as TWRP: **Data** doesn't include internal storage, restore Data only onto the same HyperOS version, and **don't factory reset first** before a restore. See [Backup](../backup.en.md).
 

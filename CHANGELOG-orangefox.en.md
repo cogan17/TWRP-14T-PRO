@@ -4,6 +4,14 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tags `ofox-…`). TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
 
+## ofox-v1.1 — 3 Nov 2026
+
+### ✨ What's new
+- **Yellow warning on a backup's page** (Backups → tap a backup): **Swipe to Restore** restores the backup and replaces Data (photos and Download stay safe). To delete it, tap the **trash icon** at the top right.
+- **Yellow warning when deleting a backup:** the swipe deletes only that backup; the data on your phone is not changed.
+- The warning follows OrangeFox's language (Indonesian or English).
+- The package now includes **PANDUAN-ORANGEFOX.html** (offline manual, Indonesian), and `3-KEMBALI-KE-TWRP.bat` installs TWRP **v1.6**.
+
 ## ofox-v1.0 — 30 Oct 2026
 
 The first OrangeFox release for rothko, firmware HyperOS OS3.0.301.0.WNNIDXM (Android 16).

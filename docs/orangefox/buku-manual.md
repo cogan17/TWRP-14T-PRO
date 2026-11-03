@@ -227,7 +227,11 @@ Lokasi penting: penyimpanan internal = `/sdcard` (sama dengan `/data/media/0`), 
 2. Di halaman **Kembalikan cadangan**, centang partisi yang mau dipulihkan → **Geser untuk Mengembalikan**.
 3. Tunggu **Pemulihan selesai** → **Pilihan → Mulai ulang → Sistem**. Boot pertama setelah restore Data bisa lama.
 
-Di halaman yang sama ada **Ganti nama cadangan** dan **Hapus cadangan**.
+Di halaman yang sama ada **Ganti nama** (ikon pensil) dan **Hapus cadangan** (ikon tempat sampah, kanan atas).
+
+> ⚠️ **Geseran di halaman ini selalu memulihkan**, bukan menghapus. Untuk menghapus, ketuk ikon tempat sampah lalu geser di halaman konfirmasinya. Saat restore, tulisan **"Menghapus Data"** berarti Data dikosongkan sebelum diisi ulang — backup-nya tidak dihapus. Sejak ofox-v1.1 kedua halaman memberi peringatan kuning.
+
+> 💡 Tema atau font kustom (tersimpan di `Fox/.theme`) baru terbaca setelah pola dibuka, jadi OrangeFox memuat ulang tampilan sekali lalu kembali ke beranda. Tunggu sampai itu selesai sebelum mulai bekerja.
 
 ### Aturan backup Data
 
