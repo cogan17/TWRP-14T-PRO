@@ -33,7 +33,7 @@
    ```
    sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
    ```
-   For v1.5 it must be `ff5f9f560d5bc696d95b7360ed1b80f80ee2b0eaaa5b78ad254264423b0fdaec`.
+   For v1.7 it must be `52bb80208b91f71f27fdc46ce30cfa9d1a4f4c6d72a46feacc186397877bd826`. Other versions: see the SHA256 in their release notes.
 3. Open **Kernel Flasher**. In the **Device** card, *Slot Suffix* shows the active slot (`_a` or `_b`). Tap **View** on the slot card marked **[Active]** (e.g. *Slot A [Active]*).
 4. Tap **Flash**, then **Flash Partition Image**. **Do not** choose **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** or **Flash KernelSU LKM Driver** — those three are for kernels and root, not recovery.
 5. In the partition list, tap **vendor_boot**, pick the image file, and wait for **Done**. **Do not** pick `boot`, `init_boot` or any other partition. You don't need the **Reboot** button on that screen yet.
@@ -48,7 +48,7 @@
 
 ## OrangeFox
 
-The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.0 the hash in steps 2 and 6 must be `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
+The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.1 the hash in steps 2 and 6 must be `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`.
 
 In OrangeFox, do not use **Flash current OrangeFox**, **automatic reflash**, or **Fix recovery bootloop** (see [OrangeFox menu tour](orangefox/menu.en.md)).
 

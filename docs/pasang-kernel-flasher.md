@@ -33,7 +33,7 @@
    ```
    sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
    ```
-   Untuk v1.5 hasilnya harus `ff5f9f560d5bc696d95b7360ed1b80f80ee2b0eaaa5b78ad254264423b0fdaec`.
+   Untuk v1.7 hasilnya harus `52bb80208b91f71f27fdc46ce30cfa9d1a4f4c6d72a46feacc186397877bd826`. Versi lain: lihat SHA256 di catatan rilisnya.
 3. Buka **Kernel Flasher**. Di kartu **Device**, *Slot Suffix* menunjukkan slot aktif (`_a` atau `_b`). Ketuk **View** di kartu slot yang bertanda **[Active]** (mis. *Slot A [Active]*).
 4. Ketuk **Flash**, lalu **Flash Partition Image**. **Jangan** pilih **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** atau **Flash KernelSU LKM Driver** — ketiganya untuk kernel dan root, bukan recovery.
 5. Di daftar partisi, ketuk **vendor_boot**, pilih file image, lalu tunggu sampai muncul **Done**. **Jangan** pilih `boot`, `init_boot` atau partisi lain. Tombol **Reboot** di layar itu belum perlu ditekan.
@@ -48,7 +48,7 @@
 
 ## OrangeFox
 
-Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.0, hash di langkah 2 dan 6 harus `13e99fcd0315c352b620981fa6f74299933c924ee0a62d35b2031d12940c33a3`.
+Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.1, hash di langkah 2 dan 6 harus `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`.
 
 Di OrangeFox, jangan pakai **Flash OrangeFox saat ini**, **reflash otomatis**, atau **Fix recovery bootloop** (lihat [Tur Menu OrangeFox](orangefox/menu.md)).
 

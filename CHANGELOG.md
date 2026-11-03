@@ -9,7 +9,7 @@ Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-
 ### 🔧 Perbaikan
 - Tulisan merah `E:String resource 'rothko_…' not found` saat TWRP dibuka sudah hilang. Teks peringatan kuning dari v1.6 kini juga ada di bahasa dasar (English) yang dimuat TWRP sebelum bahasa Indonesia. Isi dan letak peringatannya tidak berubah.
 
-Diuji owner di HP (3 Nov 2026, v1.6): peringatan kuning tampil di layar Pulihkan.
+Diuji owner di HP (3 Nov 2026): di v1.6 peringatan kuning tampil di layar Pulihkan; di v1.7 tulisan merah saat TWRP dibuka sudah tidak muncul.
 
 ## v1.6 — 3 Nov 2026
 
