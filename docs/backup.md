@@ -31,6 +31,8 @@ colok kabel → pilih **Transfer File (MTP)** → salin folder ke PC.
 2. **Pulihkan** → pilih folder backup → centang **Data** (dan partisi lain yang perlu) → geser.
 3. Tunggu sampai selesai, lalu **Reboot → System**. Boot pertama bisa lama.
 
+> ⚠️ **Geseran di layar Pulihkan selalu memulihkan**, tidak menghapus. Untuk menghapus backup, ketuk **Hapus Cadangan** dulu, lalu geser di layar konfirmasinya. Saat restore, tulisan **"Menghapus Data"** berarti Data sedang dikosongkan sebelum diisi ulang — bukan backup yang dihapus. Sejak v1.6 kedua layar memberi peringatan kuning.
+
 Aturannya:
 - **Jangan reset pabrik dulu** sebelum restore — TWRP mengosongkan Data sendiri. Reset dari TWRP memicu FRP ([Reset & FRP](reset-dan-frp.md)).
 - Restore Data hanya ke **versi HyperOS yang sama** dengan saat backup ([Update HyperOS](update-hos.md)).
