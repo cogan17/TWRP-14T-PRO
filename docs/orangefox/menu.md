@@ -27,6 +27,7 @@ File **`STOK-…`** menghapus recovery kustom — jangan tertukar dengan `Orange
 - **Cadangan Baru** → pilih partisi → geser. Sebelum bereksperimen, cadangkan minimal `boot` dan `init_boot`.
 - **Pilih Penyimpanan** → simpan di penyimpanan internal atau USB OTG.
 - Ketuk backup yang ada → **Pulihkan** (Restore).
+- ⚠️ Di halaman backup, **Geser untuk Mengembalikan** = restore. Menghapus backup lewat **ikon tempat sampah** di kanan atas. Sejak ofox-v1.1 keduanya diberi peringatan kuning.
 
 Aturannya sama dengan TWRP: **Data** tidak berisi penyimpanan internal, restore Data hanya ke versi HyperOS yang sama, dan **jangan reset pabrik dulu** sebelum restore. Lihat [Backup](../backup.md).
 

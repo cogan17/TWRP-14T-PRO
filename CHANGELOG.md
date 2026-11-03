@@ -4,6 +4,13 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.6 — 3 Nov 2026
+
+### ✨ Baru
+- **Peringatan kuning di layar Pulihkan:** geseran di layar ini **memulihkan** backup dan menimpa Data (foto dan Download tetap aman). Untuk menghapus backup, ketuk **Hapus Cadangan**.
+- **Peringatan kuning saat menghapus backup:** geseran hanya menghapus backup itu; data di HP tidak berubah.
+- Daftar partisi di layar Pulihkan sedikit lebih pendek supaya peringatan muat.
+
 ## v1.5 — 30 Okt 2026
 
 ### 🔧 Perbaikan

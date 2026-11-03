@@ -31,6 +31,8 @@ plug in the cable → choose **File Transfer (MTP)** → copy the folders to you
 2. **Restore** → pick the backup folder → tick **Data** (and any other partitions you need) → swipe.
 3. Wait until it finishes, then **Reboot → System**. The first boot can take a while.
 
+> ⚠️ **A swipe on the Restore screen always restores**, it never deletes. To delete a backup, tap **Delete Backup** first, then swipe on its confirmation screen. During a restore, **"Wiping Data"** means Data is being emptied before it is filled again — the backup itself is not deleted. From v1.6 both screens show a yellow warning.
+
 The rules:
 - **Don't factory reset first** — TWRP empties Data by itself. A reset from TWRP triggers FRP ([Reset & FRP](reset-dan-frp.en.md)).
 - Restore Data only onto the **same HyperOS version** it was made on ([Update HyperOS](update-hos.en.md)).
