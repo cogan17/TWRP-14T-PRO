@@ -10,7 +10,7 @@ on:
       rom_md5:
         description: 'md5 of the ROM zip'
       boot_sha256:
-        description: 'sha256 of boot.img dumped from the phone; proves the ROM is the firmware on the device'
+        description: 'sha256 of boot.img dumped from the phone; proves the ROM is the firmware on the device. "none" when rom_md5 was computed on the phone from the package its updater downloaded'
   push:
     branches: [twrp-14.1_a16]
     paths: ['.github/workflows/extract-stock.yml']
@@ -56,7 +56,12 @@ jobs:
           ~/tools/payload-dumper-go -p boot,init_boot,vendor_boot,vendor -o img payload.bin
           rm payload.bin
           # the ROM must be byte-identical to what runs on the device, else its blobs are wrong
-          echo "$BOOT_SHA256  img/boot.img" | sha256sum -c -
+          if [ "$BOOT_SHA256" = none ]; then
+            # not on the device yet: rom_md5 came from the phone's own downloaded package instead
+            echo "::notice title=Proof::rom_md5 from the package on the phone; boot.img sha256 $(sha256sum img/boot.img | cut -c1-64)"
+          else
+            echo "$BOOT_SHA256  img/boot.img" | sha256sum -c -
+          fi
 
       - uses: actions/upload-artifact@v4
         with:

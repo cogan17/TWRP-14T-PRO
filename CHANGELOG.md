@@ -4,6 +4,12 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.8 — 4 Nov 2026
+
+### ✨ Baru
+- **Untuk HyperOS OS3.0.302.0.WNNIDXM** (update 4 Nov 2026). Modul kernel (kernel `6.1.157`) dan blob keamanan diambil dari ROM resmi 302. Firmware ini terbukti sama dengan yang dipasang di HP owner: md5 paket yang diunduh HP cocok, dan sha256 `boot` di slot baru HP sama dengan hasil ekstraksi.
+- **v1.7 tetap untuk OS3.0.301.0.WNNIDXM.** Jangan memasang v1.8 di 301, atau v1.7 di 302.
+
 ## v1.7 — 3 Nov 2026
 
 ### 🔧 Perbaikan
