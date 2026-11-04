@@ -11,6 +11,10 @@ The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-1
 - `3-KEMBALI-KE-TWRP.bat` installs TWRP **v1.8**.
 - **ofox-v1.1 stays for OS3.0.301.0.WNNIDXM.**
 
+Tested by the owner on the phone (5 Nov 2026, HyperOS 302): TWRP v1.8 opens and decrypts data with the pattern; ofox-v1.2 was installed from TWRP through Install Image, OrangeFox opens and decrypts data; Android boots normally.
+
+Known issue: the phone gets very hot while in recovery (TWRP and OrangeFox). Don't stay in recovery longer than needed and don't charge there; the cause is being investigated.
+
 ## ofox-v1.1 — 3 Nov 2026
 
 ### ✨ What's new
