@@ -64,4 +64,5 @@ Di OrangeFox, jangan pakai **Flash OrangeFox saat ini**, **reflash otomatis**, a
 
 - Cara ini hanya menulis `vendor_boot`. `boot` dan `init_boot` tidak disentuh, jadi root tetap di tempatnya.
 - Setelah HyperOS di-update, **jangan tulis ulang image lama**. Tunggu rilis untuk versi baru, lihat [Update HyperOS](update-hos.md).
+- Kernel Flasher juga bisa menulis kernel root ke **slot cadangan** sebelum restart update, supaya root tidak hilang. Lihat [Update tanpa kehilangan root](update-hos.md#-update-tanpa-kehilangan-root-rom-penuh-diuji-di-hp).
 - Menulis partisi adalah keputusan pemilik HP.
