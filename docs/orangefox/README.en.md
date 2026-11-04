@@ -4,7 +4,7 @@
 
 OrangeFox is a TWRP-based recovery with a new look and extra features. Here it is built from **the same device tree** as TWRP, so its hardware support, modules and decryption are the same proven ones.
 
-> ⚠️ **Stock HyperOS `OS3.0.301.0.WNNIDXM` only.** Not for other versions or custom ROMs — Android can bootloop. Explained in the [README](../../README.en.md).
+> ⚠️ **Stock HyperOS `OS3.0.302.0.WNNIDXM` (ofox-v1.2) or `OS3.0.301.0.WNNIDXM` (ofox-v1.1) only.** Not for other versions or custom ROMs — Android can bootloop. Explained in the [README](../../README.en.md).
 
 > TWRP and OrangeFox **live in the same place** (`vendor_boot`). Only one is installed at a time, and each can replace the other whenever you like.
 
@@ -15,7 +15,7 @@ OrangeFox is a TWRP-based recovery with a new look and extra features. Here it i
 | | |
 |---|---|
 | Base | OrangeFox R12 (`fox_16.0`, Android 16) |
-| Firmware | HyperOS OS3.0.301.0.WNNIDXM |
+| Firmware | HyperOS OS3.0.302.0.WNNIDXM (ofox-v1.1: OS3.0.301.0.WNNIDXM) |
 | Boot, touchscreen | ✅ tested by the owner on the phone |
 | Data decryption with the **pattern** | ✅ tested by the owner on the phone |
 | Indonesian language | ✅ built in |

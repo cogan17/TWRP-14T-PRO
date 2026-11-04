@@ -1,15 +1,15 @@
-# Checkpoint — 30 Okt 2026 (WIB)
+# Checkpoint — 5 Nov 2026 (WIB)
 
 Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owner meminta**. Jangan otomatis mem-flash, menguji HP, atau menerbitkan rilis.
 
 ## Status sekarang
 
-**Tidak ada yang berjalan.** TWRP dan OrangeFox sama-sama punya rilis resmi terbaru dan bisa saling menggantikan.
+**Tidak ada yang berjalan.** HyperOS di HP owner sudah `OS3.0.302.0.WNNIDXM` (slot B, Cogan-Kernel r38, root aktif). Rilis dibuat per firmware:
 
-| | Versi terbaru | |
+| | 302 (terbaru) | 301 |
 |---|---|---|
-| TWRP | **v1.5** | restore Data Android 16 diperbaiki, backup tanpa duplikat |
-| OrangeFox | **ofox-v1.0** | rilis pertama; diuji owner di HP (boot, sentuh, dekripsi pola) |
+| TWRP | **v1.8** (pra-rilis) | v1.7 |
+| OrangeFox | **ofox-v1.2** (pra-rilis) | ofox-v1.1 |
 
 Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat workflow sekali pakai; sekarang tersisa `twrp-14.1_a16`, `orangefox`, dan (opsional, boleh dihapus manual) `docs/pedoman`. Ruleset GitHub `lindungi-branch-utama` melindungi `twrp-14.1_a16` dan `orangefox` dari penghapusan/force-push. "Automatically delete head branches" sudah diaktifkan owner, jadi branch PR berikutnya terhapus otomatis setelah merge.
 
@@ -34,10 +34,15 @@ Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat wo
 
 - **Buku Manual OrangeFox lengkap** (31 Okt 2026): `docs/orangefox/buku-manual.md` + `.en.md` (20 bab), dan `PANDUAN-ORANGEFOX.html` di paket diperluas jadi buku manual (19 bagian). Nama menu diambil dari kode sumber OrangeFox `fox_16.0` (`gui/theme`, `id_ID.xml`) — label lama yang keliru diperbaiki ("Flash Image File" → **Pasang Image**, "Pasang ZIP" → **Pasang Zip**). HTML baru ikut paket pada rilis OrangeFox berikutnya.
 
+- **Firmware 302** (4–5 Nov 2026): owner update 301 → 302 lewat Pembaruan tanpa kehilangan root (Kernel Flasher AK3 ke slot cadangan sebelum *Mulai ulang*; [panduan](docs/update-hos.md)). Bukti firmware: md5 paket di HP = md5 ROM CI, sha256 `boot_b` HP = `boot.img` ekstraksi, dan `STOK-vendor_boot` v1.8 (`0a441a7a…`) = `vendor_boot_b` HP. Extract stock run 41866003349 (PR #91, #92), build TWRP 41867830228, OrangeFox 41867920837.
+
 ## Belum terbukti / pertanyaan terbuka
 
-- `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja, tapi workflow sengaja tidak menyentuhnya.
+- v1.8 dan ofox-v1.2 **belum diuji di HP** (lolos semua gate Verify).
+- Update lewat OTA inkremental dengan partisi termodifikasi belum diuji (yang diuji: ROM penuh).
+- Issue #83: uji ulang reset pabrik dengan login Google dulu (pengingat, bukan kewajiban).
+- `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja.
 
 ## Langkah pertama berikutnya
 
-Tidak ada pekerjaan yang menggantung. Tunggu permintaan owner berikutnya (mis. uji OrangeFox lebih jauh, jawaban soal login Google saat reset, atau topik baru).
+Tunggu owner. Kalau owner memasang v1.8 / ofox-v1.2 di HP dan berhasil, tambahkan catatan "diuji di HP" di CHANGELOG dan jadikan rilis resmi (bukan pra-rilis) atas permintaannya.
