@@ -8,8 +8,8 @@ Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owne
 
 | | 302 (terbaru) | 301 |
 |---|---|---|
-| TWRP | **v1.8** (pra-rilis) | v1.7 |
-| OrangeFox | **ofox-v1.2** (pra-rilis) | ofox-v1.1 |
+| TWRP | **v1.8** (diuji di HP) | v1.7 |
+| OrangeFox | **ofox-v1.2** (diuji di HP) | ofox-v1.1 |
 
 Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat workflow sekali pakai; sekarang tersisa `twrp-14.1_a16`, `orangefox`, dan (opsional, boleh dihapus manual) `docs/pedoman`. Ruleset GitHub `lindungi-branch-utama` melindungi `twrp-14.1_a16` dan `orangefox` dari penghapusan/force-push. "Automatically delete head branches" sudah diaktifkan owner, jadi branch PR berikutnya terhapus otomatis setelah merge.
 
@@ -38,11 +38,12 @@ Repo bersih: 48 branch lama (sisa PR yang sudah di-merge) sudah dihapus lewat wo
 
 ## Belum terbukti / pertanyaan terbuka
 
-- v1.8 dan ofox-v1.2 **belum diuji di HP** (lolos semua gate Verify).
+- v1.8 dan ofox-v1.2 diuji owner 5 Nov 2026 (boot, dekripsi, Android normal); `/BUILD-INFO.txt` tidak sempat dicek.
+- **HP sangat panas di recovery** (TWRP dan OrangeFox, laporan owner 5 Nov 2026). Belum diselidiki.
 - Update lewat OTA inkremental dengan partisi termodifikasi belum diuji (yang diuji: ROM penuh).
 - Issue #83: uji ulang reset pabrik dengan login Google dulu (pengingat, bukan kewajiban).
 - `docs/pedoman` (branch lama, PR #28 ditutup tanpa merge) belum dihapus — aman dihapus manual kapan saja.
 
 ## Langkah pertama berikutnya
 
-Tunggu owner. Kalau owner memasang v1.8 / ofox-v1.2 di HP dan berhasil, tambahkan catatan "diuji di HP" di CHANGELOG dan jadikan rilis resmi (bukan pra-rilis) atas permintaannya.
+Tunggu owner. Kandidat berikutnya: selidiki panas di recovery (dengan bukti: suhu/frekuensi CPU dan log thermal dari recovery).
