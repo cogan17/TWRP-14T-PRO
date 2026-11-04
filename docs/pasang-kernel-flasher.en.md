@@ -64,4 +64,5 @@ In OrangeFox, do not use **Flash current OrangeFox**, **automatic reflash**, or 
 
 - This route only writes `vendor_boot`. `boot` and `init_boot` are not touched, so root stays in place.
 - After a HyperOS update, **do not write an old image again**. Wait for a release for the new version. See [Update HyperOS](update-hos.en.md).
+- Kernel Flasher can also write the root kernel to the **spare slot** before an update's restart, so root isn't lost. See [Update without losing root](update-hos.en.md#-update-without-losing-root-full-rom-tested-on-the-phone).
 - Writing a partition is the phone owner's decision.
