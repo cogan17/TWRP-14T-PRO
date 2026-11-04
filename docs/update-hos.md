@@ -21,14 +21,14 @@ Dengan cara ini datamu **terbawa sendiri**, jadi **tidak perlu restore `/data` m
 
 ## 🔑 Update tanpa kehilangan root (ROM penuh, diuji di HP)
 
-**Diuji owner di HP 4 Nov 2026:** update `OS3.0.301.0.WNNIDXM` → `OS3.0.302.0.WNNIDXM` lewat aplikasi Pembaruan, dengan TWRP dan Cogan-Kernel masih terpasang. HyperOS 302 menyala dengan Cogan-Kernel dan root tetap ada.
+**Diuji owner di HP 4 Nov 2026:** update `OS3.0.301.0.WNNIDXM` → `OS3.0.302.0.WNNIDXM` lewat aplikasi Pembaruan, dengan TWRP dan Cogan-Kernel masih terpasang. HyperOS 302 menyala dari slot B dengan Cogan-Kernel (`uname -r`: `6.1.138-android14-11-g44bda9e8f6e9-ab13792638`) dan root tetap ada.
 
 Kenapa bisa: HP ini memakai **slot A/B**. Pembaruan menulis sistem baru ke **slot cadangan**, dan HP baru pindah ke sana setelah **Mulai ulang**. Sebelum restart, kernel root bisa ditulis dulu ke slot cadangan itu.
 
 **Syarat**
 - Aplikasi Pembaruan mengunduh **ROM penuh**, dengan nama file `…ota_full…zip` di `Download/downloaded_rom`. ROM penuh tidak mengecek isi partisi lama, jadi TWRP dan kernel kustom tidak menghalanginya. OTA *incremental* (selisih) belum diuji dan kemungkinan gagal kalau partisi sudah diubah.
 - HP sudah root, dengan aplikasi **Kernel Flasher** dan **Termux**.
-- Zip Cogan-Kernel **varian yang sama** dengan yang terpasang (KernelSU Next atau BakaSU). Cogan-Kernel ACK 6.1.176 terbukti jalan di 302 (modul kernel 6.1.157).
+- Zip Cogan-Kernel **varian yang sama** dengan yang terpasang (KernelSU Next atau BakaSU). Yang terbukti di 302 (modul stok kernel 6.1.157): Cogan-Kernel `6.1.138-android14-11-g44bda9e8f6e9`.
 - Ada PC untuk jalan darurat.
 
 **Langkah**
