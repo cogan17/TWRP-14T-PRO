@@ -10,6 +10,10 @@ Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-
 - **Untuk HyperOS OS3.0.302.0.WNNIDXM** (update 4 Nov 2026). Modul kernel (kernel `6.1.157`) dan blob keamanan diambil dari ROM resmi 302. Firmware ini terbukti sama dengan yang dipasang di HP owner: md5 paket yang diunduh HP cocok, dan sha256 `boot` di slot baru HP sama dengan hasil ekstraksi.
 - **v1.7 tetap untuk OS3.0.301.0.WNNIDXM.** Jangan memasang v1.8 di 301, atau v1.7 di 302.
 
+Diuji owner di HP (5 Nov 2026, HyperOS 302): TWRP v1.8 terbuka dan membuka data dengan pola; dari TWRP, ofox-v1.2 dipasang lewat Instal Image, OrangeFox terbuka dan membuka data; Android menyala normal.
+
+Diketahui: HP terasa sangat panas selama berada di recovery (TWRP maupun OrangeFox). Jangan berlama-lama di recovery dan jangan mengisi daya di sana; penyebabnya sedang diselidiki.
+
 ## v1.7 — 3 Nov 2026
 
 ### 🔧 Perbaikan

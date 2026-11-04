@@ -11,6 +11,10 @@ Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-
 - `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v1.8**.
 - **ofox-v1.1 tetap untuk OS3.0.301.0.WNNIDXM.**
 
+Diuji owner di HP (5 Nov 2026, HyperOS 302): TWRP v1.8 terbuka dan membuka data dengan pola; dari TWRP, ofox-v1.2 dipasang lewat Instal Image, OrangeFox terbuka dan membuka data; Android menyala normal.
+
+Diketahui: HP terasa sangat panas selama berada di recovery (TWRP maupun OrangeFox). Jangan berlama-lama di recovery dan jangan mengisi daya di sana; penyebabnya sedang diselidiki.
+
 ## ofox-v1.1 — 3 Nov 2026
 
 ### ✨ Baru

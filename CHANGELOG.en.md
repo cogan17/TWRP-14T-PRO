@@ -10,6 +10,10 @@ The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-1
 - **For HyperOS OS3.0.302.0.WNNIDXM** (the 4 Nov 2026 update). Kernel modules (kernel `6.1.157`) and security blobs come from the official 302 ROM. That firmware is proven identical to what the owner's phone installed: the md5 of the package the phone downloaded matches, and the sha256 of `boot` in the phone's new slot equals the extracted one.
 - **v1.7 stays for OS3.0.301.0.WNNIDXM.** Don't install v1.8 on 301, or v1.7 on 302.
 
+Tested by the owner on the phone (5 Nov 2026, HyperOS 302): TWRP v1.8 opens and decrypts data with the pattern; ofox-v1.2 was installed from TWRP through Install Image, OrangeFox opens and decrypts data; Android boots normally.
+
+Known issue: the phone gets very hot while in recovery (TWRP and OrangeFox). Don't stay in recovery longer than needed and don't charge there; the cause is being investigated.
+
 ## v1.7 — 3 Nov 2026
 
 ### 🔧 What's fixed
