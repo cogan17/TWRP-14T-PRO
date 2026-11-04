@@ -42,7 +42,7 @@ OrangeFox adalah recovery turunan TWRP: tampilan modern, file manager lengkap, p
 | | |
 |---|---|
 | Basis | OrangeFox R12, `fox_16.0` (Android 16) |
-| Firmware | HyperOS **OS3.0.301.0.WNNIDXM** |
+| Firmware | HyperOS **OS3.0.302.0.WNNIDXM** (ofox-v1.1: OS3.0.301.0.WNNIDXM) |
 | Tempat tinggal | partisi **`vendor_boot`**, sama seperti TWRP |
 | Diuji owner di HP | boot, layar sentuh, dekripsi pola (ofox-v1.0) |
 

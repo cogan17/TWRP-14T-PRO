@@ -18,7 +18,7 @@
 ## You need
 
 - A phone that is rooted (KernelSU or BakaSU).
-- Firmware **OS3.0.301.0.WNNIDXM** (*Settings → About phone*). The image must match your HyperOS version.
+- Firmware **OS3.0.302.0.WNNIDXM** (v1.8, ofox-v1.2) or **OS3.0.301.0.WNNIDXM** (v1.7, ofox-v1.1) — see *Settings → About phone*. The image must match your HyperOS version.
 - Battery at least **50%**.
 - The **Kernel Flasher** app.
 - The image downloaded from **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)**, not from anywhere else.
@@ -31,15 +31,15 @@
 1. **Back up first** to a PC: the `TWRP/BACKUPS` folder and `STOK-vendor_boot-….img`.
 2. Check the sha256 of the image you are going to write, and compare it with the release notes:
    ```
-   sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
+   sha256sum /sdcard/Download/TWRP-rothko-OS3.0.302.0.WNNIDXM.img
    ```
-   For v1.7 it must be `52bb80208b91f71f27fdc46ce30cfa9d1a4f4c6d72a46feacc186397877bd826`. Other versions: see the SHA256 in their release notes.
+   For v1.8 it must be `74e1038e136464d4926adcf35e55cda3a9e07c8e3bce89fd1a7658d2bade34ea` (v1.7 for 301: `52bb80208b91f71f27fdc46ce30cfa9d1a4f4c6d72a46feacc186397877bd826`). Other versions: see the SHA256 in their release notes.
 3. Open **Kernel Flasher**. In the **Device** card, *Slot Suffix* shows the active slot (`_a` or `_b`). Tap **View** on the slot card marked **[Active]** (e.g. *Slot A [Active]*).
 4. Tap **Flash**, then **Flash Partition Image**. **Do not** choose **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** or **Flash KernelSU LKM Driver** — those three are for kernels and root, not recovery.
 5. In the partition list, tap **vendor_boot**, pick the image file, and wait for **Done**. **Do not** pick `boot`, `init_boot` or any other partition. You don't need the **Reboot** button on that screen yet.
 6. Check the partition contents (read-only, safe):
    ```
-   su -c 'n=$(wc -c < /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img); head -c $n /dev/block/by-name/vendor_boot_a | sha256sum'
+   su -c 'n=$(wc -c < /sdcard/Download/TWRP-rothko-OS3.0.302.0.WNNIDXM.img); head -c $n /dev/block/by-name/vendor_boot_a | sha256sum'
    ```
    The result must match step 2. If the active slot is **B**, use `vendor_boot_b` instead of `vendor_boot_a`.
 7. Enter recovery: with the phone **off**, hold **Volume Up + Power**, release Power when the logo appears, then keep holding Volume Up.
@@ -48,7 +48,7 @@
 
 ## OrangeFox
 
-The steps are the same, using `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.1 the hash in steps 2 and 6 must be `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`.
+The steps are the same, using `OrangeFox-rothko-OS3.0.302.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.2 the hash in steps 2 and 6 must be `OFOXHASH` (ofox-v1.1 for 301: `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`).
 
 In OrangeFox, do not use **Flash current OrangeFox**, **automatic reflash**, or **Fix recovery bootloop** (see [OrangeFox menu tour](orangefox/menu.en.md)).
 
