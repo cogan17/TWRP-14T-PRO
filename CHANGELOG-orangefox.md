@@ -4,6 +4,13 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tag `ofox-…`). Catatan rilis TWRP: [CHANGELOG.md](CHANGELOG.md).
 
+## ofox-v1.2 — 4 Nov 2026
+
+### ✨ Baru
+- **Untuk HyperOS OS3.0.302.0.WNNIDXM** — firmware yang sama dengan TWRP v1.8 (modul kernel `6.1.157`, blob keamanan dari ROM resmi 302).
+- `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v1.8**.
+- **ofox-v1.1 tetap untuk OS3.0.301.0.WNNIDXM.**
+
 ## ofox-v1.1 — 3 Nov 2026
 
 ### ✨ Baru
