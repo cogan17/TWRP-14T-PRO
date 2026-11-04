@@ -48,7 +48,7 @@
 
 ## OrangeFox
 
-The steps are the same, using `OrangeFox-rothko-OS3.0.302.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.2 the hash in steps 2 and 6 must be `OFOXHASH` (ofox-v1.1 for 301: `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`).
+The steps are the same, using `OrangeFox-rothko-OS3.0.302.0.WNNIDXM.img` and the `Fox/BACKUPS` backup folder. For ofox-v1.2 the hash in steps 2 and 6 must be `88f613b66f966546514816184a67673bd37a5f8f2aa9cb7730eb0e406c07a1fe` (ofox-v1.1 for 301: `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`).
 
 In OrangeFox, do not use **Flash current OrangeFox**, **automatic reflash**, or **Fix recovery bootloop** (see [OrangeFox menu tour](orangefox/menu.en.md)).
 

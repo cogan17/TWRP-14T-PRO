@@ -48,7 +48,7 @@
 
 ## OrangeFox
 
-Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.302.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.2, hash di langkah 2 dan 6 harus `OFOXHASH` (ofox-v1.1 untuk 301: `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`).
+Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.302.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.2, hash di langkah 2 dan 6 harus `88f613b66f966546514816184a67673bd37a5f8f2aa9cb7730eb0e406c07a1fe` (ofox-v1.1 untuk 301: `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`).
 
 Di OrangeFox, jangan pakai **Flash OrangeFox saat ini**, **reflash otomatis**, atau **Fix recovery bootloop** (lihat [Tur Menu OrangeFox](orangefox/menu.md)).
 
