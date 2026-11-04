@@ -18,7 +18,7 @@
 ## Yang disiapkan
 
 - HP sudah root (KernelSU atau BakaSU).
-- Firmware **OS3.0.301.0.WNNIDXM** (*Setelan → Tentang ponsel*). Image harus sama dengan versi HyperOS.
+- Firmware **OS3.0.302.0.WNNIDXM** (v1.8, ofox-v1.2) atau **OS3.0.301.0.WNNIDXM** (v1.7, ofox-v1.1) — lihat *Setelan → Tentang ponsel*. Image harus sama dengan versi HyperOS.
 - Baterai minimal **50%**.
 - Aplikasi **Kernel Flasher**.
 - Image diunduh dari **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)**, bukan dari sumber lain.
@@ -31,15 +31,15 @@
 1. **Backup dulu** ke PC: folder `TWRP/BACKUPS` dan `STOK-vendor_boot-….img`.
 2. Cek sha256 image yang akan ditulis, lalu cocokkan dengan catatan rilis:
    ```
-   sha256sum /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img
+   sha256sum /sdcard/Download/TWRP-rothko-OS3.0.302.0.WNNIDXM.img
    ```
-   Untuk v1.7 hasilnya harus `52bb80208b91f71f27fdc46ce30cfa9d1a4f4c6d72a46feacc186397877bd826`. Versi lain: lihat SHA256 di catatan rilisnya.
+   Untuk v1.8 hasilnya harus `74e1038e136464d4926adcf35e55cda3a9e07c8e3bce89fd1a7658d2bade34ea` (v1.7 untuk 301: `52bb80208b91f71f27fdc46ce30cfa9d1a4f4c6d72a46feacc186397877bd826`). Versi lain: lihat SHA256 di catatan rilisnya.
 3. Buka **Kernel Flasher**. Di kartu **Device**, *Slot Suffix* menunjukkan slot aktif (`_a` atau `_b`). Ketuk **View** di kartu slot yang bertanda **[Active]** (mis. *Slot A [Active]*).
 4. Ketuk **Flash**, lalu **Flash Partition Image**. **Jangan** pilih **Flash AK3 Zip**, **Flash AK3 Zip using mkbootfs** atau **Flash KernelSU LKM Driver** — ketiganya untuk kernel dan root, bukan recovery.
 5. Di daftar partisi, ketuk **vendor_boot**, pilih file image, lalu tunggu sampai muncul **Done**. **Jangan** pilih `boot`, `init_boot` atau partisi lain. Tombol **Reboot** di layar itu belum perlu ditekan.
 6. Cek isi partisi (hanya membaca, aman):
    ```
-   su -c 'n=$(wc -c < /sdcard/Download/TWRP-rothko-OS3.0.301.0.WNNIDXM.img); head -c $n /dev/block/by-name/vendor_boot_a | sha256sum'
+   su -c 'n=$(wc -c < /sdcard/Download/TWRP-rothko-OS3.0.302.0.WNNIDXM.img); head -c $n /dev/block/by-name/vendor_boot_a | sha256sum'
    ```
    Hasilnya harus sama dengan langkah 2. Kalau slot aktif **B**, ganti `vendor_boot_a` dengan `vendor_boot_b`.
 7. Masuk recovery: HP **mati**, tahan **Volume Atas + Power**, lepas Power saat logo muncul, lalu tahan Volume Atas.
@@ -48,7 +48,7 @@
 
 ## OrangeFox
 
-Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.301.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.1, hash di langkah 2 dan 6 harus `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`.
+Langkahnya sama, dengan file `OrangeFox-rothko-OS3.0.302.0.WNNIDXM.img` dan folder backup `Fox/BACKUPS`. Untuk ofox-v1.2, hash di langkah 2 dan 6 harus `88f613b66f966546514816184a67673bd37a5f8f2aa9cb7730eb0e406c07a1fe` (ofox-v1.1 untuk 301: `b6cbe63a19021b5f26a4ba089266b367ddeb6e604720c2720a4a1ade61e327f5`).
 
 Di OrangeFox, jangan pakai **Flash OrangeFox saat ini**, **reflash otomatis**, atau **Fix recovery bootloop** (lihat [Tur Menu OrangeFox](orangefox/menu.md)).
 

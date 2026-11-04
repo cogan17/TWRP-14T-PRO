@@ -42,7 +42,7 @@ OrangeFox is a TWRP-based recovery: a modern look, a full file manager, a Kernel
 | | |
 |---|---|
 | Base | OrangeFox R12, `fox_16.0` (Android 16) |
-| Firmware | HyperOS **OS3.0.301.0.WNNIDXM** |
+| Firmware | HyperOS **OS3.0.302.0.WNNIDXM** (ofox-v1.1: OS3.0.301.0.WNNIDXM) |
 | Lives in | the **`vendor_boot`** partition, like TWRP |
 | Tested by the owner on the phone | boot, touchscreen, pattern decryption (ofox-v1.0) |
 
