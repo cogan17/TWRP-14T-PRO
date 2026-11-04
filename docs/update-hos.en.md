@@ -21,14 +21,14 @@ This way your data **carries over by itself**, so there is **no manual `/data` r
 
 ## 🔑 Update without losing root (full ROM, tested on the phone)
 
-**Tested by the owner on the phone, 4 Nov 2026:** updated `OS3.0.301.0.WNNIDXM` → `OS3.0.302.0.WNNIDXM` through the Updater app with TWRP and Cogan-Kernel still installed. HyperOS 302 booted from slot B with Cogan-Kernel (`uname -r`: `6.1.138-android14-11-g44bda9e8f6e9-ab13792638`), and root was kept.
+**Tested by the owner on the phone, 4 Nov 2026:** updated `OS3.0.301.0.WNNIDXM` → `OS3.0.302.0.WNNIDXM` through the Updater app with TWRP and Cogan-Kernel still installed. HyperOS 302 booted from slot B with Cogan-Kernel `6.1.176-Cogan-Rothko-ACK-r38`, and root kept working (CoganSU, SELinux Enforcing). `uname -r` shows `6.1.138-android14-11-…`, this kernel's disguised version string for other apps, not the stock kernel.
 
 Why it works: this phone uses **A/B slots**. The Updater writes the new system to the **spare slot**, and the phone only switches to it on **Restart**. Before that restart, the root kernel can be written to the spare slot first.
 
 **Requirements**
 - The Updater downloads a **full ROM** (file name `…ota_full…zip` in `Download/downloaded_rom`). A full ROM doesn't check the old partitions' contents, so TWRP and a custom kernel don't block it. An *incremental* OTA (a delta) is untested and will likely fail on modified partitions.
 - A rooted phone with **Kernel Flasher** and **Termux**.
-- The Cogan-Kernel zip of the **same variant** you have installed (KernelSU Next or BakaSU). Proven on 302 (stock kernel modules 6.1.157): Cogan-Kernel `6.1.138-android14-11-g44bda9e8f6e9`.
+- The Cogan-Kernel zip of the **same variant** you have installed (KernelSU Next or BakaSU). Proven on 302 (stock kernel modules 6.1.157): Cogan-Kernel **r38** (ACK 6.1.176) with the CoganSU manager.
 - A PC for the emergency route.
 
 **Steps**
