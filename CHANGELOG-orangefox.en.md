@@ -4,6 +4,13 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tags `ofox-…`). TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
 
+## ofox-v1.2 — 4 Nov 2026
+
+### ✨ What's new
+- **For HyperOS OS3.0.302.0.WNNIDXM** — the same firmware as TWRP v1.8 (kernel `6.1.157` modules, security blobs from the official 302 ROM).
+- `3-KEMBALI-KE-TWRP.bat` installs TWRP **v1.8**.
+- **ofox-v1.1 stays for OS3.0.301.0.WNNIDXM.**
+
 ## ofox-v1.1 — 3 Nov 2026
 
 ### ✨ What's new
