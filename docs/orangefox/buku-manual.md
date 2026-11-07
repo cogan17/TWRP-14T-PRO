@@ -63,7 +63,7 @@ OrangeFox adalah recovery turunan TWRP: tampilan modern, file manager lengkap, p
 
 ## 3. Unduh dan cek file
 
-Unduh **hanya** dari **[Telegram](https://t.me/coganTWRP)** → paket **`PAKET-OrangeFox-…`** (bukan `PAKET-TWRP-…`). Versi lama (ofox-v1.2 ke bawah) juga ada di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases). Jangan dari tab *Actions* — itu file uji yang hilang setelah 90 hari.
+Unduh **hanya** dari **[Telegram](https://t.me/coganTWRP)** → paket **`PAKET-OrangeFox-…`** (bukan `PAKET-TWRP-…`). Jangan dari tab *Actions* — itu file uji yang hilang setelah 90 hari.
 
 | File | Guna |
 |---|---|

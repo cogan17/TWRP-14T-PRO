@@ -28,7 +28,7 @@
 > **Kenali risikonya sebelum menggunakan recovery.** Kesalahan saat flashing, wipe, atau restore dapat menyebabkan kehilangan data hingga perangkat tidak dapat digunakan. Simpan cadangan data penting di luar perangkat dan pelajari [cara kembali ke stok](docs/kembali-ke-stok.md). Keputusan menjalankan setiap tindakan di TWRP ada di tanganmu; maintainer/developer tidak menanggung kerusakan atau kehilangan data yang timbul.
 
 > [!WARNING]
-> **Hanya untuk ROM stok HyperOS `OS3.0.302.0.WNNIDXM` (rilis v1.8 dan ofox-v1.2) atau `OS3.0.301.0.WNNIDXM` (v1.7 dan ofox-v1.1).** Di *Setelan → Tentang ponsel* tertulis mis. `3.0.302.0.WNNIDXM`, kadang dengan akhiran seperti `.C07`. Versi lain dan **custom ROM** (mis. ROM berbasis ROM Vietnam) **tidak didukung**.
+> **Hanya untuk ROM stok HyperOS `OS3.0.302.0.WNNIDXM` (v1.8–v1.9 dan ofox-v1.2–v1.3) atau `OS3.0.301.0.WNNIDXM` (v1.7 dan ofox-v1.1).** Di *Setelan → Tentang ponsel* tertulis mis. `3.0.302.0.WNNIDXM`, kadang dengan akhiran seperti `.C07`. Versi lain dan **custom ROM** (mis. ROM berbasis ROM Vietnam) **tidak didukung**.
 >
 > Image TWRP/OrangeFox di sini **bukan image generik** seperti `boot.img` GKI. Selain recovery, `vendor_boot` berisi modul dan file boot Android yang disalin **persis** dari ROM stok versi itu. Di ROM atau versi lain, recovery mungkin tetap terbuka, tapi Android bisa **bootloop**.
 >
