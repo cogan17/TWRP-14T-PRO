@@ -4,6 +4,12 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.9 — 7 Nov 2026
+
+### 🔧 What's fixed
+- **The phone no longer gets very hot during backup/restore.** Recovery has no chip temperature sensors or thermal throttling like Android, so the CPU ran at full speed up to 3.4 GHz. The mid and big cores are now capped at 2 GHz while in recovery. Tested by the owner on the phone with the same cap (7 Nov 2026, in an air-conditioned room): the phone stays only warm and backups take as long as before. Android is not affected.
+- For HyperOS OS3.0.302.0.WNNIDXM, like v1.8.
+
 ## v1.8 — 4 Nov 2026
 
 ### ✨ What's new

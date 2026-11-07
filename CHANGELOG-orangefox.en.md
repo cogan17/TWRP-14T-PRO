@@ -4,6 +4,12 @@
 
 The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tags `ofox-…`). TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
 
+## ofox-v1.3 — 7 Nov 2026
+
+### 🔧 What's fixed
+- **The phone no longer gets very hot during backup/restore.** Recovery has no chip temperature sensors or thermal throttling like Android, so the CPU ran at full speed up to 3.4 GHz. The mid and big cores are now capped at 2 GHz while in recovery. Tested by the owner on the phone with the same cap (7 Nov 2026, in an air-conditioned room): the phone stays only warm and backups take as long as before. Android is not affected.
+- For HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` installs TWRP **v1.8** (the latest TWRP release on GitHub).
+
 ## ofox-v1.2 — 4 Nov 2026
 
 ### ✨ What's new
