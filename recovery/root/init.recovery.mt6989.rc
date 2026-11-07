@@ -56,6 +56,10 @@ on post-fs-data
 
 on boot
     start mtk.plpath.utils.link
+    # Recovery has no SoC temperature sensors or throttling (thermal modules live in vendor_dlkm).
+    # Cap the mid and big cores at 2 GHz: owner test 7 Nov 2026, backup just as fast, phone only warm
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq 2000000
+    write /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq 2000000
     # Focaltech starts in THP mode: raw frames for a touch HAL only Android has. Report touches directly
     write /sys/class/touch/touch_dev/enable_touch_raw 0
     setprop sys.usb.config adb
