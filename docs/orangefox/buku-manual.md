@@ -63,7 +63,7 @@ OrangeFox adalah recovery turunan TWRP: tampilan modern, file manager lengkap, p
 
 ## 3. Unduh dan cek file
 
-Unduh **hanya** dari **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → rilis bertanda **`ofox-v…`** (yang bertanda `v…` saja adalah TWRP). Jangan dari tab *Actions* — itu file uji yang hilang setelah 90 hari.
+Unduh **hanya** dari **[Telegram](https://t.me/coganTWRP)** → paket **`PAKET-OrangeFox-…`** (bukan `PAKET-TWRP-…`). Versi lama (ofox-v1.2 ke bawah) juga ada di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases). Jangan dari tab *Actions* — itu file uji yang hilang setelah 90 hari.
 
 | File | Guna |
 |---|---|
@@ -350,7 +350,7 @@ Update HyperOS menimpa `vendor_boot`, jadi OrangeFox hilang setelah update — i
 1. **Backup** dulu (file pribadi ke PC, partisi `boot`/`init_boot`/`vendor_boot`).
 2. [Kembali ke stok](#16-kembali-ke-twrp-atau-stok) — OTA sering gagal kalau partisi masih termodifikasi.
 3. Update dari **Setelan** HyperOS. **Jangan wipe** — data ikut terbawa.
-4. Pasang OrangeFox **versi yang cocok dengan HyperOS baru**. Belum ada di Releases? Tunggu, atau pakai stok dulu.
+4. Pasang OrangeFox **versi yang cocok dengan HyperOS baru**. Belum ada di Telegram? Tunggu, atau pakai stok dulu.
 
 > ⛔ Jangan pakai menu OTA OrangeFox untuk HyperOS stok. Jangan restore Data dari versi HyperOS lama. Detail: [Update HyperOS](../update-hos.md).
 

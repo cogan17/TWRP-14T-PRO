@@ -2,7 +2,7 @@
 
 [← Back to README](README.en.md) · <img src="https://flagcdn.com/24x18/id.png" width="22" alt=""> [Bahasa Indonesia](CHANGELOG.md)
 
-The top version = the latest one on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
+The top version = the latest one. From v1.9 on, packages are shared on [Telegram](https://t.me/coganTWRP); v1.0–v1.8 are on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
 ## v1.9 — 7 Nov 2026
 

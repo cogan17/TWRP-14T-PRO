@@ -63,7 +63,7 @@ OrangeFox is a TWRP-based recovery: a modern look, a full file manager, a Kernel
 
 ## 3. Download and check the files
 
-Download **only** from **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → a release tagged **`ofox-v…`** (plain `v…` tags are TWRP). Not from the *Actions* tab — those are test files that expire after 90 days.
+Download **only** from **[Telegram](https://t.me/coganTWRP)** → the **`PAKET-OrangeFox-…`** package (not `PAKET-TWRP-…`). Older versions (ofox-v1.2 and earlier) are also on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases). Not from the *Actions* tab — those are test files that expire after 90 days.
 
 | File | Purpose |
 |---|---|
@@ -350,7 +350,7 @@ A HyperOS update overwrites `vendor_boot`, so OrangeFox is gone afterwards — t
 1. **Back up** first (personal files to a PC; the `boot`/`init_boot`/`vendor_boot` partitions).
 2. [Go back to stock](#16-going-back-to-twrp-or-stock) — OTAs often fail while partitions are modified.
 3. Update from HyperOS **Settings**. **Don't wipe** — your data carries over.
-4. Install the OrangeFox **version matching the new HyperOS**. Not in Releases yet? Wait, or stay on stock for now.
+4. Install the OrangeFox **version matching the new HyperOS**. Not on Telegram yet? Wait, or stay on stock for now.
 
 > ⛔ Don't use OrangeFox's OTA menu for stock HyperOS. Don't restore Data from an older HyperOS version. Details: [Update HyperOS](../update-hos.en.md).
 
