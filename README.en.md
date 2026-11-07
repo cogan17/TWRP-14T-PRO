@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/cogan17/TWRP-14T-PRO/releases"><b>⬇️ Download</b></a>
+  <a href="https://t.me/coganTWRP"><b>⬇️ Download (Telegram)</b></a>
   &nbsp;·&nbsp;
   <a href="docs/pasang.en.md"><b>📖 Guide</b></a>
   &nbsp;·&nbsp;

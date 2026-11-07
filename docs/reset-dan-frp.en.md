@@ -50,10 +50,10 @@ FRP is cleared officially when the phone goes through the **setup screens** and 
 **Proven on the owner's phone (30 Oct 2026):** flashing the official HyperOS fastboot ROM cleared FRP — the built-in app installer works again.
 
 1. **Copy all backups to a PC first.** A full flash erases all data, including the TWRP backup folder on internal storage.
-2. Use the official **fastboot** ROM of the **same version** as on the phone (e.g. `OS3.0.302.0.WNNIDXM`) — each TWRP/OrangeFox image in Releases is built for one version, named in its release title.
+2. Use the official **fastboot** ROM of the **same version** as on the phone (e.g. `OS3.0.302.0.WNNIDXM`) — each TWRP/OrangeFox image is built for one version, named in its file name.
 3. In Mi Flash pick **`clean all`**. ⛔ **Not `clean all and lock`** — that relocks the bootloader and TWRP can't be installed until you unlock again.
 4. On the setup screens, **sign in with your own Google account** (the one last used on this phone). Don't skip it.
-5. The phone is now fully stock: TWRP, kernel and root are gone. Reinstall TWRP with `1-PASANG-TWRP.bat` from [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases), then your kernel and root as usual.
+5. The phone is now fully stock: TWRP, kernel and root are gone. Reinstall TWRP with `1-PASANG-TWRP.bat` from the package on [Telegram](https://t.me/coganTWRP), then your kernel and root as usual.
 
 ## What doesn't work
 

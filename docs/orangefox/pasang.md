@@ -6,7 +6,7 @@
 
 ## Unduh
 
-Buka **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → rilis bertanda **`ofox-v…`** (bukan `v…`, itu TWRP). Versi firmware di judulnya harus **sama** dengan HyperOS-mu (*Setelan → Tentang ponsel*).
+Buka **[Telegram](https://t.me/coganTWRP)** → paket **`PAKET-OrangeFox-…`** (bukan `PAKET-TWRP-…`). Versi firmware di nama filenya harus **sama** dengan HyperOS-mu (*Setelan → Tentang ponsel*).
 
 | File | Guna |
 |---|---|

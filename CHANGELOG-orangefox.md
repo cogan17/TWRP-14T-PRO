@@ -2,7 +2,7 @@
 
 [← Panduan OrangeFox](docs/orangefox/README.md) · <img src="https://flagcdn.com/24x18/gb.png" width="22" alt=""> [English](CHANGELOG-orangefox.en.md)
 
-Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tag `ofox-…`). Catatan rilis TWRP: [CHANGELOG.md](CHANGELOG.md).
+Versi teratas = versi terbaru. Mulai ofox-v1.3 paket dibagikan lewat [Telegram](https://t.me/coganTWRP); versi sebelumnya ada di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tag `ofox-…`). Catatan rilis TWRP: [CHANGELOG.md](CHANGELOG.md).
 
 ## ofox-v1.3 — 7 Nov 2026
 

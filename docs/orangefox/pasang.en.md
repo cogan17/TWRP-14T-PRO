@@ -6,7 +6,7 @@
 
 ## Download
 
-Open **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → a release tagged **`ofox-v…`** (not `v…`, which is TWRP). The firmware version in its title must **match** your HyperOS (*Settings → About phone*).
+Open **[Telegram](https://t.me/coganTWRP)** → the **`PAKET-OrangeFox-…`** package (not `PAKET-TWRP-…`, which is TWRP). The firmware version in its title must **match** your HyperOS (*Settings → About phone*).
 
 | File | Use |
 |---|---|
