@@ -21,6 +21,10 @@ on:
         type: choice
         options: [twrp, ofox]
         default: twrp
+      rilis:
+        description: 'Publish to Releases (off: package stays an artifact, e.g. to share elsewhere)'
+        type: boolean
+        default: true
 
 permissions:
   actions: read
@@ -328,7 +332,7 @@ jobs:
 
       # every orangefox push builds; only a new "## ofox-vX.Y" in CHANGELOG-orangefox.md becomes a release
       - name: Publish OrangeFox pre-release
-        if: env.VARIANT == 'ofox'
+        if: env.VARIANT == 'ofox' && (github.event_name != 'workflow_dispatch' || inputs.rilis)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -387,7 +391,7 @@ jobs:
             dist/TWRP-rothko-${{ env.VERSION }}.img
 
       - name: Publish pre-release
-        if: env.VARIANT == 'twrp'
+        if: env.VARIANT == 'twrp' && (github.event_name != 'workflow_dispatch' || inputs.rilis)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
