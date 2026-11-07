@@ -4,6 +4,12 @@
 
 Versi teratas = versi terbaru di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
+## v1.9 — 7 Nov 2026
+
+### 🔧 Perbaikan
+- **HP tidak lagi sangat panas saat backup/restore.** Di recovery tidak ada sensor suhu chip dan rem panas seperti di Android, jadi CPU berjalan penuh sampai 3,4 GHz. Sekarang inti tengah dan besar dibatasi 2 GHz selama di recovery. Diuji owner di HP dengan batas yang sama (7 Nov 2026, di ruang ber-AC): HP hanya hangat, lama backup tidak berubah. Android tidak terpengaruh.
+- Untuk HyperOS OS3.0.302.0.WNNIDXM, seperti v1.8.
+
 ## v1.8 — 4 Nov 2026
 
 ### ✨ Baru
