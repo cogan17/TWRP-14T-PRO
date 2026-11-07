@@ -43,7 +43,7 @@ Lanjut: [cara masuk TWRP →](masuk-twrp.md)
 4. Zip mengecek HP & file, menulis TWRP ke `vendor_boot`, lalu memeriksa ulang. Kalau ada yang tidak cocok, **tidak ada yang ditulis**.
 5. **Reboot → Recovery.**
 
-> ⚠️ Unduh hanya dari **Telegram** (v1.8 ke bawah juga di Releases), jangan dari tab *Actions* (file *artifact* di sana bukan untuk dipasang). Zip **v1.3 ke bawah** belum bisa di-flash di TWRP (muncul *Invalid zip file format*) — pakai cara Install Image di bawah.
+> ⚠️ Unduh hanya dari **Telegram**, jangan dari tab *Actions* (file *artifact* di sana bukan untuk dipasang). Zip **v1.3 ke bawah** belum bisa di-flash di TWRP (muncul *Invalid zip file format*) — pakai cara Install Image di bawah.
 
 **Tanpa PC — cara Install Image:**
 
@@ -64,7 +64,7 @@ Lanjut: [cara masuk TWRP →](masuk-twrp.md)
 2. Cari pengumuman versi terbaru yang firmware-nya **sama** dengan HyperOS-mu (mis. `v1.9 · OS3.0.302.0.WNNIDXM`).
 3. Unduh **`PAKET-TWRP-rothko-...zip`** (~88 MB) — untuk pasang lewat PC, atau di-flash langsung di TWRP (v1.4+).
 
-> Mulai v1.9 paket dibagikan lewat Telegram. Versi v1.0–v1.8 tetap ada di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
+> Semua paket dibagikan lewat Telegram. GitHub hanya untuk pengumuman versi baru.
 
 ## Isi paket
 

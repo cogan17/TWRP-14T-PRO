@@ -8,7 +8,7 @@ Pertanyaan yang sering muncul, dari pengalaman nyata di HP ini.
 
 ### Unduh dan pasang
 
-**File mana yang diunduh?** Selalu dari **[Telegram](https://t.me/coganTWRP)** (v1.8 ke bawah juga di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)), versi yang **sama dengan HyperOS-mu**. Jangan dari tab *Actions* — file *artifact* di sana untuk pengujian, bukan untuk dipasang.
+**File mana yang diunduh?** Selalu dari **[Telegram](https://t.me/coganTWRP)**, versi yang **sama dengan HyperOS-mu**. Jangan dari tab *Actions* — file *artifact* di sana untuk pengujian, bukan untuk dipasang.
 
 **Bedanya `TWRP-…` dan `STOK-…`?** `TWRP-…` = memasang TWRP. `STOK-…` = **menghapus** TWRP, kembali ke bawaan Xiaomi. Keduanya ke `vendor_boot`, jadi jangan sampai tertukar.
 

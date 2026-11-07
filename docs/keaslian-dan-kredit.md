@@ -18,7 +18,7 @@ TWRP dan OrangeFox rothko di repo ini dibangun dan dirilis otomatis oleh GitHub 
    Hanya file resmi dari repo ini yang lolos.
 3. **Di HP** (TWRP → *Advanced → Terminal*; OrangeFox → *Pilihan → Lainnya → Terminal*):
    - `cat /BUILD-INFO.txt` — repo asal, commit, dan tanggal build.
-   - Bandingkan isi partisi dengan sha256 file `.img` yang diumumkan bersama paketnya di [Telegram](https://t.me/coganTWRP) (v1.8 / ofox-v1.2 ke bawah: [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)):
+   - Bandingkan isi partisi dengan sha256 file `.img` yang diumumkan bersama paketnya di [Telegram](https://t.me/coganTWRP):
      ```
      head -c 67108864 /dev/block/by-name/vendor_boot$(getprop ro.boot.slot_suffix) | sha256sum
      ```

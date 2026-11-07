@@ -1,0 +1,93 @@
+name: Bersihkan rilis & paket (sekali pakai)
+
+# One-shot button (owner, 7 Nov 2026): packages are shared on Telegram only, GitHub just announces.
+# Removes the files of every release (or the releases themselves) and the package artifacts, then
+# disables itself so it cannot run twice. "coba" lists only and leaves the button enabled.
+on:
+  workflow_dispatch:
+    inputs:
+      coba:
+        description: 'Coba saja: tampilkan yang akan dihapus, tidak menghapus apa pun'
+        type: boolean
+        default: true
+      halaman_rilis:
+        description: 'pengumuman = hapus file, halaman rilis tetap berisi catatan + link Telegram; hapus = hapus rilis dan tag-nya'
+        type: choice
+        options: [pengumuman, hapus]
+        default: pengumuman
+      artifact:
+        description: 'paket = hanya PAKET-… (disarankan); semua = juga hasil Build dan Extract stock (perbaikan berikutnya perlu build penuh)'
+        type: choice
+        options: [paket, semua]
+        default: paket
+      ketik:
+        description: 'Kalau "Coba saja" dimatikan, ketik HAPUS di sini'
+        default: ''
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  bersihkan:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash
+    env:
+      GH_TOKEN: ${{ github.token }}
+      R: ${{ github.repository }}
+      COBA: ${{ inputs.coba }}
+      HALAMAN: ${{ inputs.halaman_rilis }}
+      ARTIFACT: ${{ inputs.artifact }}
+    steps:
+      - name: Bersihkan
+        env:
+          KETIK: ${{ inputs.ketik }}
+        run: |
+          if [ "$COBA" != true ] && [ "$KETIK" != HAPUS ]; then
+            echo "::error title=Belum dikonfirmasi::ketik HAPUS untuk benar-benar menghapus"; exit 1
+          fi
+          do_() { if [ "$COBA" = true ]; then return 0; fi; "$@" >/dev/null || { echo "::warning::gagal: $*"; failed=$((failed + 1)); }; }
+          failed=0
+          cat > notice.md <<'EOF'
+          📢 **File tidak lagi tersedia di GitHub.** Paket TWRP/OrangeFox untuk Xiaomi 14T Pro (rothko) dibagikan lewat Telegram: https://t.me/coganTWRP
+
+          📢 **Files are no longer on GitHub.** TWRP/OrangeFox packages for the Xiaomi 14T Pro (rothko) are shared on Telegram: https://t.me/coganTWRP
+
+          ---
+
+          EOF
+
+          echo "## 🧹 Bersihkan rilis & paket $([ "$COBA" = true ] && echo '(coba saja)')" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Rilis ($HALAMAN)" >> "$GITHUB_STEP_SUMMARY"
+          gh api --paginate "repos/$R/releases?per_page=100" --jq '.[] | {id, tag_name, assets: [.assets[] | {id, name}]}' > rel.jsonl
+          while read -r rel; do
+            id=$(jq -r .id <<<"$rel"); tag=$(jq -r .tag_name <<<"$rel")
+            echo "- \`$tag\`: $(jq -r '[.assets[].name] | join(", ")' <<<"$rel")" >> "$GITHUB_STEP_SUMMARY"
+            if [ "$HALAMAN" = hapus ]; then
+              do_ gh release delete "$tag" -R "$R" --yes --cleanup-tag
+            else
+              for a in $(jq -r '.assets[].id' <<<"$rel"); do do_ gh api -X DELETE "repos/$R/releases/assets/$a"; done
+              # notice on top, once; the old notes (with the image sha256) stay below it
+              gh api "repos/$R/releases/$id" --jq .body > old.md
+              if ! grep -q 't.me/coganTWRP' old.md; then cat notice.md old.md > new.md; do_ gh api -X PATCH "repos/$R/releases/$id" -F body=@new.md; fi
+            fi
+          done < rel.jsonl
+
+          echo "### Artifact ($ARTIFACT)" >> "$GITHUB_STEP_SUMMARY"
+          f='.artifacts[] | select(.expired | not)'; [ "$ARTIFACT" = semua ] || f="$f | select(.name | startswith(\"PAKET-\"))"
+          gh api --paginate "repos/$R/actions/artifacts?per_page=100" --jq "$f | \"\(.id) \(.name)\"" > art.txt
+          while read -r a name; do
+            echo "- $name ($a)" >> "$GITHUB_STEP_SUMMARY"
+            do_ gh api -X DELETE "repos/$R/actions/artifacts/$a"
+          done < art.txt
+
+          echo "$(wc -l < rel.jsonl) rilis, $(wc -l < art.txt) artifact; gagal: $failed" >> "$GITHUB_STEP_SUMMARY"
+          [ "$failed" -eq 0 ]
+
+      - name: Matikan tombol ini / Disable this button
+        if: ${{ !inputs.coba }}
+        run: |
+          gh api -X PUT "repos/$R/actions/workflows/bersihkan-rilis-sekali.yml/disable"
+          echo "Tombol ini sudah dimatikan dan tidak bisa dijalankan lagi. / This button is now disabled." >> "$GITHUB_STEP_SUMMARY"
