@@ -63,7 +63,7 @@ OrangeFox is a TWRP-based recovery: a modern look, a full file manager, a Kernel
 
 ## 3. Download and check the files
 
-Download **only** from **[Telegram](https://t.me/coganTWRP)** → the **`PAKET-OrangeFox-…`** package (not `PAKET-TWRP-…`). Older versions (ofox-v1.2 and earlier) are also on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases). Not from the *Actions* tab — those are test files that expire after 90 days.
+Download **only** from **[Telegram](https://t.me/coganTWRP)** → the **`PAKET-OrangeFox-…`** package (not `PAKET-TWRP-…`). Not from the *Actions* tab — those are test files that expire after 90 days.
 
 | File | Purpose |
 |---|---|

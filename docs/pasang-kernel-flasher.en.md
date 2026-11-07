@@ -21,7 +21,7 @@
 - Firmware **OS3.0.302.0.WNNIDXM** (v1.8, ofox-v1.2) or **OS3.0.301.0.WNNIDXM** (v1.7, ofox-v1.1) — see *Settings → About phone*. The image must match your HyperOS version.
 - Battery at least **50%**.
 - The **Kernel Flasher** app.
-- The image downloaded from **[Telegram](https://t.me/coganTWRP)** (v1.8 / ofox-v1.2 and older: [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)), not from anywhere else.
+- The image downloaded from **[Telegram](https://t.me/coganTWRP)**, not from anywhere else.
 - A copy of `STOK-vendor_boot-….img` on the phone **and** on a PC.
 
 ---

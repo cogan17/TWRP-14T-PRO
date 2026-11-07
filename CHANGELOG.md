@@ -2,7 +2,7 @@
 
 [← Kembali ke README](README.md) · <img src="https://flagcdn.com/24x18/gb.png" width="22" alt=""> [English](CHANGELOG.en.md)
 
-Versi teratas = versi terbaru. Mulai v1.9 paket dibagikan lewat [Telegram](https://t.me/coganTWRP); v1.0–v1.8 ada di [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
+Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.me/coganTWRP); GitHub hanya untuk pengumuman.
 
 ## v1.9 — 7 Nov 2026
 

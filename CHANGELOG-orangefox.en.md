@@ -2,7 +2,7 @@
 
 [← OrangeFox guide](docs/orangefox/README.en.md) · <img src="https://flagcdn.com/24x18/id.png" width="22" alt=""> [Bahasa Indonesia](CHANGELOG-orangefox.md)
 
-The top version = the latest one. From ofox-v1.3 on, packages are shared on [Telegram](https://t.me/coganTWRP); earlier versions are on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) (tags `ofox-…`). TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
+The top version = the latest one. All packages are shared on [Telegram](https://t.me/coganTWRP); GitHub is for announcements only. TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
 
 ## ofox-v1.3 — 7 Nov 2026
 

@@ -8,7 +8,7 @@ Common questions, from real experience on this phone.
 
 ### Download and install
 
-**Which file do I download?** Always from **[Telegram](https://t.me/coganTWRP)** (v1.8 and older also on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)), the version that **matches your HyperOS**. Not from the *Actions* tab — the *artifacts* there are for testing, not for installing.
+**Which file do I download?** Always from **[Telegram](https://t.me/coganTWRP)**, the version that **matches your HyperOS**. Not from the *Actions* tab — the *artifacts* there are for testing, not for installing.
 
 **`TWRP-…` vs `STOK-…`?** `TWRP-…` installs TWRP. `STOK-…` (*stock*) **removes** TWRP and goes back to Xiaomi's original. Both go to `vendor_boot`, so don't mix them up.
 

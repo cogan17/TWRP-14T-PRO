@@ -45,7 +45,7 @@ Next: [how to enter TWRP →](masuk-twrp.en.md)
 4. The zip checks the phone and the file, writes TWRP to `vendor_boot`, then reads it back. If anything doesn't match, **nothing is written**.
 5. **Reboot → Recovery.**
 
-> ⚠️ Download only from **Telegram** (v1.8 and older are also on Releases), not from the *Actions* tab (the *artifact* files there are not for installing). Zips from **v1.3 and older** can't be flashed in TWRP (*Invalid zip file format*) — use Install Image below.
+> ⚠️ Download only from **Telegram**, not from the *Actions* tab (the *artifact* files there are not for installing). Zips from **v1.3 and older** can't be flashed in TWRP (*Invalid zip file format*) — use Install Image below.
 
 **Without a PC — Install Image:**
 
@@ -66,7 +66,7 @@ Next: [how to enter TWRP →](masuk-twrp.en.md)
 2. Find the newest announcement whose firmware **matches** your HyperOS (e.g. `v1.9 · OS3.0.302.0.WNNIDXM`).
 3. Download **`PAKET-TWRP-rothko-...zip`** (*package*, ~88 MB) — for installing from a PC, or flash it straight in TWRP (v1.4+).
 
-> From v1.9 on, packages are shared on Telegram. v1.0–v1.8 remain on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
+> All packages are shared on Telegram. GitHub only announces new versions.
 
 ## What's in the package
 
