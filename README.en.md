@@ -26,6 +26,8 @@
 
 > [!CAUTION]
 > **Understand the risks before using recovery.** Mistakes during flashing, wiping, or restoring can cause data loss or leave the device unusable. Keep important backups outside the device and read [how to return to stock](docs/kembali-ke-stok.en.md). You decide which actions to perform in TWRP; the maintainer/developer accepts no responsibility for resulting damage or data loss.
+>
+> **IF YOU DON'T LIKE SOMEONE ELSE'S WORK, THERE IS NO NEED TO MOCK IT, LET ALONE INSULT IT. RESPECT EACH OTHER!**
 
 > [!WARNING]
 > **Stock HyperOS `OS3.0.302.0.WNNIDXM` (v1.8–v1.9 and ofox-v1.2–v1.3) or `OS3.0.301.0.WNNIDXM` (v1.7 and ofox-v1.1) only.** *Settings → About phone* shows e.g. `3.0.302.0.WNNIDXM`, sometimes with a suffix such as `.C07`. Other versions and **custom ROMs** (e.g. ROMs based on the Vietnamese ROM) are **not supported**.
