@@ -22,9 +22,9 @@ on:
         options: [twrp, ofox]
         default: twrp
       rilis:
-        description: 'Publish to Releases (off: package stays an artifact, e.g. to share elsewhere)'
+        description: 'Also publish to GitHub Releases (packages are shared on Telegram; normally off)'
         type: boolean
-        default: true
+        default: false
 
 permissions:
   actions: read
@@ -252,9 +252,12 @@ jobs:
         run: |
           o=OrangeFox-rothko-$VERSION.img; t=TWRP-rothko-$VERSION.img; s=STOK-vendor_boot-$VERSION.img
           mkdir ofox && cp twrp/vendor_boot.img ofox/$o && cp stock/vendor_boot.img ofox/$s
-          # the way back to TWRP: image of the newest TWRP release (tags vX.Y)
-          rel=$(gh api "repos/$GITHUB_REPOSITORY/releases" --jq '[.[] | select(.tag_name | test("^v[0-9]"))][0].tag_name')
-          gh release download "$rel" -R "$GITHUB_REPOSITORY" -p "$t" -D ofox
+          # the way back to TWRP: newest TWRP package for this firmware (Verify artifact; packages go out on Telegram, not Releases)
+          id=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=PAKET-TWRP-rothko-$VERSION&per_page=10" --jq '[.artifacts[] | select(.expired | not)][0].id // empty')
+          [ -n "$id" ] || { echo "::error title=TWRP belum ada::no unexpired PAKET-TWRP-rothko-$VERSION artifact: run Verify for TWRP on this firmware first"; exit 1; }
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > twrp-paket.zip && unzip -q -j twrp-paket.zip "*$t" -d ofox && [ -s "ofox/$t" ]
+          # shortcut: the label is the newest '## vX.Y' in CHANGELOG.md, assumed to be what that artifact was built as
+          rel=$(grep -m1 -oE '^## v[0-9]+(\.[0-9]+)*' repo/CHANGELOG.md | cut -c4-)
           sum() { sha256sum "ofox/$1" | cut -d' ' -f1; }
           os=$(sum $o); ts=$(sum $t); ss=$(sum $s)
           # the TWRP package files, filled in for one image; "TWRP" in their text becomes OrangeFox
@@ -332,7 +335,7 @@ jobs:
 
       # every orangefox push builds; only a new "## ofox-vX.Y" in CHANGELOG-orangefox.md becomes a release
       - name: Publish OrangeFox pre-release
-        if: env.VARIANT == 'ofox' && (github.event_name != 'workflow_dispatch' || inputs.rilis)
+        if: env.VARIANT == 'ofox' && github.event_name == 'workflow_dispatch' && inputs.rilis
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -391,7 +394,7 @@ jobs:
             dist/TWRP-rothko-${{ env.VERSION }}.img
 
       - name: Publish pre-release
-        if: env.VARIANT == 'twrp' && (github.event_name != 'workflow_dispatch' || inputs.rilis)
+        if: env.VARIANT == 'twrp' && github.event_name == 'workflow_dispatch' && inputs.rilis
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}

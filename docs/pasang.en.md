@@ -39,17 +39,17 @@ Next: [how to enter TWRP →](masuk-twrp.en.md)
 
 **Without a PC — easiest (zip, since v1.4):**
 
-1. On the phone, open **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** → download **`PAKET-TWRP-rothko-<version>.zip`**. The version must **match** your HyperOS (*Settings → About phone*).
+1. On the phone, open **[Telegram](https://t.me/coganTWRP)** → download **`PAKET-TWRP-rothko-<version>.zip`**. The version must **match** your HyperOS (*Settings → About phone*).
 2. [Enter TWRP](masuk-twrp.en.md) → unlock with your [pattern](enkripsi-dan-pola.en.md).
 3. **Install** → open the `Download` folder → pick that zip → swipe. **No unzipping**, no partition to choose.
 4. The zip checks the phone and the file, writes TWRP to `vendor_boot`, then reads it back. If anything doesn't match, **nothing is written**.
 5. **Reboot → Recovery.**
 
-> ⚠️ Download only from **Releases**, not from the *Actions* tab (the *artifact* files there are not for installing). Zips from **v1.3 and older** can't be flashed in TWRP (*Invalid zip file format*) — use Install Image below.
+> ⚠️ Download only from **Telegram** (v1.8 and older are also on Releases), not from the *Actions* tab (the *artifact* files there are not for installing). Zips from **v1.3 and older** can't be flashed in TWRP (*Invalid zip file format*) — use Install Image below.
 
 **Without a PC — Install Image:**
 
-1. Download **`TWRP-rothko-<version>.img`** from [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
+1. Download **`TWRP-rothko-<version>.img`** from [Telegram](https://t.me/coganTWRP).
 2. In TWRP: **Install** → **Install Image** button → open the `Download` folder → pick `TWRP-rothko-<version>.img` (**not** `STOK-…`).
 3. Choose **vendor_boot** → swipe to flash.
 4. **Reboot → Recovery.** Recent builds include `/BUILD-INFO.txt` (see *Advanced → File Manager*) with the build date.
@@ -62,11 +62,11 @@ Next: [how to enter TWRP →](masuk-twrp.en.md)
 
 ## How to download the package
 
-1. Open the **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)** page.
-2. Pick the latest release (e.g. `v1.4 · OS3.0.301.0.WNNIDXM`).
-3. Under **Assets**, click **`PAKET-TWRP-rothko-...zip`** (*package*, ~88 MB) — for installing from a PC, or flash it straight in TWRP (v1.4+).
+1. Open the **[Telegram](https://t.me/coganTWRP)** group.
+2. Find the newest announcement whose firmware **matches** your HyperOS (e.g. `v1.9 · OS3.0.302.0.WNNIDXM`).
+3. Download **`PAKET-TWRP-rothko-...zip`** (*package*, ~88 MB) — for installing from a PC, or flash it straight in TWRP (v1.4+).
 
-> No login needed — anyone can download release files.
+> From v1.9 on, packages are shared on Telegram. v1.0–v1.8 remain on [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases).
 
 ## What's in the package
 

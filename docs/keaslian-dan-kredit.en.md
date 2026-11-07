@@ -18,7 +18,7 @@ TWRP and OrangeFox for rothko in this repo are built and released automatically 
    Only official files from this repo pass.
 3. **On the phone** (TWRP → *Advanced → Terminal*; OrangeFox → *Menu → Other → Terminal*):
    - `cat /BUILD-INFO.txt` — origin repo, commit and build date.
-   - Compare the partition with the sha256 of the `.img` file on the [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases) page:
+   - Compare the partition with the sha256 of the `.img` file posted with its package on [Telegram](https://t.me/coganTWRP) (v1.8 / ofox-v1.2 and older: [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)):
      ```
      head -c 67108864 /dev/block/by-name/vendor_boot$(getprop ro.boot.slot_suffix) | sha256sum
      ```

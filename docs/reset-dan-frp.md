@@ -50,10 +50,10 @@ FRP hilang secara resmi saat HP melewati **layar penyiapan awal** dan kamu **mas
 **Terbukti di HP owner (30 Okt 2026):** flash ROM fastboot resmi HyperOS menghilangkan FRP — pemasang aplikasi bawaan kembali normal.
 
 1. **Pindahkan semua backup ke PC dulu.** Flash penuh menghapus seluruh data, termasuk folder backup TWRP di memori internal.
-2. Pakai ROM **fastboot** resmi dengan **versi yang sama** seperti di HP (mis. `OS3.0.302.0.WNNIDXM`) — setiap image TWRP/OrangeFox di Releases dibuat untuk satu versi, yang tertulis di judul rilisnya.
+2. Pakai ROM **fastboot** resmi dengan **versi yang sama** seperti di HP (mis. `OS3.0.302.0.WNNIDXM`) — setiap image TWRP/OrangeFox dibuat untuk satu versi, yang tertulis di nama filenya.
 3. Di Mi Flash pilih **`clean all`**. ⛔ **Jangan `clean all and lock`** — bootloader terkunci lagi dan TWRP tidak bisa dipasang sampai unlock ulang.
 4. Di layar penyiapan awal, **masuk akun Google-mu sendiri** (yang terakhir dipakai di HP ini). Jangan dilewati.
-5. HP sekarang stok total: TWRP, kernel dan root hilang. Pasang lagi TWRP lewat `1-PASANG-TWRP.bat` dari [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases), lalu kernel dan root seperti biasa.
+5. HP sekarang stok total: TWRP, kernel dan root hilang. Pasang lagi TWRP lewat `1-PASANG-TWRP.bat` dari paket di [Telegram](https://t.me/coganTWRP), lalu kernel dan root seperti biasa.
 
 ## Yang tidak berhasil
 

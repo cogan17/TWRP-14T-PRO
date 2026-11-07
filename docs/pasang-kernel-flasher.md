@@ -21,7 +21,7 @@
 - Firmware **OS3.0.302.0.WNNIDXM** (v1.8, ofox-v1.2) atau **OS3.0.301.0.WNNIDXM** (v1.7, ofox-v1.1) — lihat *Setelan → Tentang ponsel*. Image harus sama dengan versi HyperOS.
 - Baterai minimal **50%**.
 - Aplikasi **Kernel Flasher**.
-- Image diunduh dari **[Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)**, bukan dari sumber lain.
+- Image diunduh dari **[Telegram](https://t.me/coganTWRP)** (v1.8 / ofox-v1.2 ke bawah: [Releases](https://github.com/cogan17/TWRP-14T-PRO/releases)), bukan dari sumber lain.
 - Salinan `STOK-vendor_boot-….img` di HP **dan** di PC.
 
 ---
