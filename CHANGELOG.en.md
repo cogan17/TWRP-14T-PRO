@@ -11,6 +11,8 @@ The top version = the latest one. All packages are shared on [Telegram](https://
 - The automatic checks now reject an image whose cmdline or bootconfig differs from stock.
 - For HyperOS OS3.0.302.0.WNNIDXM, with the 2 GHz CPU cap from v1.9.
 
+Tested by the owner on the phone (9 Nov 2026, HyperOS 302): TWRP v2.0 and ofox-v1.4 boot and decrypt data with the pattern. In Android, `/proc/bootconfig` no longer contains `selinux`, and Duck Detector (22:30 WIB) shows SELinux *Enforcing* and *System Properties* clean (Boot: Clean), no longer Danger.
+
 ## v1.9 — 7 Nov 2026
 
 ### 🔧 What's fixed
