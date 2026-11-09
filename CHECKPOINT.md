@@ -1,6 +1,6 @@
 # Masukan dari sesi CoganSU — 9 Nov 2026 (WIB)
 
-Ditulis oleh sesi CoganSU atas permintaan owner ("Kerjakan di sesi TWRP saja"). **Sedang dikerjakan** (owner, 9 Nov 2026): branch `fix/selinux-cmdline` — patch `patches/system_core/0001` (init recovery permissive sendiri), gate Verify cmdline/bootconfig = stok. Bukti: cmdline stok 302 = `bootopt=64S3,32N2,64N2`, bootconfig kosong (dibaca dari `STOK-vendor_boot` yang diunggah owner, sha256 `0a441a7a…`); image v1.9 = `… androidboot.selinux=permissive`. `BoardConfig.mk` diperbaiki, Extract stock run 42606158473, lalu build penuh **v2.0 / ofox-v1.4** dan uji di HP sebagai build uji.
+Ditulis oleh sesi CoganSU atas permintaan owner ("Kerjakan di sesi TWRP saja"). **Selesai** (9 Nov 2026): **v2.0 / ofox-v1.4** (PR #105; OrangeFox: manifest `fox_16.0` dikunci ke 31 Okt karena perubahan upstream 8 Nov menambah `external/util-linux` yang bentrok dengan `libblkid`). cmdline `vendor_boot` = stok `bootopt=64S3,32N2,64N2`, recovery permissive sendiri (patch `patches/system_core/0001`), gate Verify cmdline/bootconfig = stok. **Diuji owner di HP** (22.30 WIB): kedua recovery membuka data; Android `/proc/bootconfig` tanpa `selinux`, Duck Detector SELinux Enforcing, System Properties tidak lagi Danger. Paket diunduh owner (ARSIP 9 Nov) lalu semua artifact dihapus; perubahan berikutnya perlu Extract stock + build penuh. Bagian di bawah adalah catatan asal.
 
 ## Temuan: `vendor_boot` TWRP/OrangeFox membocorkan `androidboot.selinux=permissive` ke Android normal
 
@@ -38,8 +38,8 @@ Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owne
 ## Status sekarang
 
 - HP owner: HyperOS `OS3.0.302.0.WNNIDXM` (slot B), Cogan-Kernel r38, root aktif.
-- Versi terbaru: **TWRP v1.9** dan **OrangeFox ofox-v1.3** (302; CPU dibatasi 2 GHz di recovery supaya tidak panas saat backup — batasnya diuji owner lewat Terminal 7 Nov, image-nya sendiri belum tercatat diuji di HP). Untuk 301: v1.7 / ofox-v1.1.
-- **Distribusi lewat Telegram** (https://t.me/coganTWRP), bukan GitHub. Owner menghapus semua rilis, tag, artifact dan log run (7–8 Nov 2026); semua versi lama tersimpan di 6 arsip `ARSIP-…` milik owner. Di GitHub tersisa branch `twrp-14.1_a16` dan `orangefox` saja.
+- Versi terbaru: **TWRP v2.0** (image sha256 `5f670024…`) dan **OrangeFox ofox-v1.4** (`dab7b88c…`), 302, diuji owner di HP 9 Nov: cmdline `vendor_boot` sama dengan stok, CPU dibatasi 2 GHz dari v1.9. Untuk 301: v1.7 / ofox-v1.1.
+- **Distribusi lewat Telegram** (https://t.me/coganTWRP), bukan GitHub. Owner menghapus semua rilis, tag, artifact dan log run (7–8 Nov 2026); semua versi tersimpan di arsip `ARSIP-…` milik owner (7 Nov: sampai v1.9 / ofox-v1.3; 9 Nov: v2.0 / ofox-v1.4). Artifact dihapus lagi 9 Nov setelah diunduh. Di GitHub tersisa branch `twrp-14.1_a16` dan `orangefox` saja.
 - Karena artifact ikut terhapus: versi berikutnya perlu **Extract stock blobs** lalu **Build TWRP** dan **Build OrangeFox** penuh (bukan jalur cepat).
 - README punya ajakan saling menghargai di kotak CAUTION (PR #102).
 
@@ -50,14 +50,16 @@ Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owne
 - OrangeFox ofox-v1.0–v1.1 (30 Okt–3 Nov), buku manual OrangeFox (31 Okt).
 - Firmware 302 (4–5 Nov): v1.8 / ofox-v1.2, diuji owner di HP; update HyperOS tanpa kehilangan root ([panduan](docs/update-hos.md)).
 - Panas di recovery (5–7 Nov): tidak ada sensor suhu/rem panas di recovery; CPU dibatasi 2 GHz → v1.9 / ofox-v1.3.
+- SELinux (9 Nov): `androidboot.selinux=permissive` bocor ke Android lewat cmdline `vendor_boot` → v2.0 / ofox-v1.4, diuji owner di HP.
 
 ## Belum terbukti / pertanyaan terbuka
 
-- v1.9 / ofox-v1.3 belum tercatat diuji di HP.
+- OrangeFox memakai manifest `fox_16.0` 31 Okt (dikunci di `build-ofox.yml`). Saat versi recovery OrangeFox yang dirombak sudah publik, buka kuncinya dan uji ulang.
+- BUILD-INFO OrangeFox memberi label "Build TWRP" pada link run Build OrangeFox (`verify-image.yml` baris 126); rapikan di versi berikutnya.
 - Update lewat OTA inkremental dengan partisi termodifikasi belum diuji (yang diuji: ROM penuh).
 - Issue #83: uji ulang reset pabrik dengan login Google dulu (pengingat, bukan kewajiban).
 - Beban sistem ±12 di recovery walau CPU menganggur (proses tertahan, belum diperiksa; kemungkinan tidak terkait panas).
 
 ## Langkah pertama berikutnya
 
-Lanjutkan perbaikan SELinux di atas: tunggu build v2.0 / ofox-v1.4, beri owner link run + sha256, owner menguji di HP (recovery boot, dekripsi pola, backup kecil; Android: `cat /proc/bootconfig | grep -i selinux` kosong, Duck Detector tidak Danger).
+Tidak ada pekerjaan yang tertunda. Owner membagikan v2.0 / ofox-v1.4 di Telegram. Tunggu permintaan owner berikutnya.
