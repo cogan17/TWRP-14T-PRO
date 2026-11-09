@@ -4,6 +4,13 @@
 
 The top version = the latest one. All packages are shared on [Telegram](https://t.me/coganTWRP); GitHub is for announcements only.
 
+## v2.0 — 9 Nov 2026
+
+### 🔧 What's fixed
+- **Android no longer sees `ro.boot.selinux=permissive`.** Since v1.0 the TWRP/OrangeFox `vendor_boot` carried `androidboot.selinux=permissive` on its cmdline, and normal Android boots with that cmdline too. SELinux stayed *Enforcing*, but detector apps (e.g. Duck Detector) flagged it as dangerous. The cmdline is now identical to stock (`bootopt=64S3,32N2,64N2`), and the recovery turns permissive by itself without touching Android.
+- The automatic checks now reject an image whose cmdline or bootconfig differs from stock.
+- For HyperOS OS3.0.302.0.WNNIDXM, with the 2 GHz CPU cap from v1.9.
+
 ## v1.9 — 7 Nov 2026
 
 ### 🔧 What's fixed
