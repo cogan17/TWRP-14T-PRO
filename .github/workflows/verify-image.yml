@@ -234,6 +234,10 @@ jobs:
           check "image fits the vendor_boot partition" '[ $(stat -c%s twrp/vendor_boot.img) -le $(stat -c%s stock/vendor_boot.img) ]'
           check "ramdisk is zstd" '[ "$(head -c4 u-twrp/vendor_ramdisk00 | od -An -tx1 | tr -d " ")" = 28b52ffd ]'
           check "dtb identical to stock" 'cmp -s u-twrp/dtb u-stock/dtb'
+          # normal Android boots with this header too: androidboot.selinux=permissive here leaked into ro.boot.selinux (fixed 9 Nov 2026)
+          cl() { grep -m1 'vendor command line args' $1.txt; }
+          check "vendor cmdline identical to stock: $(cl stock)" '[ -n "$(cl stock)" ] && [ "$(cl twrp)" = "$(cl stock)" ]'
+          check "vendor bootconfig identical to stock" '[ "$(cat u-twrp/bootconfig 2>/dev/null)" = "$(cat u-stock/bootconfig 2>/dev/null)" ]'
           check "TWRP UI in recovery fragment (twres/, system/bin/recovery)" '[ -d frag-twrp-vendor_ramdisk01/twres ] && [ -e frag-twrp-vendor_ramdisk01/system/bin/recovery ]'
           check "twrp.flags present" '[ -f r-twrp/system/etc/twrp.flags ]'
           check "dependency checker self-test" 'python3 -I repo/.github/scripts/recovery_deps_test.py'
