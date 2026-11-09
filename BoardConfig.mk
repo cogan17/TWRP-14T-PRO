@@ -98,7 +98,8 @@ BOARD_BOOT_HEADER_VERSION := 4
 BOARD_DTB_SIZE := 444690
 BOARD_DTB_OFFSET := 0x07C88000
 BOARD_HEADER_SIZE := 2128
-BOARD_VENDOR_CMDLINE := "bootopt=64S3,32N2,64N2 androidboot.selinux=permissive"
+# identical to stock: normal Android boots with this cmdline too (recovery turns permissive in its own init)
+BOARD_VENDOR_CMDLINE := "bootopt=64S3,32N2,64N2"
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_PAGE_SIZE) --board ""
