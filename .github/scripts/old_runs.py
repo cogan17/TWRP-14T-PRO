@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 """Pick old GitHub Actions runs to delete, one run id per output line.
 
-usage: old_runs.py <keep> [<protected run id>...]  < runs.jsonl
+usage: old_runs.py <keep|semua|all> [<protected run id>...]  < runs.jsonl
 runs.jsonl: one Actions run object per line (id, workflow_id, status, conclusion, created_at).
 
 Per workflow it keeps the <keep> newest finished runs and the newest successful one (Verify's
 fast path and republish read that run's artifact). Protected ids (e.g. STOCK_RUN, whose stock
 images every Verify downloads) and unfinished runs are never picked. Releases are not runs, so
-deleting runs never touches them.
+deleting runs never touches them. "semua"/"all" picks every finished run, nothing kept.
 """
 import json
 import sys
 from collections import defaultdict
 
 
-def pick(runs, keep, protected):
+def pick(runs, keep, protected, keep_success=True):
     by_wf = defaultdict(list)
     for r in runs:
         by_wf[r['workflow_id']].append(r)
@@ -22,7 +22,8 @@ def pick(runs, keep, protected):
     for wf_runs in by_wf.values():
         done = sorted((r for r in wf_runs if r['status'] == 'completed'), key=lambda r: r['created_at'], reverse=True)
         kept = {r['id'] for r in done[:keep]}
-        kept |= {r['id'] for r in [r for r in done if r['conclusion'] == 'success'][:1]}
+        if keep_success:
+            kept |= {r['id'] for r in [r for r in done if r['conclusion'] == 'success'][:1]}
         old += [r['id'] for r in done if r['id'] not in kept and r['id'] not in protected]
     return sorted(old)
 
@@ -37,13 +38,22 @@ def selftest():
     # b: 4,3 newest, 1 newest success; v: 6,5 newest (7 unfinished); s: 9 newest, 8 protected
     assert got == [2], got
     assert pick(runs, 0, set()) == [2, 3, 4, 5, 6, 8], pick(runs, 0, set())
+    assert pick(runs, 0, set(), keep_success=False) == [1, 2, 3, 4, 5, 6, 8, 9]
+    assert main(['all'], []) == ''  # nothing to delete: no blank line (it became a bad DELETE)
     print('old_runs self-test ok')
+
+
+def main(args, lines):
+    if args[0] in ('semua', 'all'):
+        old = pick([json.loads(l) for l in lines if l.strip()], 0, set(), keep_success=False)
+    else:
+        keep, protected = int(args[0]), {int(x) for x in args[1:] if x.isdigit()}
+        old = pick([json.loads(l) for l in lines if l.strip()], keep, protected)
+    return ''.join(f'{i}\n' for i in old)
 
 
 if __name__ == '__main__':
     if sys.argv[1:] == ['--selftest']:
         selftest()
         sys.exit(0)
-    keep, protected = int(sys.argv[1]), {int(x) for x in sys.argv[2:] if x.isdigit()}
-    runs = [json.loads(line) for line in sys.stdin if line.strip()]
-    print('\n'.join(map(str, pick(runs, keep, protected))))
+    sys.stdout.write(main(sys.argv[1:], sys.stdin))

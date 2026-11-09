@@ -2,12 +2,12 @@ name: Hapus log run lama (rothko)
 
 # Button only: tidies the Actions tab. Keeps the newest runs of every workflow, the newest successful
 # one (its artifact feeds Verify's fast path) and STOCK_RUN (stock images for every Verify).
-# Releases and their files are not runs, so they are never touched.
+# "semua"/"all" deletes every finished run (only this one stays). Releases are not runs: never touched.
 on:
   workflow_dispatch:
     inputs:
       keep:
-        description: 'Run terbaru yang disimpan per workflow / newest runs kept per workflow'
+        description: 'Run terbaru yang disimpan per workflow, atau semua = hapus semua / newest runs kept per workflow, or all = delete all'
         default: '5'
       dry_run:
         description: 'Coba saja, jangan hapus / list only, delete nothing'
@@ -33,7 +33,8 @@ jobs:
           KEEP: ${{ inputs.keep }}
           DRY: ${{ inputs.dry_run }}
         run: |
-          [[ "$KEEP" =~ ^[0-9]+$ ]] || { echo "::error title=keep::bukan angka / not a number: $KEEP"; exit 1; }
+          KEEP=$(echo "$KEEP" | tr 'A-Z' 'a-z' | tr -d ' ')
+          [[ "$KEEP" =~ ^([0-9]+|semua|all)$ ]] || { echo "::error title=keep::bukan angka, semua atau all / not a number, semua or all: $KEEP"; exit 1; }
           . .github/firmware.env
           gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs?per_page=100" \
             --jq '.workflow_runs[] | {id, workflow_id, status, conclusion, created_at}' > runs.jsonl
@@ -51,7 +52,11 @@ jobs:
             echo "| | Indonesia | English |"
             echo "|---|---|---|"
             echo "| Run di repo | $total | runs in repo |"
-            echo "| Disimpan per workflow | $KEEP terbaru + 1 sukses terakhir + STOCK_RUN | newest $KEEP + latest success + STOCK_RUN |"
+            if [[ "$KEEP" =~ ^[0-9]+$ ]]; then
+              echo "| Disimpan per workflow | $KEEP terbaru + 1 sukses terakhir + STOCK_RUN | newest $KEEP + latest success + STOCK_RUN |"
+            else
+              echo "| Disimpan | tidak ada (semua dihapus) | none (all deleted) |"
+            fi
             if [ "$DRY" = true ]; then
               echo "| Akan dihapus (coba saja) | $n | would be deleted (dry run) |"
             else
