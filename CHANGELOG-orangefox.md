@@ -11,7 +11,7 @@ Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.
 - Pemeriksaan otomatis kini menolak image yang cmdline atau bootconfig-nya berbeda dari stok.
 - Untuk HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v2.0**.
 
-Diuji owner di HP (9 Nov 2026, HyperOS 302): TWRP v2.0 dan ofox-v1.4 terbuka dan membuka data dengan pola. Di Android, `/proc/bootconfig` tidak lagi berisi `selinux`, dan Duck Detector (22.30 WIB) menunjukkan SELinux *Enforcing* dan *System Properties* bersih (Boot: Clean), tidak lagi Danger.
+Diuji owner di HP (9 Nov 2026, HyperOS 302): TWRP v2.0 dan ofox-v1.4 terbuka, membuka data dengan pola, dan `getenforce` di Terminal recovery menunjukkan *Permissive*. Di Android, `/proc/bootconfig` tidak lagi berisi `selinux`, dan Duck Detector (22.30 WIB) menunjukkan SELinux *Enforcing* dan *System Properties* bersih (Boot: Clean), tidak lagi Danger.
 
 ## ofox-v1.3 — 7 Nov 2026
 
