@@ -1,3 +1,36 @@
+# Masukan dari sesi CoganSU — 9 Nov 2026 (WIB)
+
+Ditulis oleh sesi CoganSU atas permintaan owner ("Kerjakan di sesi TWRP saja"). **Belum dikerjakan apa pun di repo ini**; sesi TWRP mulai dari sini, lalu lanjut hanya setelah owner meminta.
+
+## Temuan: `vendor_boot` TWRP/OrangeFox membocorkan `androidboot.selinux=permissive` ke Android normal
+
+- **Gejala** (Duck Detector, laporan 9 Nov 2026 16.44 WIB, HP dari boot 8 Nov ±17.49 WIB): *System Properties* **Danger** karena `ro.boot.selinux: permissive`. Laporan 6 Nov (sebelum `vendor_boot` TWRP/OrangeFox dipasang lagi) masih `enforcing`.
+- **Bukti di HP** (owner, 9 Nov ±16.51 WIB, Android normal, bukan recovery):
+  ```
+  $ su -c 'cat /proc/bootconfig | grep -i selinux; getenforce'
+  androidboot.selinux = "permissive"
+  Enforcing
+  ```
+  SELinux yang berjalan tetap *Enforcing* (HyperOS `user` mengabaikan permintaan permissive), tetapi `ro.boot.selinux` ikut `permissive`. Ketidakcocokan itulah yang ditangkap pendeteksi.
+- **Sumber**: `BoardConfig.mk:101`, sama di `twrp-14.1_a16` dan `orangefox`, sejak *Initial Release* (`7987908`):
+  ```
+  BOARD_VENDOR_CMDLINE := "bootopt=64S3,32N2,64N2 androidboot.selinux=permissive"
+  ```
+  Recovery rothko ada di `vendor_boot` (`BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true`), dan cmdline `vendor_boot` dipakai **juga saat Android boot biasa**, bukan hanya recovery.
+- **Bukan dari CoganSU / Cogan Kernel**: keduanya tidak pernah menulis `androidboot.selinux` (dicek di kedua repo, 9 Nov).
+
+## Yang perlu dikerjakan (setelah owner meminta)
+
+1. Cocokkan dulu dengan cmdline `vendor_boot` **stok 302** (`extract-stock.yml` mencetak header `vendor_boot`, termasuk `cmdline`; atau `unpack_bootimg.py` pada `STOK-vendor_boot` v1.8). Dugaan: stok hanya `bootopt=64S3,32N2,64N2` tanpa `androidboot.selinux`. Pastikan dengan bukti, jangan menebak.
+2. Hapus `androidboot.selinux=permissive` dari `BOARD_VENDOR_CMDLINE` di **kedua** branch, supaya Android normal kembali sama dengan stok.
+3. Pastikan recovery tetap bisa bekerja tanpa parameter itu: periksa apakah TWRP/OrangeFox `fox_16.0` (build eng/userdebug) sudah permissive sendiri, atau perlu `setenforce 0` lewat `init.recovery.*.rc` yang hanya ada di ramdisk recovery. Uji di HP: TWRP dan OrangeFox boot, sentuh, dekripsi pola, mount Data, backup/restore kecil.
+4. Uji Android normal sesudah flash: `cat /proc/bootconfig | grep -i selinux` harus kosong, `getprop ro.boot.selinux` kosong atau `enforcing`, `getenforce` = `Enforcing`, lalu Duck Detector *System Properties* tidak lagi Danger.
+5. Rilis TWRP dan OrangeFox baru per firmware seperti biasa; catat di CHANGELOG bahwa versi lama membocorkan `ro.boot.selinux=permissive`.
+
+Catatan: temuan *ADB Runtime* dan *Dangerous Apps* di laporan yang sama bukan urusan repo ini (adbd yang tetap jalan, dan SUSFS/HMA).
+
+---
+
 # Checkpoint — 5 Nov 2026 (WIB)
 
 Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owner meminta**. Jangan otomatis mem-flash, menguji HP, atau menerbitkan rilis.
