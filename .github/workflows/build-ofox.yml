@@ -68,7 +68,9 @@ jobs:
           echo $$ | sudo tee /sys/fs/cgroup/build/cgroup.procs >/dev/null
           cd "$SRC"
           # official route (gitlab.com/OrangeFox/sync README): complete manifest, no local patches
-          repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_16.0
+          # fox_16.0 manifest pinned to 31 Oct: the 8 Nov change adds external/util-linux etc. for the
+          # refactored recovery, whose libblkid clashes with the public recovery's (ckati error)
+          repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b 64cf55fbad23f7b4677fc0b9ed6bc6e2e2cd8628
           # Android 16 soong_build was OOM-killed analysing the full tree: drop projects a recovery
           # never builds (cloud SDKs, ML, car apps, kernel prebuilts, the Mondrian reference tree)
           mkdir -p .repo/local_manifests
