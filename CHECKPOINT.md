@@ -1,6 +1,6 @@
 # Masukan dari sesi CoganSU — 9 Nov 2026 (WIB)
 
-Ditulis oleh sesi CoganSU atas permintaan owner ("Kerjakan di sesi TWRP saja"). **Sedang dikerjakan** (owner, 9 Nov 2026): branch `fix/selinux-cmdline` — patch `patches/system_core/0001` (init recovery permissive sendiri), gate Verify cmdline/bootconfig = stok. Menunggu bukti cmdline stok 302 dari Termux owner, lalu `BoardConfig.mk`, Extract stock, build penuh TWRP + OrangeFox, uji di HP sebagai build uji.
+Ditulis oleh sesi CoganSU atas permintaan owner ("Kerjakan di sesi TWRP saja"). **Sedang dikerjakan** (owner, 9 Nov 2026): branch `fix/selinux-cmdline` — patch `patches/system_core/0001` (init recovery permissive sendiri), gate Verify cmdline/bootconfig = stok. Bukti: cmdline stok 302 = `bootopt=64S3,32N2,64N2`, bootconfig kosong (dibaca dari `STOK-vendor_boot` yang diunggah owner, sha256 `0a441a7a…`); image v1.9 = `… androidboot.selinux=permissive`. `BoardConfig.mk` diperbaiki, Extract stock run 42606158473, lalu build penuh **v2.0 / ofox-v1.4** dan uji di HP sebagai build uji.
 
 ## Temuan: `vendor_boot` TWRP/OrangeFox membocorkan `androidboot.selinux=permissive` ke Android normal
 
@@ -60,4 +60,4 @@ Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owne
 
 ## Langkah pertama berikutnya
 
-Lanjutkan perbaikan SELinux di atas setelah owner mengirim hasil Termux cmdline stok.
+Lanjutkan perbaikan SELinux di atas: tunggu build v2.0 / ofox-v1.4, beri owner link run + sha256, owner menguji di HP (recovery boot, dekripsi pola, backup kecil; Android: `cat /proc/bootconfig | grep -i selinux` kosong, Duck Detector tidak Danger).
