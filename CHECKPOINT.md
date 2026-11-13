@@ -38,7 +38,8 @@ Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owne
 ## Status sekarang
 
 - HP owner: HyperOS `OS3.0.302.0.WNNIDXM` (slot B), Cogan-Kernel r38, root aktif.
-- Versi terbaru: **TWRP v2.0** (image sha256 `5f670024…`) dan **OrangeFox ofox-v1.4** (`dab7b88c…`), 302, diuji owner di HP 9 Nov: cmdline `vendor_boot` sama dengan stok, CPU dibatasi 2 GHz dari v1.9. Untuk 301: v1.7 / ofox-v1.1.
+- Versi terbaru: **TWRP v2.1** (image sha256 `6fb12fb1…`) dan **OrangeFox ofox-v1.5** (`f44b38bc…`), 302, diuji owner di HP 14 Nov: splash *Maintained by cogan17*, bar atas TWRP seperti HyperOS. Isinya semua perbaikan v2.0 / ofox-v1.4 (cmdline sama dengan stok). Untuk 301: v1.7 / ofox-v1.1.
+- Diketahui: layar OrangeFox berkedip 2–3 kali saat backup dimulai (backup tetap berhasil, TWRP tidak). Log 14 Nov: OrangeFox melewati halaman kosong `filecheck` → `backup` → `backup_prep` → `filecheck` sebelum `backup_run` (bawaan `pages/backup.xml` + `universal.xml`); belum dibuktikan itu penyebabnya, belum diperbaiki.
 - **Distribusi lewat Telegram** (https://t.me/coganTWRP), bukan GitHub. Owner menghapus semua rilis, tag, artifact dan log run (7–8 Nov 2026); semua versi tersimpan di arsip `ARSIP-…` milik owner (7 Nov: sampai v1.9 / ofox-v1.3; 9 Nov: v2.0 / ofox-v1.4). Artifact dihapus lagi 9 Nov setelah diunduh. Di GitHub tersisa branch `twrp-14.1_a16` dan `orangefox` saja.
 - Karena artifact ikut terhapus: versi berikutnya perlu **Extract stock blobs** lalu **Build TWRP** dan **Build OrangeFox** penuh (bukan jalur cepat).
 - README punya ajakan saling menghargai di kotak CAUTION (PR #102).

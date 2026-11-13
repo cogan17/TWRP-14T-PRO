@@ -14,6 +14,8 @@ The top version = the latest one. All packages are shared on [Telegram](https://
 - The version line on the splash screen now fits the screen (it was cut off on both sides).
 - For HyperOS OS3.0.302.0.WNNIDXM, with all fixes from v2.0.
 
+Tested by the owner on the phone (14 Nov 2026, HyperOS 302): the TWRP and OrangeFox splash screens show *Maintained by cogan17*; the TWRP top bar has the clock on the left, the centre free and the battery on the right; the version shows under the title; a 31 GB Data backup in OrangeFox succeeded.
+
 ## v2.0 — 9 Nov 2026
 
 ### 🔧 What's fixed

@@ -13,6 +13,11 @@ The top version = the latest one. All packages are shared on [Telegram](https://
 - `BUILD-INFO.txt`: the run link is now labelled "Build" (it said "Build TWRP" although it is the OrangeFox run).
 - For HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` installs TWRP **v2.1**.
 
+### ⚠️ Known issue
+- When a backup starts, the OrangeFox screen may flicker 2–3 times. It is harmless: the backup keeps running and completes. TWRP is not affected.
+
+Tested by the owner on the phone (14 Nov 2026, HyperOS 302): the TWRP and OrangeFox splash screens show *Maintained by cogan17*; the TWRP top bar has the clock on the left, the centre free and the battery on the right; the version shows under the title; a 31 GB Data backup in OrangeFox succeeded.
+
 ## ofox-v1.4 — 9 Nov 2026
 
 ### 🔧 What's fixed

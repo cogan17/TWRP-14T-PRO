@@ -14,6 +14,8 @@ Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.
 - Baris versi di layar pembuka kini muat di layar (sebelumnya terpotong di kedua sisi).
 - Untuk HyperOS OS3.0.302.0.WNNIDXM, dengan semua perbaikan v2.0.
 
+Diuji owner di HP (14 Nov 2026, HyperOS 302): splash TWRP dan OrangeFox menampilkan *Maintained by cogan17*; bar atas TWRP jam di kiri, tengah kosong, baterai di kanan; versi tampil di bawah judul; backup Data 31 GB di OrangeFox berhasil.
+
 ## v2.0 — 9 Nov 2026
 
 ### 🔧 Perbaikan

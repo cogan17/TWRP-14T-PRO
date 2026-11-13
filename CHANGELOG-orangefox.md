@@ -13,6 +13,11 @@ Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.
 - `BUILD-INFO.txt`: link run kini berlabel "Build" (sebelumnya "Build TWRP", padahal itu run OrangeFox).
 - Untuk HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v2.1**.
 
+### ⚠️ Diketahui
+- Saat backup dimulai, layar OrangeFox bisa berkedip 2–3 kali. Ini tidak berbahaya: backup tetap berjalan dan selesai. TWRP tidak mengalaminya.
+
+Diuji owner di HP (14 Nov 2026, HyperOS 302): splash TWRP dan OrangeFox menampilkan *Maintained by cogan17*; bar atas TWRP jam di kiri, tengah kosong, baterai di kanan; versi tampil di bawah judul; backup Data 31 GB di OrangeFox berhasil.
+
 ## ofox-v1.4 — 9 Nov 2026
 
 ### 🔧 Perbaikan
