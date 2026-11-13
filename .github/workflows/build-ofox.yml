@@ -118,6 +118,8 @@ jobs:
           for p in device/xiaomi/rothko/patches-ofox/system_vold/*.patch; do patch -d system/vold -p1 --forward < "$p"; done
           # recovery permissive by itself: the vendor_boot cmdline is stock now (normal Android boots with it)
           for p in device/xiaomi/rothko/patches/system_core/*.patch; do patch -d system/core -p1 --forward < "$p"; done
+          # "Maintained by cogan17" on the splash screen (default splash and the settings template)
+          python3 -I "$GITHUB_WORKSPACE/device-tree/.github/scripts/ofox_splash.py" bootable/recovery/gui/theme/portrait_hdpi
           {
             export ALLOW_MISSING_DEPENDENCIES=true FOX_BUILD_DEVICE=rothko
             source build/envsetup.sh

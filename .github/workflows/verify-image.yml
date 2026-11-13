@@ -123,7 +123,7 @@ jobs:
           $([ "$VARIANT" = ofox ] && echo OrangeFox || echo TWRP) Xiaomi 14T Pro (rothko) $BUILD_VER - firmware $VERSION
           Asli dari   : https://github.com/cogan17/TWRP-14T-PRO (maintainer: cogan17)
           Dibangun di : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY @ $(git -C repo rev-parse --short HEAD)
-          Build TWRP  : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$TWRP_RUN
+          Build       : $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$TWRP_RUN
           Tanggal     : $(date -u '+%Y-%m-%d %H:%M UTC')
           Cek keaslian: gh attestation verify <file> --repo cogan17/TWRP-14T-PRO
           INFO

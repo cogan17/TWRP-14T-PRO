@@ -4,6 +4,16 @@
 
 Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.me/coganTWRP); GitHub hanya untuk pengumuman.
 
+## v2.1 — 13 Nov 2026
+
+### ✨ Baru
+- Layar pembuka (splash) TWRP menampilkan **Maintained by cogan17**.
+
+### 🔧 Perbaikan
+- **Bar atas tidak lagi berantakan.** Di recovery tidak ada suhu CPU, jadi TWRP menaruh versi yang panjang (`3.7.1_14-Xiaomi_14T_Pro | Cogan17`) di bar atas, lalu jam di tengah menimpanya, tepat di bawah kamera. Sekarang seperti HyperOS: jam di kiri, tengah kosong untuk kamera, baterai di kanan. Versinya pindah ke bawah judul di layar utama.
+- Baris versi di layar pembuka kini muat di layar (sebelumnya terpotong di kedua sisi).
+- Untuk HyperOS OS3.0.302.0.WNNIDXM, dengan semua perbaikan v2.0.
+
 ## v2.0 — 9 Nov 2026
 
 ### 🔧 Perbaikan
