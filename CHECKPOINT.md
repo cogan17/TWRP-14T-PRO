@@ -55,7 +55,6 @@ Sesi berikutnya: baca `CLAUDE.md` dan file ini, lalu lanjut **hanya setelah owne
 ## Belum terbukti / pertanyaan terbuka
 
 - OrangeFox memakai manifest `fox_16.0` 31 Okt (dikunci di `build-ofox.yml`). Saat versi recovery OrangeFox yang dirombak sudah publik, buka kuncinya dan uji ulang.
-- BUILD-INFO OrangeFox memberi label "Build TWRP" pada link run Build OrangeFox (`verify-image.yml` baris 126); rapikan di versi berikutnya.
 - Update lewat OTA inkremental dengan partisi termodifikasi belum diuji (yang diuji: ROM penuh).
 - Issue #83: uji ulang reset pabrik dengan login Google dulu (pengingat, bukan kewajiban).
 - Beban sistem ±12 di recovery walau CPU menganggur (proses tertahan, belum diperiksa; kemungkinan tidak terkait panas).

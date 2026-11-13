@@ -4,6 +4,15 @@
 
 Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.me/coganTWRP); GitHub hanya untuk pengumuman. Catatan rilis TWRP: [CHANGELOG.md](CHANGELOG.md).
 
+## ofox-v1.5 — 13 Nov 2026
+
+### ✨ Baru
+- Layar pembuka (splash) OrangeFox menampilkan **Maintained by cogan17** di bawah tulisan OrangeFox Recovery, juga setelah splash diubah di pengaturan.
+
+### 🔧 Perbaikan
+- `BUILD-INFO.txt`: link run kini berlabel "Build" (sebelumnya "Build TWRP", padahal itu run OrangeFox).
+- Untuk HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v2.1**.
+
 ## ofox-v1.4 — 9 Nov 2026
 
 ### 🔧 Perbaikan
