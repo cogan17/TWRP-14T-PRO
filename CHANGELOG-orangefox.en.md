@@ -4,6 +4,15 @@
 
 The top version = the latest one. All packages are shared on [Telegram](https://t.me/coganTWRP); GitHub is for announcements only. TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
 
+## ofox-v1.5 — 13 Nov 2026
+
+### ✨ What's new
+- The OrangeFox splash screen shows **Maintained by cogan17** under OrangeFox Recovery, also after the splash is changed in the settings.
+
+### 🔧 What's fixed
+- `BUILD-INFO.txt`: the run link is now labelled "Build" (it said "Build TWRP" although it is the OrangeFox run).
+- For HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` installs TWRP **v2.1**.
+
 ## ofox-v1.4 — 9 Nov 2026
 
 ### 🔧 What's fixed
