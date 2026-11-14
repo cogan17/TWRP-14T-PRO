@@ -1,0 +1,15 @@
+diff --git a/gui/input.cpp b/gui/input.cpp
+index f1ddbbe..b39e695 100755
+--- a/gui/input.cpp
++++ b/gui/input.cpp
+@@ -206,6 +206,10 @@ void GUIInput::UpdateDisplayText() {
+ 	}
+ 
+ 	DataManager::GetValue(mVariable, mValue);
++	// the value can change behind the cursor (clear button, generated backup name): a cursor past
++	// the end made the next key throw std::out_of_range and crash the whole recovery
++	if (mCursorLocation > (int)mValue.size())
++		mCursorLocation = -1;
+ 	if (HasMask) {
+ 		int index, string_size = mValue.size();
+ 		string maskedValue;
