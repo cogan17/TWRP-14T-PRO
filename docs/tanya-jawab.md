@@ -30,6 +30,8 @@ Pertanyaan yang sering muncul, dari pengalaman nyata di HP ini.
 
 **Menu mana yang berbahaya?** Lihat [Tur Menu TWRP](menu-twrp.md).
 
+**Apakah ADB di recovery aman?** Selama TWRP/OrangeFox terbuka, ADB aktif dengan akses root **tanpa minta persetujuan**, sama seperti semua TWRP dan OrangeFox. Ini sengaja: `3-AMBIL-LOG.bat`, `4-LOG-BOOTLOOP.bat` dan sideload memerlukannya, dan recovery tidak punya layar persetujuan. Jadi selama di recovery, terutama setelah data dibuka dengan pola, **jangan colokkan HP ke PC atau charger umum yang tidak kamu percaya**, dan jangan tinggalkan HP di recovery tanpa diawasi. Di Android biasa, ADB tetap memakai persetujuan seperti biasa.
+
 ### Backup, restore, reset
 
 **Restore Data gagal `extractTarFork() … 255`.** Bug di v1.4 ke bawah, diperbaiki di **v1.5**. Langkah darurat: [Backup → Restore Data](backup.md#restore-data).
