@@ -30,6 +30,8 @@ Common questions, from real experience on this phone.
 
 **Which menus are dangerous?** See the [TWRP Menu Tour](menu-twrp.en.md).
 
+**Is ADB in recovery safe?** While TWRP/OrangeFox is open, ADB runs with root access **without asking for approval**, like every TWRP and OrangeFox. This is on purpose: `3-AMBIL-LOG.bat`, `4-LOG-BOOTLOOP.bat` and sideload need it, and recovery has no approval screen. So while in recovery, especially after unlocking data with your pattern, **don't plug the phone into a PC or public charger you don't trust**, and don't leave it in recovery unattended. In normal Android, ADB still asks for approval as usual.
+
 ### Backup, restore, reset
 
 **Restoring Data fails with `extractTarFork() … 255`.** A bug in v1.4 and older, fixed in **v1.5**. Emergency steps: [Backup → Restoring Data](backup.en.md#restoring-data).
