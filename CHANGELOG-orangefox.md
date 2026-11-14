@@ -14,7 +14,7 @@ Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.
 - Untuk HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v2.1**.
 
 ### ⚠️ Diketahui
-- Saat backup dimulai, layar OrangeFox bisa berkedip 2–3 kali. Ini tidak berbahaya: backup tetap berjalan dan selesai. TWRP tidak mengalaminya.
+- **Jangan backup Data di OrangeFox kalau layar sempat berkedip.** Kedipan itu tanda OrangeFox macet lalu menyala ulang sendiri. Pemicunya: nama backup dihapus dengan tombol ✕ (atau diganti nama otomatis) saat kursor ada di tengah teks, lalu kamu mengetik. Setelah menyala ulang, OrangeFox tidak lagi menyimpan kunci enkripsi folder ke dalam backup Data, jadi backup itu mungkin tidak bisa dipulihkan dengan benar. Untuk backup dan restore Data, pakai TWRP. Akan diperbaiki di ofox-v1.6.
 
 Diuji owner di HP (14 Nov 2026, HyperOS 302): splash TWRP dan OrangeFox menampilkan *Maintained by cogan17*; bar atas TWRP jam di kiri, tengah kosong, baterai di kanan; versi tampil di bawah judul; backup Data 31 GB di OrangeFox berhasil.
 

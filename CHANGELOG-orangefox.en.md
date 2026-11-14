@@ -14,7 +14,7 @@ The top version = the latest one. All packages are shared on [Telegram](https://
 - For HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` installs TWRP **v2.1**.
 
 ### ⚠️ Known issue
-- When a backup starts, the OrangeFox screen may flicker 2–3 times. It is harmless: the backup keeps running and completes. TWRP is not affected.
+- **Do not back up Data in OrangeFox if the screen flickered.** The flicker means OrangeFox crashed and restarted itself. The trigger: the backup name is cleared with the ✕ button (or replaced by the automatic name) while the cursor is in the middle of the text, and you then type. After the restart OrangeFox no longer stores the folders' encryption keys in the Data backup, so that backup may not restore correctly. Use TWRP to back up and restore Data. To be fixed in ofox-v1.6.
 
 Tested by the owner on the phone (14 Nov 2026, HyperOS 302): the TWRP and OrangeFox splash screens show *Maintained by cogan17*; the TWRP top bar has the clock on the left, the centre free and the battery on the right; the version shows under the title; a 31 GB Data backup in OrangeFox succeeded.
 
