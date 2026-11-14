@@ -4,6 +4,13 @@
 
 Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.me/coganTWRP); GitHub hanya untuk pengumuman. Catatan rilis TWRP: [CHANGELOG.md](CHANGELOG.md).
 
+## ofox-v1.6 — 14 Nov 2026
+
+### 🔧 Perbaikan
+- **OrangeFox tidak lagi macet saat memberi nama backup.** Bila nama dihapus dengan tombol ✕ (atau diganti nama otomatis) saat kursor ada di tengah teks, ketikan berikutnya membuat OrangeFox macet lalu menyala ulang sendiri (layar berkedip). Setelah menyala ulang, backup Data tidak lagi menyimpan kunci enkripsi folder, sehingga mungkin tidak bisa dipulihkan dengan benar. Sekarang kursor kembali ke akhir teks bila teksnya berubah.
+- Backup Data yang dibuat di ofox-v1.5 setelah layar berkedip jangan dipakai untuk restore; buat backup baru.
+- Untuk HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v2.1**.
+
 ## ofox-v1.5 — 13 Nov 2026
 
 ### ✨ Baru

@@ -4,6 +4,13 @@
 
 The top version = the latest one. All packages are shared on [Telegram](https://t.me/coganTWRP); GitHub is for announcements only. TWRP release notes: [CHANGELOG.en.md](CHANGELOG.en.md).
 
+## ofox-v1.6 — 14 Nov 2026
+
+### 🔧 What's fixed
+- **OrangeFox no longer crashes while naming a backup.** When the name was cleared with the ✕ button (or replaced by the automatic name) while the cursor was in the middle of the text, the next key crashed OrangeFox and it restarted itself (the screen flickered). After the restart, the Data backup no longer stored the folders' encryption keys, so it might not restore correctly. The cursor now moves back to the end when the text changes.
+- Don't restore a Data backup made in ofox-v1.5 after the screen flickered; make a new one.
+- For HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` installs TWRP **v2.1**.
+
 ## ofox-v1.5 — 13 Nov 2026
 
 ### ✨ What's new
