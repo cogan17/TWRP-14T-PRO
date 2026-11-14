@@ -11,6 +11,8 @@ The top version = the latest one. All packages are shared on [Telegram](https://
 - Don't restore a Data backup made in ofox-v1.5 after the screen flickered; make a new one.
 - For HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` installs TWRP **v2.1**.
 
+Tested by the owner on the phone (14 Nov 2026, HyperOS 302): a Data backup in ofox-v1.6 stores the folders' encryption keys, 25,772× `found fscrypt policy` and 0× `failed to lookup fscrypt` in the backup's `recovery.log` (on par with TWRP). Restoring Data from an OrangeFox backup has not been tested.
+
 ## ofox-v1.5 — 13 Nov 2026
 
 ### ✨ What's new

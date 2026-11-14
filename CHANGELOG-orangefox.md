@@ -11,6 +11,8 @@ Versi teratas = versi terbaru. Semua paket dibagikan lewat [Telegram](https://t.
 - Backup Data yang dibuat di ofox-v1.5 setelah layar berkedip jangan dipakai untuk restore; buat backup baru.
 - Untuk HyperOS OS3.0.302.0.WNNIDXM; `3-KEMBALI-KE-TWRP.bat` memasang TWRP **v2.1**.
 
+Diuji owner di HP (14 Nov 2026, HyperOS 302): backup Data di ofox-v1.6 menyimpan kunci enkripsi folder, 25.772× `found fscrypt policy` dan 0× `failed to lookup fscrypt` di `recovery.log` backup (setara TWRP). Restore Data dari backup OrangeFox belum diuji.
+
 ## ofox-v1.5 — 13 Nov 2026
 
 ### ✨ Baru
